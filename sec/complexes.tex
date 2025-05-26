@@ -1,0 +1,408 @@
+% !TEX root = ../ck_dual.tex
+
+\section{Bi-differential complexes}
+
+\subsection{Conventions}
+
+We work over a field of characteristic \( 0 \) and refer to \( \Z \)-graded vector spaces as \defn{complexes}.
+The term \defn{map} is reserved for a linear map between these.
+We say that a map \( f \colon V \to W \) is of \defn{degree} \( k \) if \( f(V_n) \subseteq W_{n+k} \) for all \( n \in \Z \).
+
+A \defn{differential} \( d \colon V \to V \) is a nilpotent (i.e. \( d \circ d = 0 \)) map of degree \( 1 \).
+We refer to the pair \( (V, d) \) as a \defn{differential complex}.
+Similarly, a \defn{co-differential} \( d^\star \colon V \to V \) is a nilpotent map of degree \( -1 \) and the pair \( (V, d^\star) \) is referred to as  a \defn{co-differential complex}.
+
+A \defn{morphism} of differential complexes is a degree 0 map \( f \colon V \to W \) commuting with the differentials (i.e., \( f \circ d_V = d_W \circ f\)).
+Morphisms of co-differential complexes are defined analogously.
+
+\subsection{Bi-differential complexes}
+
+A \defn{bi-differential complex} is a triple \( (V, d, d^\star) \) with \( (V, d) \) a differential complex and \( (V, d^\star) \) a co-differential complex.
+
+A \defn{morphism} of bi-differential complexes is a degree \( 0 \) map commuting with differentials and co-differentials.
+
+An important example of an automorphism of bi-differential complexes is the \defn{box operator}:
+\[
+\square \defeq [d, d^\star] = [d^\star, d] = d \circ d^\star + d^\star \circ d
+\]
+
+A closely related notion is that of \textit{mixed complexes}; in our terminology, these are bi-differential complexes for which the box operator vanishes identically.
+
+\begin{lemma}[Splitting]
+	Any surjective morphism \( f \colon V \to W \) between bi-differential complexes with either of them bounded below or above has a section, i.e., a morphism \( g \colon W \to V \) such that \( f \circ g = \id_W \).
+\end{lemma}
+
+\begin{proof}
+	Since any surjective linear map between vector spaces has a section, we can start with a degree \( 0 \) map \( s \colon W \to V \) which we will modify to be compatible with the bi-differential structure.
+	For concreteness, consider the bounded below case.
+	We will proceed by induction.
+	...
+\end{proof}
+
+\subsection{Geometric examples}\label{ss:geometric examples}
+
+A common source of bi-differential complexes is chain complexes together with a degree reversing idempotent automorphism.
+Explicitly, if  \( \star_n \colon V_n \to V_{d-n}\) satisfies \( \star \circ \star = \id \) then \( d^\star \defeq \star d \star \) makes \( (V, d, d^\star) \) into a bi-differential complex.
+
+\begin{example}
+	(pseudo-)riemannian
+\end{example}
+
+\begin{example}
+	Dolbeault
+\end{example}
+
+\begin{example}
+	symplectic
+\end{example}
+
+\subsection{Contractions}
+
+In the previous subsection, we presented several examples of bi-differential complexes arising naturally in geometry.
+In this section, we describe how bi-differential complexes also emerge from deformation retractions.
+
+Deformation retractions play a central role in Homological Perturbation Theory (HPT), where they provide a controlled setting for transferring algebraic structures between quasi-isomorphic complexes.
+We will explore this further in the next section.
+
+We now present deformation retractions and contractions in the context of differential complexes, while noting that an analogous treatment applies as well in the setting of co-differential complexes.
+
+\medskip\noindent
+A (strong) \defn{deformation retraction} consists of a pair of morphisms
+\[
+\begin{tikzcd}
+	(V, d_V) \arrow[r, shift left=0.7ex, "p"] & (W, d_W) \arrow[l, shift left=0.7ex, "i"]
+\end{tikzcd}
+\]
+together with a map \( h \colon V \to V \) of degree \( -1 \), called the \defn{contracting homotopy}, satisfying:
+\[
+p \circ i = \id_W, \qquad
+i \circ p + d_V \circ h + h \circ d_V = \id_V.
+\]
+
+One can always modify the data of a deformation retraction so that it additionally satisfies the standard \defn{side conditions}:
+\[
+h \circ i = 0, \qquad
+p \circ h = 0, \qquad
+h \circ h = 0.\footnote{
+\anibal{Maybe worth expanding on since we do something similar with the introduction of the operator \( G \).}
+}
+\]
+
+In this case, the complex \( (W, d_W) \) is isomorphic to the subcomplex \( (\img(i \circ p), d_V) \).\footnote{
+	Explicitly, consider the maps \( p \circ i \) and \( i \circ p|_{W'} \).
+	By assumption, \( p \circ i = \id_W \), and for any \( w' = (i \circ p)(v) \in W' \), the identity \( h \circ i = 0 \) implies:
+	\begin{align*}
+		(i \circ p)(w')
+		&= w' - (d \circ h + h \circ d)(w') \\
+		&= w' - d \circ h \circ i \circ p(v) - h \circ d \circ i \circ p(v) \\
+		&= w'.
+	\end{align*}
+}
+This observation motivates the idea of ``internalizing'' the complex \( (W, d_W) \) into the data \( (V, d, h) \), leading to the notion of a \textit{contraction} introduced by Eilenberg--MacLane in \cite{??}.\anibal{change the notation for def retract to \( \pi, \iota \) reserving \( p \) as claimed}
+
+In the language of this paper, a \defn{contraction} is a bi-differential complex \( (V, d, h) \) satisfying the identity:
+\[
+h \circ d \circ h = h.
+\]
+We define the associated \defn{projection} operator by
+\[
+p \defeq \id - d \circ h - h \circ d,
+\]
+and reserve the letter \( p \) for this operator throughout.
+This terminology is justified because \( p \) is idempotent.\footnote{
+Explicitly, we compute that
+\begin{align*}
+	p \circ p
+	&= (\id - d \circ h - h \circ d) \circ (\id - d \circ h - h \circ d) \\
+	&= \id - d \circ h - h \circ d \\
+	&\quad - d \circ h + d \circ h \circ d \circ h + d \circ h \circ h \circ d \\
+	&\quad - h \circ d + h \circ d \circ d \circ h + h \circ d \circ h \circ d \\ &=
+	p.
+\end{align*}
+}
+Therefore, \( V \) admits the direct sum decomposition:
+\[
+V = \img p \oplus \ker p.
+\]
+
+The following statement is a well-known fact that we state with a complete proof to make this presentation self-contained.
+
+\begin{proposition}
+	A contraction \( (V, d, h) \) determines a deformation retraction
+	\begin{equation}\label{eq:def retract from contraction}
+		\begin{tikzcd}
+			\arrow[loop left, "h"] (V, d) \arrow[r, shift left=0.7ex, "p"]
+			& (\img p, d) \arrow[l, shift left=0.7ex, "\ \id\, \oplus\, 0"]
+		\end{tikzcd}
+	\end{equation}
+	that satisfies the side conditions.
+	Conversely, a deformation retraction
+	\[
+	\begin{tikzcd}
+		\arrow[loop left, "h"] (V, d_V) \arrow[r, shift left=0.7ex, "\pi"]
+		& (W, d_W) \arrow[l, shift left=0.7ex, "\iota"]
+	\end{tikzcd}
+	\]
+	satisfying the side conditions determines a contraction \( (V, d_V, h) \) whose projection agrees with \( (\iota \circ \pi) \) and \( (\img(\iota \circ \pi), d_V) \) is isomorphic to \( (W, d_W) \).
+
+\end{proposition}
+
+\begin{proof}
+	Consider the contraction \( (V, d, h) \).
+	That \eqref{eq:def retract from contraction} is a deformation retraction is immediate.
+	The two non-trivial side conditions  are verified as follows:
+	\begin{gather*}
+		p \circ h = (\id - h \circ d - d \circ h) \circ h = h - h \circ d \circ h = 0, \\
+		h \circ (\id_{\img p} \otimes 0) = h \circ p = h \circ (\id - h \circ d - d \circ h) = h - h \circ d \circ h = 0.
+	\end{gather*}
+
+	Conversely, consider a deformation retraction
+	\[
+	\begin{tikzcd}
+		\arrow[loop left, "h"] (V, d_V) \arrow[r, shift left=0.7ex, "\pi"]
+		& (W, d_W) \arrow[l, shift left=0.7ex, "\iota"]
+	\end{tikzcd}
+	\]
+	satisfying the side conditions.
+	We write \( d \) instead of \( d_V \) for the rest of this proof.
+	To verify that \( h = h \circ d \circ h \) we simply apply \( h \) to the identity \( \iota \circ \pi = \id - d \circ h - h \circ d\) and use one of the side conditions.
+
+	The canonical projection of the contraction is \( \id - d \circ h - h \circ d \) which is \( (\iota \circ \pi) \) by assumption.
+
+	To verify that \( (\img(\iota \circ \pi), d) \) is isomorphic to \( (W, d_W) \) we consider the morphisms \( \iota \colon W \to V \), which satisfies \(  \img \iota \subseteq \img(\iota \circ \pi) \) since \( \pi \circ \iota = \id_W \), and the restriction of \( \pi \) to \( \img(\iota \circ \pi)\).
+	We want to prove that they are inverse of each other.
+	That \( \pi \circ \iota = \id_W \) holds by assumption.
+	To obtain \( \iota \circ \pi|_{\img(\iota \circ \pi)} = \id_{\img(\iota \circ \pi)} \) we consider \( v = (\iota \circ \pi)(w) \) and use the idempotency of the canonical projection as follows:
+	\[
+	(\iota \circ \pi)(v) = (\iota \circ \pi \circ \iota \circ \pi) (w) = (p \circ p)(w) = p(w) = v.\qedhere
+	\]\qedhere
+\end{proof}
+
+\subsection{Minimal contractions}
+
+Homological Perturbation Theory permits the transfer of structure to any complex quasi-isomorphic to the original one.
+Among these, homology plays a distinguished role, serving as the minimal and most canonical example.
+We now identify the condition under which a contraction yields a deformation retraction onto the homology of the complex.
+
+\begin{theorem}
+	A contraction \( (V, d, h) \) defines a deformation retraction of \( (V, d) \) onto its homology if and only if
+	\[
+	d \circ h \circ d = d.
+	\]
+\end{theorem}
+
+\begin{proof}
+	Recall that a contraction \( (V, d, h) \) determines a deformation retraction onto \( (\img p, d) \), where \( p = \id - d \circ h - h \circ d \).
+	In particular, \( (V, d) \) and \( (\img p, d) \) are quasi-isomorphic.
+	Therefore, \( (\img p, d) \) is isomorphic to the homology \( \rH(V, d) \) if and only if \( d|_{\img p} = 0\).
+	This condition is equivalent to the identity \( d \circ p = 0 \).
+	Using the definition of \( p \), we compute:
+	\[
+	d \circ p
+	= d - d \circ d \circ h - d \circ h \circ d
+	= d - d \circ h \circ d.
+	\]
+	Therefore,
+	\[
+	d \circ p = 0 \quad \Leftrightarrow \quad d = d \circ h \circ d,
+	\]
+	which proves the claim.
+\end{proof}
+
+For a contraction \( (V, d, h) \), the condition \( d \circ h \circ d = d \), which characterizes \emph{minimal contractions}, complements the defining identity \( h \circ d \circ h = h \) and restores the symmetry inherent to bi-differential complexes.
+
+\subsection{Bi-contractions}
+
+In the next subsection, we investigate the contractions introduced above emphasizing their symmetric structure.
+
+\begin{definition}
+	A bi-differential complex \( (V, d, d^\star) \) is said to be a \defn{bi-contraction} if it satisfies:
+	\[
+	d^\star \circ d \circ d^\star = d^\star, \qquad
+	d \circ d^\star \circ d = d.
+	\]
+\end{definition}
+
+\begin{lemma}\label{thm:bi-contraction}
+	Let \( (V, d, d^\star) \) be a bi-contraction.
+	Then:
+	\begin{gather*}
+		\ker\square = \ker d \cap \ker d^\star, \\
+		V = \ker\square \oplus \img d \oplus \img d^\star,
+	\end{gather*}
+	and \( \ker\square \) is canonically isomorphic to both \( \rH(V, d) \) and \( \rH(V, d^\star) \).
+\end{lemma}
+
+\begin{proof}
+	Let \( p = \id - d \circ d^\star - d^\star \circ d \), and notice that by symmetry, this is the canonical projection for both contractions \( (V, d, d^\star) \) and \( (V, d^\star, d) \).
+
+	\medskip\noindent
+	\textbf{Claim 1:} \( \img p = \ker d \cap \ker d^\star \).
+
+	\medskip\noindent (\( \subseteq \))
+	Consider \( v = p v' = v' - d d^\star v' - d^\star d v' \).
+	Applying \( d \) gives:
+	\begin{align*}
+		d v = d v' - d d d^\star v' - d d^\star d v' = d v' - d d^\star d v' = 0,
+	\end{align*}
+	using \( d^2 = 0 \).
+	By symmetry, the same argument shows \( d^\star v = 0 \), hence \( v \in \ker d \cap \ker d^\star \).
+
+	\medskip\noindent (\( \supseteq \))
+	Consider \( v \in \ker d \cap \ker d^\star \).
+	Applying \( p \) gives
+	\[
+	pv = v - d d^\star v - d^\star d v = v,
+	\]
+	so \( v \in \img p \).
+
+	\medskip\noindent
+	\textbf{Claim 2:} \( p \) induces isomorphisms
+	\[
+	\rH(V, d) \xra{H(p, d)} (\cH, 0) \xla{H(p, d^\star)} \rH(V, d^\star).
+	\]
+	Since \( (V, d, d^\star) \) is a contraction, \( p \) defines a quasi-isomorphism from \( (V, d) \) to \( (\img p, d|_{\img p}) \).
+	But \( \img p = \cH = \ker d \cap \ker d^\star \), so \( d|_{\cH} = 0 \), and \( p \) induces an isomorphism from \( \rH(V, d) \) to \( \cH \).
+	Similarly, the contraction \( (V, d^\star, d) \) yields an isomorphism \( \rH(V, d^\star) \cong \cH \).
+
+	\medskip\noindent
+	\textbf{Claim 3:} \( \ker p = \img d \oplus \img d^\star \).
+
+	\medskip\noindent (\( \subseteq \))
+	Consider \( v \in \ker p \).
+	Then \( 0 = v - (d \circ d^\star)(v) - (d^\star \circ d)(v) \) or, equivalently, \( v =  d(d^\star v) + d^\star(dv)\) showing that \( v \in  \img d + \img d^\star\).
+
+	\medskip\noindent (\( \supseteq \))
+	For \( v \in \img d \), write \( v = d u \). Then
+	\[
+	p(d u) = d u - d d^\star d u - d^\star d d u = d u - d d^\star d u = 0,
+	\]
+	since \( d \circ d = 0 \) and \( d \circ d^\star \circ d = d \).
+	Thus \( \img d \subseteq \ker p \), and similarly \( \img d^\star \subseteq \ker p \).
+
+	\medskip\noindent (\( \oplus \))
+	Let \( u \in \img d \cap \img d^\star \).
+	Suppose \( u = d v = d^\star w \).
+	Then \( d u = 0 \) and \( d^\star u = 0 \), so \( u \in \cH = \img p \).
+	Since \( u \in \ker p \cap \img p \), we conclude \( u = 0 \), and the sum is direct.
+
+	\medskip\noindent
+	\textbf{Claim 4:} \( \ker d \cap \ker d^\star = \ker(d \circ d^\star + d^\star \circ d) \).
+
+	\medskip\noindent (\( \subseteq \))
+	If \( dx = d^\star x = 0 \) then \( (d \circ d^\star + d^\star \circ d)(x) = d(d^\star x) + d^\star(dx) = 0 \).
+
+	\medskip\noindent (\( \subseteq \))
+	If \( (d \circ d^\star + d^\star \circ d)(x) = 0 \) then \( dx = (d \circ d^\star \circ d)(x) = d \circ (d \circ d^\star + d^\star \circ d)(x) = 0 \).
+	Similarly one computes that \( d^\star x = 0 \).
+\end{proof}
+
+\subsection{\( dd^\star\! \)-complexes}
+
+The conditions defining a bi-contraction are quite restrictive, as none of the geometric examples of bi-differential complexes satisfy them.
+
+\begin{comment}
+	Revisiting these conditions using the box operator, we observe that a bi-differential complex \( (V, d, d^\star) \) is a bi-contraction if and only if \( \square = \id \) on \( (\img d + \img d^\star) \).\footnote{
+	Explicitly, \( d = d \circ d^\star \circ d \) if and only if \( d = \square \circ d \), which holds if and only if \( \square|_{\img d} = \id \).
+	A similar argument applies to the condition \( d^\star = d^\star \circ d \circ d^\star \), which is equivalent to \( \square|_{\img d^\star} = \id \).
+}
+
+Since \( \img\square \subseteq \img d + \img d^\star \) the bi-contraction property implies \( \img\square =  \img d + \img d^\star\).
+As we will see, this weaker condition suffices to construct a \textit{Hodge-type decomposition} as the one constructed in \cref{thm:bi-contraction}.
+
+\begin{definition}
+	A \defn{\( dd^\star\! \)-complex} as a bi-differential complex \( (V, d, d^\star) \) satisfying the \defn{\( dd^\star\! \)-condition}:
+	\[
+	\img \square = \img d + \img d^\star.
+	\]
+\end{definition}
+
+\begin{lemma}\label{thm:d dstar lemma}
+	Let \( (V, d, d^\star) \) be a \( dd^\star\!\)-complex which is either bounded below or above.
+	Then, there exists a bi-differential morphism \( G \colon \img\square \to V \) with \( \square \circ G = \id_{\img\square} \) such that \( (V, d, G \circ d^\star) \) and \( (V, G \circ d, d^\star) \) are bi-contractions.
+\end{lemma}
+\end{comment}
+
+\begin{lemma}\label{thm:d dstar lemma}
+	Let \( (V, d, d^\star) \) be a \( dd^\star\!\)-complex which is either bounded below or above.
+	Then, there exists a bi-differential morphism \( G \colon \img\square \to V \) with \( \square \circ G = \id_{\img\square} \) such that \( (V, d, G \circ d^\star) \) and \( (V, G \circ d, d^\star) \) are bi-contractions.
+\end{lemma}
+
+\begin{proof}
+	We use the splitting lemma for bi-differential complexes to construct \( G \).\anibal{Missing}
+
+	\medskip\noindent
+	We verify that \( (V, d, G \circ d^\star) \) satisfies the bi-contraction identities:
+	\begin{align*}
+		(G \circ d^\star) \circ d \circ (G \circ d^\star)
+		&= G \circ (d^\star \circ d) \circ (G \circ d^\star) \\
+		&= G \circ (\square - d \circ d^\star) \circ (G \circ d^\star) \\
+		&= G \circ (\square \circ G) \circ d^\star - G \circ d \circ G \circ (d^\star \circ d^\star) \\
+		&= G \circ d^\star,
+	\end{align*}
+	\begin{align*}
+		d \circ (G \circ d^\star) \circ d
+		&= G \circ (d \circ d^\star) \circ d \\
+		&= G \circ (\square - d^\star \circ d) \circ d \\
+		&= G \circ \square \circ d - G \circ d^\star \circ d \circ d \\
+		&= d.
+	\end{align*}
+	The statement for \( (V, G \circ d, d^\star) \) follows by symmetry.
+\end{proof}
+
+\begin{lemma}\label{thm:d dstar hodge decomposition}
+	Let \( (V, d, d^\star) \) be a \( dd^\star\!\)-complex that is bounded below or above.
+	Then:
+	\begin{gather*}
+		\ker \square = \ker d \cap \ker d^\star, \\
+		V = \ker \square \oplus \img d \oplus \img d^\star,
+	\end{gather*}
+	and \( \ker \square \) is canonically isomorphic to both \( \rH(V, d) \) and \( \rH(V, d^\star) \).
+\end{lemma}
+
+\begin{proof}
+	Let \( G \colon \img\square \to V \) be a right inverse to the box operator \( \square = d d^\star + d^\star d \), as guaranteed by \cref{thm:d dstar lemma}.
+	Since \( G \) is injective, we have:
+	\[
+	\ker(G \circ d) = \ker d, \qquad \ker(G \circ d^\star) = \ker d^\star.
+	\]
+	By \cref{thm:d dstar lemma}, the triples \( (V, d, G \circ d^\star) \) and \( (V, G \circ d, d^\star) \) are bi-contractions.
+	Then, by \cref{thm:bi-contraction}, we obtain both, the identities:
+	\begin{equation}\label{eq:d dstar hodge splitting}
+		V = \ker \square \oplus \img d \oplus \img(G \circ d^\star) = \ker \square \oplus \img(G \circ d) \oplus \img d^\star,
+	\end{equation}
+	and the fact that \( \ker \square = \ker d \cap \ker d^\star \) is canonically isomorphic to both \( \rH(V, d) \) and \( \rH(V, d^\star) \).
+
+	\smallskip\noindent
+	To conclude, we claim that
+	\[
+	\img(G \circ d) = \img d \quad \text{and} \quad \img(G \circ d^\star) = \img d^\star.
+	\]
+	We verify the first identity; the second follows by symmetry.
+
+	\medskip\noindent
+	\( (\subseteq) \) Let \( G(dv) \in \img(G \circ d) \).
+	By the decomposition \eqref{eq:d dstar hodge splitting}, we can write
+	\[
+	G(dv) = d u + G(d^\star w)
+	\]
+	for some \( u, w \in V \).
+	Applying \( \square \) to both sides gives
+	\[
+	dv = \square(G(dv)) = \square(d u) + d^\star w.
+	\]
+	Then
+	\[
+	d(v - \square u) = d^\star w.
+	\]
+	This implies \( d^\star w \in \ker d \cap \ker(G \circ d^\star) \), so by the direct sum decomposition, \( G(d^\star w) = 0 \).
+	Hence \( G(dv) = d u \in \img d \), proving \( \img(G \circ d) \subseteq \img d \).
+
+	\medskip\noindent
+	\( (\supseteq) \) Let \( du \in \img d \).
+	Since \( (V, d, G \circ d^\star) \) is a bi-contraction, we have:
+	\[
+	du = (d \circ G \circ d^\star \circ d)(u) = (G \circ d \circ d^\star \circ d)(u) = (G \circ d)\big(d^\star(du)\big),
+	\]
+	so \( du \in \img(G \circ d) \), completing the proof.
+\end{proof}

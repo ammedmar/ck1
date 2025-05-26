@@ -1,0 +1,114 @@
+% !TEX root = ../ck_dual.tex
+
+\section{Overview of the BV formalism in the abelian case}
+
+We will use electromagnetism as an example of a field theory to which we apply the BV formalism to.
+
+\subsection{Classical field theory}
+
+Let \(M\) be a smooth oriented 4-manifold with a Riemannian metric.
+The gauge field of electromagnetism is a 1-form \(A \in \Omega^1(M)\).
+The \defn{field strength} is \(F = dA\), and the classical action is
+\[
+S_{\mathrm{cl}}[A] = \frac{1}{2} \int_M dA \wedge *dA.
+\]
+
+The action is invariant under \defn{infinitesimal gauge transformations}
+\[
+A \mapsto A + d\epsilon, \quad \text{with } \epsilon \in \Omega^0(M).
+\]
+
+This infinitesimal symmetry motivates the transition to a cohomological description.
+
+\subsection{The BRST complex}
+
+To describe gauge symmetry cohomologically, introduce a \defn{ghost field} \(c \in \Omega^0(M)\) and assign it degree \(-1\) (ghost number).
+Define the \defn{BRST space}:
+\[
+\cF_{\BRST} = \Omega^0(M)[-1] \oplus \Omega^1(M)[0],
+\]
+with coordinates \((c, A)\).
+
+We define a degree \(+1\) vector field \(s\) on \(\cF_{\BRST}\) by:
+\[
+s(A) = dc, \quad s(c) = 0.
+\]
+This is a \defn{cohomological vector field}: it satisfies \(s^2 = 0\).
+It is best interpreted as a derivation on functionals on the BRST space.
+Explicitly, let $\Phi = (A, c)$ be a point in $\mathcal{F}$, and let $F(\Phi)$ be a functional (e.g., $F = \int_M A \wedge *dA$).
+Then:
+\[
+(sF)(\Phi) := \left. \frac{d}{d\varepsilon} F(A + \varepsilon \, dc, \, c) \right|_{\varepsilon = 0}.
+\]
+This defines $s$ as a derivation on functionals.
+
+\subsection{The BV space and the shifted cotangent bundle}
+
+We now extend the BRST space to incorporate equations of motion and their identities.
+The BV space is the shifted cotangent bundle:
+\[
+\mathcal{E}_{\mathrm{BV}} = T^*[-1] \cF_{\BRST}.
+\]
+This introduces antifields:
+\[
+A^+ \in \Omega^3(M)[1], \quad c^+ \in \Omega^4(M)[2],
+\]
+canonically dual to \(A\) and \(c\), respectively.
+
+\medskip
+
+\textit{Comment:} The shift by \(-1\) is essential.
+It ensures that the canonical symplectic form on \(T^*[-1]\cF_{\BRST}\) has degree \(-1\), so that the induced Poisson bracket (the BV bracket) has degree \(+1\).
+This allows the BV differential to be realized as a Hamiltonian vector field of a degree 0 function.
+
+\subsection{The BV symplectic structure}
+
+The BV space carries a canonical degree \(-1\) symplectic structure:
+\[
+\omega = \int_M \delta A \wedge \delta A^+ + \delta c \wedge \delta c^+.
+\]
+This induces the \defn{BV antibracket}:
+\[
+\{F, G\} := \iota_{X_F} \iota_{X_G} \omega,
+\]
+which has degree \(+1\).
+
+\subsection{Lifting the BRST symmetry to the BV action}
+
+The BRST vector field \(s\) can be canonically lifted to a function \(S_{\mathrm{sym}}\) on the BV space using the shifted cotangent structure:
+\[
+S_{\mathrm{sym}} = \int_M A^+ \wedge dc.
+\]
+
+\medskip
+
+\textit{Comment:} This Hamiltonian lift of \(s\) follows a general pattern: if \(s = s^i(x) \frac{\partial}{\partial x^i}\) on a graded manifold, then \(S = x^+_i s^i(x)\) defines a function on \(T^*[-1]X\) whose Hamiltonian vector field is the canonical lift of \(s\).
+
+\subsection{Full BV action}
+
+The full BV action combines the classical and BRST terms:
+\[
+S_{\mathrm{BV}} = S_{\mathrm{cl}} + S_{\mathrm{sym}} = \frac{1}{2} \int_M dA \wedge *dA + \int_M A^+ \wedge dc.
+\]
+
+This satisfies the \defn{classical master equation}:
+\[
+\{S_{\mathrm{BV}}, S_{\mathrm{BV}}\} = 0.
+\]
+
+\subsection{The BV differential}
+
+The Hamiltonian vector field
+\[
+Q = \{S_{\mathrm{BV}}, -\}
+\]
+is a cohomological vector field of degree \(+1\) on the BV space.
+It acts on the coordinates as:
+\[
+QA = dc, \quad Qc = 0, \quad QA^+ = d^* dA, \quad Qc^+ = -dA^+.
+\]
+
+\medskip
+
+\textit{Comment:} The components \(QA^+ = \delta S_{\mathrm{cl}}/\delta A\) and \(Qc^+ = -\delta S_{\mathrm{sym}}/\delta c\) encode the Euler–Lagrange equations and Noether identities.
+The entire structure is captured by the triple \((\mathcal{E}_{\mathrm{BV}}, \omega, S_{\mathrm{BV}})\).
