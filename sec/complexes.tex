@@ -4,7 +4,7 @@
 
 \subsection{Conventions}
 
-We work over a field of characteristic \( 0 \) and refer to \( \Z \)-graded vector spaces as \defn{complexes}.
+We work over a field \( \k \) of characteristic \( 0 \) and refer to \( \Z \)-graded vector spaces as \defn{complexes}.
 The term \defn{map} is reserved for a linear map between these.
 We say that a map \( f \colon V \to W \) is of \defn{degree} \( k \) if \( f(V_n) \subseteq W_{n+k} \) for all \( n \in \Z \).
 
@@ -17,43 +17,107 @@ Morphisms of co-differential complexes are defined analogously.
 
 \subsection{Bi-differential complexes}
 
-A \defn{bi-differential complex} is a triple \( (V, d, d^\star) \) with \( (V, d) \) a differential complex and \( (V, d^\star) \) a co-differential complex.
+A \defn{bi-differential complex} is a triple \( (V, d, d^\star) \) where \( (V, d) \) is a differential complex and \( (V, d^\star) \) is a co-differential complex.
 
-A \defn{morphism} of bi-differential complexes is a degree \( 0 \) map commuting with differentials and co-differentials.
+A \defn{morphism} of bi-differential complexes is a degree \( 0 \) linear map that commutes with both \( d \) and \( d^\star \).
 
-An important example of an automorphism of bi-differential complexes is the \defn{box operator}:
+Every bi-differential complex admits a canonical endomorphism known as the \defn{box operator}:
 \[
-\square \defeq [d, d^\star] = [d^\star, d] = d \circ d^\star + d^\star \circ d
+\square \defeq [d, d^\star] = d \circ d^\star + d^\star \circ d.
 \]
 
-A closely related notion is that of \textit{mixed complexes}; in our terminology, these are bi-differential complexes for which the box operator vanishes identically.
+When \( \square = 0 \), the bi-differential complex \( (V, d, d^\star) \) is referred to in the literature as a \textit{mixed complex}.
+This note, however, focuses on the case where \( \square \neq 0 \).
 
-\begin{lemma}[Splitting]
-	Any surjective morphism \( f \colon V \to W \) between bi-differential complexes with either of them bounded below or above has a section, i.e., a morphism \( g \colon W \to V \) such that \( f \circ g = \id_W \).
-\end{lemma}
+\subsection{Examples}\label{ss:geometric examples}
 
-\begin{proof}
-	Since any surjective linear map between vector spaces has a section, we can start with a degree \( 0 \) map \( s \colon W \to V \) which we will modify to be compatible with the bi-differential structure.
-	For concreteness, consider the bounded below case.
-	We will proceed by induction.
-	...
-\end{proof}
+%A \defn{star complex} is a bounded differential complex
+%\[
+%V_0 \xra{d} V_1 \xra{d} \dotsb \xra{d} V_{n-1} \xra{d} V_n
+%\]
+%together with a linear automorphism
+%\[
+%\star_m \colon V_m \to V_{n-m}
+%\]
+%for every \( m \in \set{0, \dots, n} \) satisfying \( \star_{n-m} \circ \star_m = \epsilon_m \cdot \id_{V_m} \) for some invertible scalar \( \epsilon_m \).
+%It defines canonically a bi-differential complex whose co-differential is \( d^\star \defeq \star \circ d \circ \star \).
 
-\subsection{Geometric examples}\label{ss:geometric examples}
-
-A common source of bi-differential complexes is chain complexes together with a degree reversing idempotent automorphism.
-Explicitly, if  \( \star_n \colon V_n \to V_{d-n}\) satisfies \( \star \circ \star = \id \) then \( d^\star \defeq \star d \star \) makes \( (V, d, d^\star) \) into a bi-differential complex.
+We will now review some examples of bi-differential complexes arising in geometry and combinatorial topology.
 
 \begin{example}
-	(pseudo-)riemannian
+	Let \( (M, g) \) be an oriented pseudo-Riemannian manifold of dimension~\( n \) and \( (\Omega(M), d) \) denote its complex of differential forms.
+	The \defn{Hodge star} operator
+	\[
+	\star \colon \Omega^m(M) \to \Omega^{n-m}(M)
+	\]
+	is the unique operator satisfying
+	\[
+	\alpha \wedge \star \beta = \langle \alpha, \beta \rangle_g \, \vol_g
+	\]
+	for all \( \alpha, \beta \in \Omega^m(M) \), where \( \vol_g \) is the oriented volume form on \( M \) associated to \( g \) and \( \langle -, - \rangle_g \) is the canonical extension of the metric to differential forms.
+
+	This operator satisfies
+	\[
+	\star \circ \star = (-1)^{m(n-m) + s} \cdot \id \quad \text{on } \Omega^m(M),
+	\]
+	where \( s \) is the signature index of the metric (e.g., \( s = 0 \) for Riemannian, \( s = 1 \) for Lorentzian).
+
+	The triple \( (\Omega(M), d, \star) \) is a star complex whose associated bi-differential complex has box operator \( \square = [d, d^\star] \) equal to the \defn{Laplace–Beltrami operator} if \( s = 0 \) or to the \defn{d'Alembertian} if \( s = 1 \).
 \end{example}
 
 \begin{example}
-	Dolbeault
+	Discrete laplacian...
 \end{example}
 
 \begin{example}
-	symplectic
+	Let \( (M, h) \) be a Hermitian manifold of complex dimension~\( n \), and \( (\Omega^{0,\bullet}(M), \bar\partial) \) its Dolbeault complex of antiholomorphic forms.
+
+	Similar to the previous example, the
+%	Hermitian metric \( h \) induces a pointwise Hermitian inner product
+%	\[
+%	\langle \alpha, \beta \rangle_h \quad \text{on } \Omega^{0,m}(M),
+%	\]
+	conjugate-linear \defn{Hodge star} operator
+	\[
+	\star \colon \Omega^{0,m}(M) \to \Omega^{0,n-m}(M)
+	\]
+	is defined via the identity
+	\[
+	\alpha \wedge \star \bar\beta = \langle \alpha, \beta \rangle_h \, \vol_h.
+	\]
+
+	This operator satisfies
+	\[
+	\star \circ \star = (-1)^m \cdot \id \quad \text{on } \Omega^{0,m}(M).
+	\]
+
+	The triple \( (\Omega^{0,\bullet}(M), \bar\partial, \star) \) is a star complex, and the induced bi-differential complex has co-differential \( \bar\partial^\star = \star \circ \bar\partial \circ \star \).
+	The associated box operator \( \square = [\bar\partial, \bar\partial^\star] \) is the \defn{Dolbeault Laplacian}.
+\end{example}
+
+\begin{example}
+	Let \( (M, \omega) \) be a symplectic manifold of dimension~\( 2n \), and \( (\Omega^\bullet(M), d) \) its complex of differential forms.
+
+	The symplectic form \( \omega \) induces a canonical \defn{symplectic star} operator
+	\[
+	\star_\omega \colon \Omega^m(M) \to \Omega^{2n - m}(M)
+	\]
+	satisfying
+	\[
+	\alpha \wedge \star_\omega \beta = \langle \alpha, \beta \rangle_\omega \, \frac{\omega^n}{n!},
+	\]
+	where \( \langle -, - \rangle_\omega \) is the inner product on forms induced by the symplectic volume and symplectic duality.
+
+	The operator satisfies
+	\[
+	\star_\omega \circ \star_\omega = \id \quad \text{on } \Omega^m(M),
+	\]
+	and defines a co-differential
+	\[
+	d^\star \defeq \star_\omega \circ d \circ \star_\omega.
+	\]
+
+	The triple \( (\Omega^\bullet(M), d, \star_\omega) \) is a star complex, and the associated bi-differential complex has box operator \( \square = [d, d^\star] \), which plays a central role in symplectic Hodge theory.
 \end{example}
 
 \subsection{Contractions}
@@ -84,7 +148,7 @@ One can always modify the data of a deformation retraction so that it additional
 h \circ i = 0, \qquad
 p \circ h = 0, \qquad
 h \circ h = 0.\footnote{
-\anibal{Maybe worth expanding on since we do something similar with the introduction of the operator \( G \).}
+\anibal{ If \( h \circ h \neq 0 \) then let \( \tilde h \defeq d\)}
 }
 \]
 
@@ -180,7 +244,7 @@ The following statement is a well-known fact that we state with a complete proof
 
 \subsection{Minimal contractions}
 
-Homological Perturbation Theory permits the transfer of structure to any complex quasi-isomorphic to the original one.
+The homotopy transfer theorem ensures that algebraic structures defined on a chain complex can be transferred to any quasi-isomorphic complex.
 Among these, homology plays a distinguished role, serving as the minimal and most canonical example.
 We now identify the condition under which a contraction yields a deformation retraction onto the homology of the complex.
 
@@ -213,7 +277,7 @@ For a contraction \( (V, d, h) \), the condition \( d \circ h \circ d = d \), wh
 
 \subsection{Bi-contractions}
 
-In the next subsection, we investigate the contractions introduced above emphasizing their symmetric structure.
+%In the next subsection, we investigate the contractions introduced above emphasizing their symmetric structure.
 
 \begin{definition}
 	A bi-differential complex \( (V, d, d^\star) \) is said to be a \defn{bi-contraction} if it satisfies:
@@ -297,9 +361,9 @@ In the next subsection, we investigate the contractions introduced above emphasi
 	Similarly one computes that \( d^\star x = 0 \).
 \end{proof}
 
-\subsection{\( dd^\star\! \)-complexes}
+\subsection{Green operators}
 
-The conditions defining a bi-contraction are quite restrictive, as none of the geometric examples of bi-differential complexes satisfy them.
+The conditions defining a bi-contraction are quite restrictive, as none of the geometric examples discussed so far satisfy them.
 
 \begin{comment}
 	Revisiting these conditions using the box operator, we observe that a bi-differential complex \( (V, d, d^\star) \) is a bi-contraction if and only if \( \square = \id \) on \( (\img d + \img d^\star) \).\footnote{
@@ -318,20 +382,24 @@ As we will see, this weaker condition suffices to construct a \textit{Hodge-type
 \end{definition}
 
 \begin{lemma}\label{thm:d dstar lemma}
-	Let \( (V, d, d^\star) \) be a \( dd^\star\!\)-complex which is either bounded below or above.
+	Let \( (V, d, d^\star) \) be a Green bi-differential complex which is either bounded below or above.
 	Then, there exists a bi-differential morphism \( G \colon \img\square \to V \) with \( \square \circ G = \id_{\img\square} \) such that \( (V, d, G \circ d^\star) \) and \( (V, G \circ d, d^\star) \) are bi-contractions.
 \end{lemma}
 \end{comment}
 
+A condition that these do satisfy and which is sufficient to obtain the Hodge decomposition, is the existence of a section to the box operator in the category of bi-differential complexes.
+
+\begin{definition}
+	Given a bi-differential complex, a \defn{Green operator} is a bi-differential morphism \( G \colon \img\square \to V \) with \( \square \circ G = \id_{\img\square} \).
+%	Such a tuple \( (V, d, d^\star, G) \) will be referred to as a \defn{Green bi-differential complex}.
+\end{definition}
+
 \begin{lemma}\label{thm:d dstar lemma}
-	Let \( (V, d, d^\star) \) be a \( dd^\star\!\)-complex which is either bounded below or above.
-	Then, there exists a bi-differential morphism \( G \colon \img\square \to V \) with \( \square \circ G = \id_{\img\square} \) such that \( (V, d, G \circ d^\star) \) and \( (V, G \circ d, d^\star) \) are bi-contractions.
+	If \( (V, d, d^\star) \) is bi-differential complex admitting a Green operator \( G \) then both \( (V, d, G \circ d^\star) \) and \( (V, G \circ d, d^\star) \) are bi-contractions.
 \end{lemma}
 
+\anibal{Issue with \( \square \circ G \) below, since we are not in the image of \( \square \).}
 \begin{proof}
-	We use the splitting lemma for bi-differential complexes to construct \( G \).\anibal{Missing}
-
-	\medskip\noindent
 	We verify that \( (V, d, G \circ d^\star) \) satisfies the bi-contraction identities:
 	\begin{align*}
 		(G \circ d^\star) \circ d \circ (G \circ d^\star)
@@ -351,7 +419,7 @@ As we will see, this weaker condition suffices to construct a \textit{Hodge-type
 \end{proof}
 
 \begin{lemma}\label{thm:d dstar hodge decomposition}
-	Let \( (V, d, d^\star) \) be a \( dd^\star\!\)-complex that is bounded below or above.
+	Let \( (V, d, d^\star) \) be a bi-differential complex admitting a Green operator.
 	Then:
 	\begin{gather*}
 		\ker \square = \ker d \cap \ker d^\star, \\
@@ -361,7 +429,7 @@ As we will see, this weaker condition suffices to construct a \textit{Hodge-type
 \end{lemma}
 
 \begin{proof}
-	Let \( G \colon \img\square \to V \) be a right inverse to the box operator \( \square = d d^\star + d^\star d \), as guaranteed by \cref{thm:d dstar lemma}.
+	Let \( G \colon \img\square \to V \) be a Green operator, i.e., a right inverse to the box operator \( \square = d d^\star + d^\star d \).
 	Since \( G \) is injective, we have:
 	\[
 	\ker(G \circ d) = \ker d, \qquad \ker(G \circ d^\star) = \ker d^\star.
