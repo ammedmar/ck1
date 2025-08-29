@@ -1,0 +1,1091 @@
+\begin{comment}
+	Revisiting these conditions using the box operator, we observe that a bi-differential complex \( (V, d, d^\star) \) is a bi-contraction if and only if \( \square = \id \) on \( (\img d + \img d^\star) \).\footnote{
+		Explicitly, \( d = d \circ d^\star \circ d \) if and only if \( d = \square \circ d \), which holds if and only if \( \square|_{\img d} = \id \).
+		A similar argument applies to the condition \( d^\star = d^\star \circ d \circ d^\star \), which is equivalent to \( \square|_{\img d^\star} = \id \).
+	}
+
+	Since \( \img\square \subseteq \img d + \img d^\star \) the bi-contraction property implies \( \img\square =  \img d + \img d^\star\).
+	As we will see, this weaker condition suffices to construct a \textit{Hodge-type decomposition} as the one constructed in \cref{thm:bi-contraction}.
+
+	\begin{definition}
+		A \defn{\( dd^\star\! \)-complex} as a bi-differential complex \( (V, d, d^\star) \) satisfying the \defn{\( dd^\star\! \)-condition}:
+		\[
+		\img \square = \img d + \img d^\star.
+		\]
+	\end{definition}
+
+	\begin{lemma}\label{thm:d dstar lemma}
+		Let \( (V, d, d^\star) \) be a Green bi-differential complex which is either bounded below or above.
+		Then, there exists a bi-differential morphism \( G \colon \img\square \to V \) with \( \square \circ G = \id_{\img\square} \) such that \( (V, d, G \circ d^\star) \) and \( (V, G \circ d, d^\star) \) are bi-contractions.
+	\end{lemma}
+\end{comment}
+
+
+Let \( \pi = \tfrac{1}{3}(\id + (123) + (132)) \in \R[\sym_3] \) and denote, for any map \( \tau \colon \cK^{\ot 3} \to \cK\),
+\[
+\tau_{\mathrm{s}} = \tau \circ \pi
+\quad\text{and}\quad
+\tau_{\mathrm{h}} = \tau - \tau_\mathrm{s}.
+\]
+
+\noindent The map \( m_{3\mathrm{h}} \) is defined by
+\[
+\theta_\mu \ot \theta_\nu \ot \theta_\rho
+\mapsto
+c\theta_\mu \eta_{\nu\rho} - c\theta_\nu \eta_{\mu\rho}.
+\]
+
+\noindent The authors also explicitly define maps \( b_3, \theta_3 \colon \cK^{\ot 3} \to \cK\) and claim they collectively satisfy:
+\begin{align*}
+	&m_1^2 = 0, \quad b^2 = 0, \quad [m_1, b] = \square, \\
+	&[m_1, m_2] = 0, \quad m_2 m_2 (1 - \pi) = [m_1, m_{3\mathrm{h}}], \\
+	&b_2 = [b, m_2], \quad [m_1, b_2] = [\square, m_2], \\
+	&b_2 m_2 + m_2 b_2 (1 - 3\pi) = [m_1, \theta_3] + m_{3\mathrm{h}} (d_\square - 3 d_s \pi), \\
+	&3 b_2 b_2 \pi + [m_1, b_3] + 3 \theta_3 d_s \pi = 0, \\
+	&\theta_{3\mathrm{h}} + [b, m_{3\mathrm{h}}] = 0, \quad b_3 + [b, \theta_{3\mathrm{s}}] = 0.
+\end{align*}
+where \[
+d_\square =
+\overbrace{2(\partial^\mu \ot \partial_\mu \ot \id)}^{d_s}
++ 2(\id \ot \partial^\mu \ot \partial_\mu)
++ 2(\partial^\mu \ot \id \ot \partial_\mu).
+\]
+
+\hfil
+
+\subsection{Weight 1}
+
+The set of generating maps of weight equal to \( 1 \) is:
+%of a \( \bv_{(1)} \)-algebra structure or a \( \bvbox_{(1)} \)-algebra structure on \( A \) is the same; it consists linear maps:
+\begin{align*}
+	&m^0_1 \colon A \to A, && m^1_1 \colon A \to A, \\
+	&m^0_2 \colon A^{\ot 2} \to A, && m^0_{1,1} \colon A \ot A \to A,
+\end{align*}
+of degrees:
+\[
+\bars{m^0_1} = 1, \quad
+\bars{m^1_1} = -1, \quad
+\bars{m^0_2} = 0, \quad
+\bars{m^0_{1,1}} = -1.
+\]
+They are required to satisfy the following symmetric properties:
+\[
+m^1_{2} \circ \big(\id - (12)\big) = 0, \quad
+m^1_{1,1} \circ \big(\id - (12)\big) = 0.
+\]
+The relation maps of weight less than or equal to \( 0 \) are presented in \cref{f:weight0}.
+
+
+%The operads \( \bv \) and \( \bvbox_\infty \) are equipped with natural filtrations and surjective maps
+%\[
+\begin{tikzcd}[column sep=small]
+	\bvbox_{(1)} \arrow[r, hook] \arrow[d] &
+	\bvbox_{(2)} \arrow[r, hook] \arrow[d] &
+	\bvbox_{(3)} \arrow[r, hook] \arrow[d] &
+	\dotsb \arrow[r, hook] &
+	\bvbox_\infty \arrow[d] \\
+	%
+	\bv_{(1)} \arrow[r, hook] &
+	\bv_{(2)} \arrow[r, hook] &
+	\bv_{(3)} \arrow[r, hook] &
+	\dotsb \arrow[r, hook] &
+	\bv_\infty
+\end{tikzcd}
+
+...
+
+
+
+
+\subsection{From Bruno}
+
+
+
+\begin{theorem}
+	A \emph{coexact homotopy BV-algebra} is dg module $(A, d_A)$ equipped
+	with two families of maps
+	\begin{align*}
+		&m_{p_1,\dots,p_k}^t \colon
+		{A^{\ot p_1}}\odot\dots\odot {A^{\ot p_k}}
+		\longrightarrow A~,\qquad t\geqslant 0~,\   k\geqslant 1~, \ \text{and} \ \ p_1,\dots , p_k\geqslant 1~,\\
+		&n_{p_1,\dots,p_k}^t \colon
+		{A^{\ot p_1}}\odot\dots\odot {A^{\ot p_k}}
+		\longrightarrow A~,\qquad
+		t\geqslant 0~,\   k\geqslant 1~, \ p_1,\dots , p_k\geqslant 1~,
+		\ \text{and} \ \ t+k\geqslant 2~,
+	\end{align*}
+	of respective degrees degrees
+	\[\left| m_{p_1,\dots,p_k}^t \right| =p_1+\cdots+p_k+k+2t-3 \qquad \text{and} \qquad
+	\left| n_{p_1,\dots,p_k}^t \right| =p_1+\cdots+p_k+k+2t-4~,\]
+	with $m_1^0=d_A$~,
+	and such that, for any $1\leqslant i \leqslant k$ and any $1\leqslant p \leqslant p_i-1$, the following signed sum of non-trivial shuffle actions vanish:
+	\begin{align*}
+		&\sum_{\sigma \in \mathrm{Sh}(p,p_i-p) }\mathrm{sgn}(\sigma)\,
+		m_{p_1,\dots,p_k}^t  (\id_{p_1} \odot \cdots \odot \sigma \odot \cdots \odot \id_{p_k})=0~, \\
+		&\sum_{\sigma \in \mathrm{Sh}(p,p_i-p) }\mathrm{sgn}(\sigma)\,
+		n_{p_1,\dots,p_k}^t  (\id_{p_1} \odot \cdots \odot \sigma \odot \cdots \odot \id_{p_k})=0~.
+	\end{align*}
+	They satisfy the following two types of relations
+	\begin{align*}\tag{$\mathsf{R}^t_{p_1,\dots,p_k}$}
+		&\sum_{\substack{
+				0\leqslant s \leqslant t
+				\\[0.5mm]
+				I\sqcup J=\{1,\dots,k\}
+				\\[0.5mm]
+				I=\{i_1, \dots, i_a\}\neq\emptyset \\[0.5mm]
+				J=\{j_1, \dots, j_b\}
+		}}
+		\sum_{
+			\substack{
+				q_1,\dots,{q}_a\geqslant 1 \\[0.5mm]
+				(q_1, \dots, q_a)\leqslant
+				(p_1, \dots, p_{i_a})
+		}}
+		(-1)^{\varepsilon+\varepsilon'+\varepsilon''}
+		\,m^{s}_{p',p_{j_1},\dots,p_{j_b}}
+		\left(
+		m^{t-s}_{\frac{p_1, \dots, p_{i_a}}{q_1, \dots, q_a}}
+		(w_{i_1} \odot \dots \odot w_{i_a})\odot w_{j_1} \odot \dots \odot w_{j_b}
+		\right)\\
+		&\quad
+		-\sum_{i=1}^k
+		\sum_{1\leqslant p\leqslant p_i-1}(-1)^{\varepsilon'''}
+		\,m^{t-1}_{p_1,\dots, p,p_i-p,\dots,p_k}
+		\left(w_1\odot\dots\odot a_{[P_i+1, P_{i}+p]}
+		\odot a_{[P_{i}+p+1,P_{i+1}]}\odot\dots\odot w_k\right)
+		\\
+		&\quad-n^t_{p_1, \dots, p_k}(w_1\odot \cdots \odot w_k)=0~,
+	\end{align*}
+	where the last term is present only for $t+k\geqslant 2$ and
+	under the same notations as in \cref{thm:BVinfini}, and %%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{align*}\tag{$\mathsf{S}^t_{p_1,\dots,p_k}$}
+		&\sum_{\substack{
+				0\leqslant s \leqslant t
+				\\[0.5mm]
+				I\sqcup J=\{1,\dots,k\}
+				\\[0.5mm]
+				I=\{i_1, \dots, i_a\}\neq \emptyset \\[0.5mm]
+				J=\{j_1, \dots, j_b\}
+		}}
+		\sum_{
+			\substack{
+				q_1,\dots,{q}_a\geqslant 1 \\[0.5mm]
+				(q_1, \dots, q_a)\leqslant
+				(p_1, \dots, p_{i_a})
+		}}
+		(-1)^{\varepsilon+\widetilde{\varepsilon}'+\varepsilon''}
+		\,m^{s}_{p',p_{j_1},\dots,p_{j_b}}
+		\left(
+		n^{t-s}_{\frac{p_1, \dots, p_{i_a}}{q_1, \dots, q_a}}
+		(w_{i_1} \odot \dots \odot w_{i_a})\odot w_{j_1} \odot \dots \odot w_{j_b}
+		\right)\\
+		&-\sum_{\substack{
+				0\leqslant s \leqslant t
+				\\[0.5mm]
+				I\sqcup J=\{1,\dots,k\}
+				\\[0.5mm]
+				I=\{i_1, \dots, i_a\}\neq \emptyset \\[0.5mm]
+				J=\{j_1, \dots, j_b\}
+		}}
+		\sum_{
+			\substack{
+				q_1,\dots,{q}_a\geqslant 1 \\[0.5mm]
+				(q_1, \dots, q_a)\leqslant
+				(p_1, \dots, p_{i_a})
+		}}
+		(-1)^{\varepsilon+\varepsilon'+\varepsilon''}
+		\,n^{s}_{p',p_{j_1},\dots,p_{j_b}}
+		\left(
+		m^{t-s}_{\frac{p_1, \dots, p_{i_a}}{q_1, \dots, q_a}}
+		(w_{i_1} \odot \dots \odot w_{i_a})\odot w_{j_1} \odot \dots \odot w_{j_b}
+		\right)\\
+		&\quad
+		-\sum_{i=1}^k
+		\sum_{1\leqslant p\leqslant p_i-1}(-1)^{\varepsilon'''}
+		\,n^{t-1}_{p_1,\dots, p,p_i-p,\dots,p_k}
+		\left(w_1\odot\dots\odot a_{[P_i+1, P_{i}+p]}
+		\odot a_{[P_{i}+p+1,P_{i+1}]}\odot\dots\odot w_k\right)=0~,
+	\end{align*}
+	for $t+k\geqslant 2$, where
+	$\widetilde{\varepsilon}'=(q_1+\cdots+q_a-a)(p_{j_1}+\cdots+p_{j_b}-b)$~.
+\end{theorem}
+
+
+\begin{proof}
+	\anibal{TBC}
+\end{proof}
+
+
+The first symmetries are :
+
+
+\[m_2(a_1\ot a_2)=+ m_2(a_2\ot a_1)\]
+\[m_3(a_1\ot a_2 \ot a_3)- m_3(a_2\ot a_1 \ot a_3)  + m_3(a_2\ot a_3 \ot a_1) =0\]
+1-2 shuffles
+\[m_3(a_1\ot a_2 \ot a_3)- m_3(a_1\ot a_3 \ot a_2)  + m_3(a_1\ot a_3 \ot a_2) =0\]
+2-1 shuffles
+
+
+\[m_{1,1}(a_1\ot a_2)=+ m_{1,1}(a_2\ot a_1)\]
+\[m_{1,1,1}(a_1\ot a_2\ot a_3)=+ m_{1,1,1}(a_2\ot a_1\ot a_3)=+ m_{1,1,1}(a_2\ot a_1\ot a_3)\]
+In plain words, the symmetry is .... commutativity between blocks and "sum shuffle vanishing" inside blocks.
+Also
+\[m^t_{p_{\sigma(1)}, \dots, p_{\sigma(k)}}=\left(m^t_{p_1, \dots, p_k}\right)^{\widetilde{\sigma}}.\]
+
+
+\medskip
+
+
+Let us make the first relations explicit.
+
+
+\begin{description}
+	\item[$\left(\mathsf{R}^0_{1}\right)$] $m^0_1 \circ_1 m_1^0=\left(d_A\right)^2=0$, saying that $m_1^0=d_A$ is a differential.\\
+
+
+	\item[$\left(\mathsf{R}^0_{2}\right)$] $\partial \left(m^0_2\right)= (\left[m^0_1, m_2^0\right])=0$, saying that $d_A$ is a derivation with respect to the product $m^0_2$.
+
+
+	\item[$\left(\mathsf{R}^0_{3}\right)$] $\partial \left(m^0_3\right)=m^0_2\circ_1 m^0_2 - m^0_2 \circ_2 m^0_2$, saying that the product
+	$m^0_2$ is associative up to homotopy $m_3^0$.
+
+
+	\item[$\left(\mathsf{R}^0_{4}\right)$] $\partial \left(m^0_4\right)=
+	m^0_2\circ_1 m^0_3 +m^0_3\circ_2 m^0_2+m^0_2\circ_2 m^0_3
+	-m^0_3\circ_3 m^0_2-m^0_3\circ_1 m^0_2$, saying that the two operations $m^0_2$ and $m_3^0$ satisfy a relation up to the homotopy $m^0_4$~.
+
+
+	\item[$\left(\mathsf{R}^0_{1,1}\right)$] $\partial \left(m^0_{1,1}\right)=n^0_{1,1}$,
+	saying that the operation $n^0_{1,1}$ measures the obstruction for $d_A$ to be a derivation with respect to the shifted bracket $m^0_{1,1}$.
+
+
+	\item[$\left(\mathsf{R}^0_{1,1,1}\right)$] $\partial \left(m^0_{1,1,1}\right)=
+	-m^0_{1,1}\circ_1 m^0_{1,1}-\left(m^0_{1,1}\circ_1 m^0_{1,1}\right)^{(123)}-\left(m^0_{1,1}\circ_1 m^0_{1,1}\right)^{(321)}
+	+n^0_{1,1,1}$,
+	saying that the operation $n^0_{1,1,1}$ measures the obstruction for $m^0_{1,1,1}$ to be a homotopy for the (shifted) Jacobi relation for
+	the shifted bracket $m^0_{1,1}$.
+
+
+	\item[$\left(\mathsf{R}^0_{1,1,1,1}\right)$] $\partial \left(m^0_{1,1,1}\right)=
+	-\left(m^0_{1,1}\circ_1 m^0_{1,1,1}\right)^{\id+(1234)+(13)(24)+(4321)}
+	-\left(m^0_{1,1,1}\circ_1 m^0_{1,1}\right)^{\id+(23)+(234)+(123)+(1342)+(13)(24)}
+	+n^0_{1,1,1,1}$,
+	saying that the operation $n^0_{1,1,1,1}$ measures the obstruction for $m^0_{1,1,1,1}$ to be a homotopy for the shifted $L_\infty$-algebra structure provided by the operation $m^0_{1,1}$ and $m^0_{1,1,1}$.
+
+
+	\item[$\left(\mathsf{R}^0_{1,2}\right)$] $\partial \left(m^0_{1,2}\right)=
+	m^0_{2}\circ_1 m^0_{1,1}
+	+\left(m^0_{2}\circ_2 m^0_{1,1}\right)^{(12)}
+	-m^0_{1,1}\circ_2 m^0_2
+	+n^0_{1,2}$,
+	saying that the operation $n^0_{1,2}$ measures the obstruction for the product $m^0_{2}$ and the shifted bracket  $m^0_{1,1}$  to satisfy the Leibniz relation up to the homotopy $m^0_{1,2}$.
+
+
+	\item[$\left(\mathsf{R}^1_{1}\right)$] $\partial \left(m^1_{1}\right)=n^1_{1}$,
+	saying that the operator $n^1_{1}$ measures the obstruction for $d_A$ to be commute with the operator $m^1_{1}$.
+
+
+	\item[$\left(\mathsf{R}^2_{1}\right)$] $\partial \left(m^2_{1}\right)=-\left(m^1_1\right)^2+n^2_{1}$,
+	saying that the operator $n^2_{1}$ measures the obstruction for the operator $m^2_1$ to be a homotopy for the square-zero relation of
+	$m^1_1$.
+
+
+	\item[$\left(\mathsf{R}^1_{1,1}\right)$]
+	$\partial \left(m^1_{1,1}\right)=
+	-\left[m^1_1, m^0_{1,1} \right]
+	+n^1_{1,1}=
+	-m_1^1 \circ_1 m^0_{1,1}
+	-m^0_{1,1}\circ_1 m_1^1
+	-m^0_{1,1}\circ_2 m_1^1
+	+n^1_{1,1}$,
+	saying that the operator $n^1_{1,1}$ measures the obstruction for the operation $m^1_{1,1}$ to be a homotopy for the
+	commutation relation between the operator
+	$m_1^1$ and the shifted bracket $m^0_{1,1}$.
+
+
+	\item[$\left(\mathsf{R}^1_{2}\right)$] $\partial \left(m^1_{2}\right)=
+	-\left[m^1_1, m^0_{2} \right] + m^0_{1,1}
+	+n^1_2=
+	-m_1^1 \circ_1 m^0_2
+	+m^0_2\circ_1 m_1^1
+	+m^0_2\circ_2 m_1^1
+	+ m^0_{1,1}
+	+n^1_2$,
+	saying that the operator $n^1_{2}$ measures the obstruction for the operation $m^1_2$ to be a homotopy for the
+	relation giving  the shifted bracket $m^0_{1,1}$ as the commutator between the operator
+	$m_1^1$ and the product $m^0_2$.\\
+
+
+	\item[$\left(\mathsf{R}^1_{3}\right)$] $\partial \left(m^1_{3}\right)=-\left[m_1^1, m_3^0\right]
+	-m_2^1\circ_1 m_2^0 +m_2^1\circ_2 m_2^0
+	-m_2^0\circ_1 m_2^1 +m_2^0\circ_2 m_2^1
+	+m^0_{1,2}-+m^0_{2,1}+n^1_3~.$
+
+
+	\item[$\left(\mathsf{R}^3_{1}\right)$] $\partial \left(m^3_{1}\right)=-\left[m_1^1, m_1^2\right]+n^3_1$~.
+
+
+	\item[$\left(\mathsf{R}^2_{1,1}\right)$] $\partial \left(m^2_{1,1}\right)=-\left[m_1^1, m^1_{1,1}\right]
+	-\left[m^2_1, m^0_{1,1}\right]+n^2_{1,1}$~.
+
+
+	\item[$\left(\mathsf{R}^2_{2}\right)$] $\partial \left(m^2_{2}\right)=
+	-\left[m^1_1, m_2^1\right]
+	-\left[m^2_1, m_2^0\right]
+	+m^1_{1,1}+n^2_2
+	$~.
+
+
+	\item[$\left(\mathsf{R}^1_{1,1,1}\right)$] $\partial \left(m^1_{1,1,1}\right)=
+	-\left[m^1_1, m^0_{1,1,1}\right]
+	-\left(m^0_{1,1}\circ_1 m^1_{1,1}\right)^{\id+(123)+(321)}
+	-\left(m^1_{1,1}\circ_1 m^0_{1,1}\right)^{\id+(123)+(321)}
+	+n^1_{1,1,1}$~.
+
+
+	\item[$\left(\mathsf{R}^1_{1,2}\right)$] $\partial \left(m^1_{1,2}\right)=
+	-\left[m^1_1, m^0_{1,2}\right]
+	+m^0_{2}\circ_1 m^1_{1,1}
+	+\left(m^0_{2}\circ_2 m^1_{1,1}\right)^{(12)}
+	-m^0_{1,1}\circ_2 m^1_2
+	+m^1_{2}\circ_1 m^0_{1,1}
+	+\left(m^1_{2}\circ_2 m^0_{1,1}\right)^{(12)}
+	-m^0_{1,1}\circ_2 m^1_2
+	+m^0_{1,1,1}
+	+n^1_{1,2}$~.
+
+
+	\item[$\left(\mathsf{R}^1_{1,3}\right)$] $\partial \left(m^1_{1,3}\right)=
+	\left(m_2^0\circ_2 m^0_{1,2}\right)^{(12)}
+	-m_2^0\circ_1 m^0_{1,2}
+	-m_{1,2}\circ_2 m_2^0
+	+m_{1,2}\circ_3 m_2^0
+	-m_{1,1}^0\circ_2 m^0_3
+	-m_3^0\circ_1 m^0_{1,1}
+	-\left(m_3^0\circ_2 m^0_{1,1}\right)^{(12)}
+	-\left(m_3^0\circ_3 m^0_{1,1}\right)^{(321)}
+	+n^0_{1,3}
+	$~.
+
+
+	\item[$\left(\mathsf{R}^1_{2,2}\right)$] $\partial \left(m^1_{2,2}\right)=
+	-m_{1,2}\circ_1 m^0_2
+	+m_{2,1}\circ_3 m^0_2
+	-\left(m^0_2 \circ_2 m^0_{1,2}\right)^{(12)}
+	+m^0_2 \circ_2 m^0_{1,2}
+	-\left(m_2^0 \circ_2 m^0_{2,1}\right)^{(123)}
+	+m_2^0 \circ_1 m^0_{2,1}
+	-m^0_3\circ_2 m^0_{1,1}
+	+\left(m^0_3\circ_3 m^0_{1,1}\right)^{(123)}
+	-\left(m^0_3\circ_3 m^0_{1,1}\right)^{(23)}
+	-\left(m^0_3\circ_2 m^0_{1,1}\right)^{(1243)}
+	+\left(m^0_3\circ_1 m^0_{1,1}\right)^{(23)}
+	-\left(m^0_3\circ_1 m^0_{1,1}\right)^{(234)}
+	+n^0_{2,2}
+	$~.
+\end{description}
+
+
+\bigskip
+
+
+\begin{description}
+	\item[$\left(\mathsf{S}^1_{1}\right)$] $\partial\left(n^1_{1}\right)=0$, saying that $d_A$ is a derivation with respect to the obstruction
+	$n^0_{1,1}$.
+
+
+	\item[$\left(\mathsf{S}^0_{1,1}\right)$] $\partial\left(n^1_{1,1}\right)=0$, saying that $d_A$ is a derivation with respect to the obstruction
+	$n^0_{1,1}$.
+
+
+	\item[$\left(\mathsf{S}^1_{1,1}\right)$]
+	$\partial\left(n^1_{1,1}\right)=\left[n^1_1, m^0_{1,1}\right]-\left[m^1_1, n^0_{1,1}\right]=
+	n_1^1 \circ_1 m^0_{1,1}
+	-m^0_{1,1}\circ_1 n_1^1
+	-m^0_{1,1}\circ_2 n_1^1
+	-m_1^1 \circ_1 n^0_{1,1}
+	+n^0_{1,1}\circ_1 m_1^1
+	+n^0_{1,1}\circ_2 m_1^1
+	$,
+	saying that $n^1_{1,1}$ is a homotopy for the equality between
+	the commutator of $n^1_1$ with $m^0_{1,1}$
+	and the commutator of $m^1_1$ with $n^0_{1,1}$.
+
+
+	\item[$\left(\mathsf{S}^1_{2}\right)$]
+	$\partial\left(n^1_{2}\right)=\left[n^1_1, m^0_2\right]+\textcolor{red}{must\ be\ -}n^0_{1,1}
+	=
+	n_1^1 \circ_1 m^0_{2}
+	-m^0_{2}\circ_1 n_1^1
+	-m^0_{2}\circ_2 n_1^1
+	+n^0_{1,1}$, saying that
+	$n^1_{2}$ is a homotopy for the relation giving  the bracket $n^0_{1,1}$ as the commutator between the operator
+	$n_1^1$ and the product $m^0_2$.\anibal{probl\`eme de signe ! Doit \^etre dans le $d_\psi$.}
+
+
+	\item[$\left(\mathsf{S}^2_{1}\right)$]
+	$\partial\left(n^2_{1}\right)=\left[n^1_1, m^1_1\right]$
+	saying that $n^2_{1}$ is a homotopy for the commutativity relation between $n^1_1$ and $m^1_1$.
+\end{description}
+
+
+\bigskip
+\hrule
+\bigskip
+
+
+
+
+
+
+
+
+
+\subsection{Old}
+
+\newpage
+\noindent
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+	\hline
+	(\(\sM^0_{1}\)) &
+	\( \displaystyle m^0_1 \circ_1 m^0_1 \) \\
+
+	\hline
+	(\(\sM^0_{2}\)) &
+	\( \displaystyle
+	m^0_1 \circ_1 m^0_2
+	- m^0_2 \circ_1 m^0_1
+	- m^0_2 \circ_2 m^0_1 \) \\
+
+	\hline
+	(\(\sM^1_1\)) &
+	\( \displaystyle m^0_1 \circ m^1_1 + m^1_1 \circ m^0_1 \) \\
+
+	(\(\sM^0_{1,1}\)) &
+	\( \displaystyle
+	m^0_1 \circ m^0_{1,1}
+	- m^0_{1,1} \circ_1 m^0_1
+	- m^0_{1,1} \circ_2 m^0_1 \) \\
+
+	\hline
+	(\(\sM^0_{3}\)) &
+	\( \displaystyle m^0_2 \circ_1 m^0_2 - m^0_2 \circ_2 m^0_2 \) \\
+
+	\hline
+	(\(\sM^0_{1,2}\)) &
+	\( \displaystyle
+	m^0_{2} \circ_1 m^0_{1,1}
+	+ (m^0_{2} \circ_2 m^0_{1,1}) \circ(12)
+	- m^0_{1,1} \circ_2 m^0_2 \) \\
+
+	(\(\sM^0_{1,1,1}\)) &
+	\( \displaystyle
+	(m^0_{1,1} \circ_1 m^0_{1,1}) \circ \big(\id + (123) + (132)\big) \) \\
+
+	(\(\sM^1_{1,1}\)) &
+	\( \displaystyle
+	m^1_1 \circ m^0_{1,1}
+	- m^0_{1,1} \circ_1 m^1_1
+	- m^0_{1,1} \circ_2 m^1_1 \) \\
+
+	(\(\sM^1_2\)) &
+	\( \displaystyle
+	- m^1_1 \circ_1 m^0_2
+	+ m^0_2 \circ_1 m^1_1
+	+ m^0_2 \circ_2 m^1_1
+	+ m^0_{1,1}
+	\) \\
+
+	(\(\sM^2_1\)) &
+	\( \displaystyle
+	- m^1_1 \circ_1 m^1_1
+	\) \\
+
+	\hline
+\end{tabularx}
+
+
+\newpage
+
+
+
+\noindent
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+	\hline
+	(\(\sM^0_{1}\)) &
+	\( \displaystyle m^0_1 \circ_1 m^0_1 = 0 \) \\
+
+	\hline
+	(\(\sM^0_{2}\)) &
+	\( \displaystyle
+	m^0_1 \circ_1 m^0_2
+	- m^0_2 \circ_1 m^0_1
+	- m^0_2 \circ_2 m^0_1 = 0. \) \\
+
+	(\(\sM^0_{1,1}\)) &
+	\( \displaystyle [m^0_1, m^0_{1,1}] = 0. \) \\
+
+	\hline
+	(\(\sM^1_1\)) &
+	\( \displaystyle [m^0_1, m^1_1] = 0. \) \\
+
+	\hline
+	(\(\sM^0_{3}\)) &
+	\( \displaystyle m^0_2 \circ_1 m^0_2 - m^0_2 \circ_2 m^0_2 = 0. \) \\
+
+	(\(\sM^0_{1,2}\)) &
+	\( \displaystyle
+	m^0_{2} \circ_1 m^0_{1,1}
+	+ m^0_{2} \circ_2 m^0_{1,1} \circ(12)
+	- m^0_{1,1} \circ_2 m^0_2 = 0 \) \\
+
+	\hline
+\end{tabularx}
+
+\begin{align}
+	\tag{(\(\sM^0_{3}\))}
+	m^0_2 \circ_1 m^0_2 - m^0_2 \circ_2 m^0_2 &= 0
+	\\
+	\tag{(\(\sM^0_{1,2}\))}
+	m^0_{2} \circ_1 m^0_{1,1}
+	+ m^0_{2} \circ_2 m^0_{1,1} \circ(12)
+	- m^0_{1,1} \circ_2 m^0_2 &= 0
+	\\
+	\tag{(\(\sM^0_{1,1,1}\))}
+	\big(m^0_{1,1} \circ_1 m^0_{1,1}\big) \circ \big(\id + (123) + (132)\big) &= 0
+	\\
+	\tag{(\(\sM^1_{1,1}\))}
+	[m^1_1, m^0_{1,1}] &= 0
+	\\
+	\tag{(\(\sM^1_2\))}
+	[m^0_1, m^1_2] &=
+	- m^1_1 \circ_1 m^0_2
+	+ m^0_2 \circ_1 m^1_1
+	+ m^0_2 \circ_2 m^1_1
+	+ m^0_{1,1}
+	+ n^1_2
+	\\
+	\tag{(\(\sM^2_1\))}
+	[m^0_1, m^2_1] &=
+	- m^1_1 \circ_1 m^1_1
+	+ n^2_1
+\end{align}
+
+
+\begin{align}
+	\tag{\(\sM^0_{3}\)}
+	m^0_2 \circ_1 m^0_2 - m^0_2 \circ_2 m^0_2 &= 0
+	\\
+	\tag{\(\sM^0_{1,2}\)}
+	m^0_{2} \circ_1 m^0_{1,1}
+	+ m^0_{2} \circ_2 m^0_{1,1} \circ(12)
+	- m^0_{1,1} \circ_2 m^0_2 &= 0
+	\\
+	\tag{\(\sM^0_{1,1,1}\)}
+	(m^0_{1,1} \circ_1 m^0_{1,1} ) \circ \big(\id + (123) + (132)\big) &= 0
+	\\
+	\tag{\(\sM^1_{1,1}\)}
+	[m^1_1, m^0_{1,1}] &= 0
+\end{align}
+
+\noindent\( (\sM^1_2) \):
+\[
+[m^0_1, m^1_2] =
+- m^1_1 \circ_1 m^0_2
++ m^0_2 \circ_1 m^1_1
++ m^0_2 \circ_2 m^1_1
++ m^0_{1,1}
++ n^1_2.
+\]
+
+\( (\sM^2_1) \):
+\[
+[m^0_1, m^2_1] = - m^1_1 \circ_1 m^1_1 + n^2_1.
+\]
+
+\newpage
+%\noindent\( (\sM^0_{1}) \):
+%\( m^0_1 \) squares to zero:
+%\[
+%m^0_1 \circ_1 m_1^0 = 0,
+%\]
+%
+%\noindent\( (\sM^0_2) \):
+%\( m^0_1 \) is a derivation of \( m^0_2 \):
+%\[
+%[m^0_1, m^0_2] = 0.
+%\]
+%
+%\noindent\( (\sM^1_1) \):
+%\( n^1_1 \) is the obstruction to \( m^0_1 \) commuting with \( m^1_1 \):
+%\[
+%[m^0_1, m^1_1] = n^1_1.
+%\]
+%
+%\noindent\( (\sM^0_{1,1}) \):
+%\( n^0_{1,1} \) is the obstruction to \( m^0_1 \) being a derivation of \( m^0_{1,1} \):
+%\[
+%[m^0_1, m^0_{1,1}] = n^0_{1,1}.
+%\]
+%\noindent\( (\sM^2_1) \):
+%\( n^2_1 \) is the obstruction to \( m^2_1 \) being a homotopy for the square-zero relation of \( m^1_1 \):
+%\[
+%[m^0_1, m^2_1] = - m^1_1 \circ_1 m^1_1 + n^2_1.
+%\]
+%\bigskip\hrule\bigskip
+%
+%\noindent\( (\sM^0_4) \):
+%The operations \( m^0_2 \) and \( m^0_3 \) satisfy a coherence relation up to the homotopy \( m^0_4 \):
+%\[
+%[m^0_1, m^0_4] =
+%m^0_2 \circ_1 m^0_3
+%+ m^0_3 \circ_2 m^0_2
+%+ m^0_2 \circ_2 m^0_3
+%- m^0_3 \circ_3 m^0_2
+%- m^0_3 \circ_1 m^0_2.
+%\]
+%\noindent\( (\sM^1_2) \):
+%\( n^1_2 \) is the obstruction to \( m^1_2 \) being a homotopy realizing \( m^0_{1,1} \) as the commutator of \( m^1_1 \) with \( m^0_2 \):
+%\[
+%[m^0_1, m^1_2] =
+%- [m^1_1, m^0_2] + m^0_{1,1} + n^1_2.
+%%=\
+%%- m^1_1 \circ_1 m^0_2
+%%+ m^0_2 \circ_1 m^1_1
+%%+ m^0_2 \circ_2 m^1_1
+%%+ m^0_{1,1}
+%%+ n^1_2.
+%\]
+
+
+
+
+
+
+%\begin{align}
+%	\tag{\(\sM^0_{1}\)}
+%	m^0_1 \circ m_1^0    &= 0, && m^0_1\text{ is a differential},
+%	\\
+%	\tag{\(\sM^0_2\)}
+%	[m^0_1, m^0_2]         &= 0, && m^0_1\text{ is a derivation of the product } m^0_2,
+%	\\
+%	\tag{\(\sM^1_1\)}
+%	[m^0_1, m^1_1]         &= 0, && m^0_1\text{ commutes with } m^1_1,
+%	\\
+%	\tag{\(\sM^0_{1,1}\)}
+%	[m^0_1, m^0_{1,1}]     &= 0, && m^0_1\text{ is a derivation of } m^0_{1,1},
+%\end{align}
+%\hrule
+%\begin{align}
+%	\tag{\(\sM^0_{3}\)}
+%	m^0_2 \circ_1 m^0_2 - m^0_2 \circ_2 m^0_2
+%	&= 0, &&m^0_2 \text{ associativity},
+%	\\
+%	\tag{\(\sM^0_{1,2}\)}
+%	m^0_{2} \circ_1 m^0_{1,1}
+%	+ m^0_{2} \circ_2 m^0_{1,1} \circ(12)
+%	- m^0_{1,1} \circ_2 m^0_2
+%	&= 0, &&(m^0_2, m^0_{1,1})\text{ Leibniz},
+%	\\
+%	\tag{\(\sM^0_{1,1,1}\)}
+%	(m^0_{1,1} \circ_1 m^0_{1,1} ) \circ \big(\id + (123) + (132)\big)
+%	&= 0, &&m^0_{1,1}\text{ Jacobi},
+%	\\
+%	\tag{\(\sM^1_{1,1}\)}
+%	[m^1_1, m^0_{1,1}]
+%	&= 0, &&m^1_1\text{ is a derivation of } m^0_{1,1}.
+%\end{align}
+
+%\begin{align}
+%	\tag{\(\sM^0_{3}\)}
+%	m^0_2 \circ_1 m^0_2 - m^0_2 \circ_2 m^0_2 &= 0
+%	\\
+%	\tag{\(\sM^0_{1,2}\)}
+%	m^0_{2} \circ_1 m^0_{1,1}
+%	+ m^0_{2} \circ_2 m^0_{1,1} \circ(12)
+%	- m^0_{1,1} \circ_2 m^0_2 &= 0
+%	\\
+%	\tag{\(\sM^0_{1,1,1}\)}
+%	(m^0_{1,1} \circ_1 m^0_{1,1} ) \circ \big(\id + (123) + (132)\big) &= 0
+%	\\
+%	\tag{\(\sM^1_{1,1}\)}
+%	[m^1_1, m^0_{1,1}] &= 0
+%\end{align}
+
+\medskip
+
+\noindent
+\((\sM^0_{3})\) expresses the associativity of \( m^0_2 \),
+\((\sM^0_{1,2})\) encodes the Leibniz rule for \( m^0_2 \) and \( m^0_{1,1} \),
+\((\sM^0_{1,1,1})\) is the Jacobi identity for \( m^0_{1,1} \), and
+\((\sM^1_{1,1})\) states that \( m^1_1 \) is a derivation of \( m^0_{1,1} \).
+
+\noindent
+\begin{tabularx}{\textwidth}{>{\raggedright}m{.5cm} >{\raggedright\arraybackslash}m{7.2cm} X}
+	\textbf{(\(\sM^0_{3}\))} &
+	$\displaystyle m^0_2 \circ_1 m^0_2 - m^0_2 \circ_2 m^0_2 = 0$ &
+	This relation expresses the associativity of $m^0_2$.
+	\\[1.2em]
+	\textbf{(\(\sM^0_{1,2}\))} &
+	$\displaystyle m^0_{2} \circ_1 m^0_{1,1}
+	+ m^0_{2} \circ_2 m^0_{1,1} \circ (12)
+	- m^0_{1,1} \circ_2 m^0_2 = 0$ &
+	This relation encodes the Leibniz rule for $m^0_2$ and $m^0_{1,1}$. If needed, the explanation can continue on multiple lines.
+	\\[1.2em]
+	\textbf{(\(\sM^0_{1,1,1}\))} &
+	$\displaystyle (m^0_{1,1} \circ_1 m^0_{1,1}) \circ \big(\id + (123) + (132)\big) = 0$ &
+	This relation is the Jacobi identity for $m^0_{1,1}$.
+	\\[1.2em]
+	\textbf{(\(\sM^1_{1,1}\))} &
+	$\displaystyle [m^1_1, m^0_{1,1}] = 0$ &
+	This relation states that $m^1_1$ is a derivation of $m^0_{1,1}$.
+\end{tabularx}
+
+
+
+\subsubsection{\( \bvbox \)}
+
+\subsection{\( \bvbox_\infty(2) \)-algebras}
+
+\noindent\( (\sM^0_{1}) \):
+\( m^0_1 \) squares to zero:
+\[
+m^0_1 \circ_1 m_1^0 = 0.
+\]
+
+\noindent\( (\sM^0_2) \):
+\( m^0_1 \) is a derivation of \( m^0_2 \):
+\[
+[m^0_1, m^0_2] = 0.
+\]
+
+\medskip\noindent\( (\sM^1_1) \):
+\( n^1_1 \) is the obstruction to \( m^0_1 \) commuting with \( m^1_1 \):
+\[
+[m^0_1, m^1_1] = n^1_1.
+\]
+
+\noindent\( (\sM^0_{1,1}) \):
+\( n^0_{1,1} \) is the obstruction to \( m^0_1 \) being a derivation of \( m^0_{1,1} \):
+\[
+[m^0_1, m^0_{1,1}] = n^0_{1,1}.
+\]
+
+\bigskip\hrule\bigskip
+
+\noindent\( (\sM^0_{3}) \):
+\( m^0_3 \) is the associator for \( m^0_2 \):
+\[
+[m^0_1, m^0_3] = m^0_2 \circ_1 m^0_2 - m^0_2 \circ_2 m^0_2.
+\]
+
+\noindent\( (\sM^0_{1,2}) \):
+\( n^0_{1,2} \) is the obstruction to \( m^0_{1,2} \) being a leibniziator for \( m^0_2 \) and \( m^0_{1,1} \):
+\[
+[m^0_1, m^0_{1,2}] =
+m^0_{2} \circ_1 m^0_{1,1}
++ (m^0_{2} \circ_2 m^0_{1,1})^{(12)}
+- m^0_{1,1} \circ_2 m^0_2
++ n^0_{1,2}.
+\]\anibal{Doesn't seem to match the tree representation of Leibniz on page 6 of JazzClub.pdf}
+
+\medskip\noindent\( (\sM^0_{1,1,1}) \):
+\( n^0_{1,1,1} \) is the obstruction to \( m^0_{1,1,1} \) being a jacobiator for \( m^0_{1,1} \):
+\[
+[m^0_1, m^0_{1,1,1}] =
+-m^0_{1,1} \circ_1 m^0_{1,1}
+- (m^0_{1,1} \circ_1 m^0_{1,1})^{(123)}
+- (m^0_{1,1} \circ_1 m^0_{1,1})^{(321)}
++ n^0_{1,1,1}.
+\]
+
+\medskip\noindent\( (\sM^1_{1,1}) \):
+\( n^1_{1,1} \) is the obstruction to \( m^1_{1,1} \) being a derivator for \( m^1_1 \) and \( m^0_{1,1} \):
+\[
+[m^0_1, m^1_{1,1}] =
+-[m^1_1, m^0_{1,1}]
++ n^1_{1,1}.
+\]
+
+%\noindent\( (\sN^1_{1,1}) \):
+%\( n^1_{1,1} \) is a homotopy between the commutator of \( n^1_1 \) with \( m^0_{1,1} \) and the commutator of \( m^1_1 \) with \( n^0_{1,1} \):
+%\[
+%[m^0_1, n^1_{1,1}] =
+%[n^1_1, m^0_{1,1}] - [m^1_1, n^0_{1,1}].
+%= n^1_1 \circ_1 m^0_{1,1}
+%- m^0_{1,1} \circ_1 n^1_1
+%- m^0_{1,1} \circ_2 n^1_1
+%- m^1_1 \circ_1 n^0_{1,1}
+%+ n^0_{1,1} \circ_1 m^1_1
+%+ n^0_{1,1} \circ_2 m^1_1.
+%\]
+
+\noindent\( (\sM^1_2) \):
+\( n^1_2 \) is the obstruction to \( m^1_2 \) being a homotopy realizing \( m^0_{1,1} \) as the commutator of \( m^1_1 \) with \( m^0_2 \):
+\[
+[m^0_1, m^1_2] =
+- [m^1_1, m^0_2] + m^0_{1,1} + n^1_2.
+%=\
+%- m^1_1 \circ_1 m^0_2
+%+ m^0_2 \circ_1 m^1_1
+%+ m^0_2 \circ_2 m^1_1
+%+ m^0_{1,1}
+%+ n^1_2.
+\]
+
+%\noindent\( (\sN^1_2) \):
+%\( n^1_2 \) is a homotopy for the relation expressing \( n^0_{1,1} \) as the commutator of \( n^1_1 \) with \( m^0_2 \):
+%\[
+%[m^0_1, n^1_2] = [n^1_1, m^0_2] - n^0_{1,1}.
+%=\
+%n^1_1 \circ_1 m^0_2
+%- m^0_2 \circ_1 n^1_1
+%- m^0_2 \circ_2 n^1_1
+%+ n^0_{1,1}.
+%\]
+
+\noindent\( (\sM^2_1) \):
+\( n^2_1 \) is the obstruction to \( m^2_1 \) being a homotopy for the square-zero relation of \( m^1_1 \):
+\[
+[m^0_1, m^2_1] = - m^1_1 \circ_1 m^1_1 + n^2_1.
+\]
+
+%\noindent\( (\sN^2_1) \): Missing?
+
+\bigskip\hrule\bigskip
+
+\noindent\( (\sM^0_4) \):
+The operations \( m^0_2 \) and \( m^0_3 \) satisfy a coherence relation up to the homotopy \( m^0_4 \):
+\[
+[m^0_1, m^0_4] =
+m^0_2 \circ_1 m^0_3
++ m^0_3 \circ_2 m^0_2
++ m^0_2 \circ_2 m^0_3
+- m^0_3 \circ_3 m^0_2
+- m^0_3 \circ_1 m^0_2.
+\]
+
+\noindent\( (\sM^0_{1,1,1,1}) \):
+\( n^0_{1,1,1,1} \) measures the obstruction to \( m^0_{1,1,1,1} \) implementing the higher Jacobi identity for the shifted \( L_\infty \)-structure defined by \( m^0_{1,1} \) and \( m^0_{1,1,1} \):
+\begin{align*}
+	[m^0_1, m^0_{1,1,1,1}] = &-
+	(m^0_{1,1} \circ_1 m^0_{1,1,1})^{\id + (1234) + (13)(24) + (4321)} \\ &-
+	(m^0_{1,1,1} \circ_1 m^0_{1,1})^{\id + (23) + (234) + (123) + (1342) + (13)(24)}
+	+ n^0_{1,1,1,1}.
+\end{align*}
+
+\bigskip\hrule\bigskip
+
+\newpage
+\begin{definition}
+	A \emph{\( \bvbox_\infty \)-algebra} is a graded vector space \( A \) equipped with a familiy of operations
+	\begin{align*}
+		m_{p_1,\dots,p_k}^t &\colon
+		A^{\ot p_1} \ot \dotsb \ot A^{\ot p_k}
+		\longrightarrow A~, &&
+		t \geqslant 0~, \  k \geqslant 1~, \  p_1,\dots, p_k \geqslant 1~
+	\end{align*}
+	of degrees
+	\[
+	| m_{p_1,\dots,p_k}^t |  =  p_1 + \cdots + p_k + k + 2t - 3.
+	\]
+	Each of these satisfies the following block and shuffle symmetry properties:
+
+	\medskip\noindent(1)
+	For any permutation \( \sigma \in \sym_k \):
+	\[
+	m_{p_{\sigma(1)},\dots,p_{\sigma(k)}}^t = \bar\sigma \cdot m_{p_1,\dots,p_k}^t~,
+	\]
+	where \( \bar\sigma \) is the image of \( \sigma \) in the block inclusion \( \sym_k \to \sym_{p_1+\dots+p_k} \).
+
+	\medskip\noindent(2)
+	For any \( i \in \set{1,\dots,k}\) and \( j \in \set{1,\dots,p_i-1} \):
+	\begin{align*}
+		&\sum_{\mathclap{\sigma \in \Sh(j,\, p_i - j)}} \ \sign(\sigma) \, \underline\sigma \cdot
+		m_{p_1,\dots,p_k}^t  =  0~,
+	\end{align*}
+	where \( \underline\sigma \) is the image of \( \sigma \) in the natural inclusion \( \sym_{p_i} \to \sym_{p_1+\dots+p_k} \).
+
+	The only relations are those making \( A, \set{m^0_\ell}_{\ell \geq 0} \) into a \( C_\infty \) algebra.
+
+
+	\begin{align*}\tag{$\sR^t_{p_1,\dots,p_k}$}
+		&\sum_{\substack{
+				0 \leqslant s \leqslant t \\
+				I \sqcup J  =  \{1, \dots, k\} \\
+				I  =  \{i_1, \dots, i_a\} \\
+				J  =  \{j_1, \dots, j_b\}
+		}}
+		\sum_{\substack{
+				q_1, \dots, q_a \geqslant 1 \\
+				(q_1, \dots, q_a) \leqslant (p_1, \dots, p_{i_a})
+		}}
+		(-1)^{\varepsilon + \varepsilon' + \varepsilon''}
+		m^s_{p', p_{j_1}, \dots, p_{j_b}} (
+		m^{t-s}_{\frac{p_1, \dots, p_{i_a}}{q_1, \dots, q_a}}
+		(w_{i_1} \ot \dots \ot w_{i_a}) \ot w_{j_1} \ot \dots \ot w_{j_b}
+		) \\
+		&\quad
+		- \sum_{i  =  1}^k
+		\sum_{1 \leqslant p \leqslant p_i - 1}
+		(-1)^{\varepsilon'''}
+		m^{t-1}_{p_1, \dots, p, p_i - p, \dots, p_k} (
+		w_1 \ot \dots \ot a_{[P_i + 1, P_i + p]} \ot a_{[P_i + p + 1, P_{i+1}]} \ot \dots \ot w_k
+		) \\
+		&\quad
+		- (t + k - 1)\, n^t_{p_1, \dots, p_k}  =  0~,
+	\end{align*}
+\end{definition}
+
+
+\subsection{Product}
+
+This might be reducible since it is symmetric?
+
+\begin{align*}
+	&\theta_+ \ot \theta_+
+	\mapsto \theta_+ (\id \ot \id), \\
+	%%%
+	&\theta_+ \ot \theta_\mu
+	\mapsto \theta_\mu (\id \ot \id) + c\theta_+( \partial_\mu \ot \id + \id \ot \partial_\mu), \\
+	%%%
+	&\theta_+ \ot \theta_-
+	\mapsto -c\theta_\mu (\id \ot \partial^\mu), \\
+	%%%
+	&\theta_+ \ot c\theta_\mu
+	\mapsto c\theta_\mu (\id \ot \id), \\
+	%%%
+	&\theta_+ \ot c\theta_-
+	\mapsto c\theta_- (\id \ot \id), \\
+	%%%
+	&\theta_\mu \ot \theta_+
+	\mapsto \theta_\mu (\id \ot \id) + c\theta_+( \partial_\mu \ot \id + \id \ot \partial_\mu), \\
+	%%%
+	&\theta_\mu \ot \theta_\nu
+	\mapsto
+	c\theta_\nu ( \partial_\mu \ot \id + 2\, \id \ot \partial_\mu ) \\
+	&\phantom{(\theta_\mu, \theta_\nu) \mapsto}
+	- c\theta_\mu ( \id \ot \partial_\nu + 2\, \partial_\nu \ot \id ) \\
+	&\phantom{(\theta_\mu, \theta_\nu) \mapsto}
+	+ c\theta_\rho \eta_{\mu\nu} ( \partial^\rho \ot \id - \id \ot \partial^\rho ), \\
+	%%%
+	&\theta_\mu \ot \theta_-
+	\mapsto c\theta_- (\id \ot \partial_\mu), \\
+	%%%
+	&\theta_\mu \ot c\theta_\nu
+	\mapsto -c\theta_- \eta_{\mu \nu} (\id \ot \id), \\
+	%%%
+	&\theta_- \ot \theta_+
+	\mapsto -c\theta_\mu (\partial^\mu \ot \id), \\
+	%%%
+	&\theta_- \ot \theta_\mu
+	\mapsto c\theta_- (\partial_\mu \ot \id),\\
+	%%%
+	&c\theta_\mu \ot \theta_+
+	\mapsto c\theta_\mu (\id \ot \id),\\
+	%%%
+	&c\theta_\mu \ot \theta_\nu
+	\mapsto -c\theta_- \eta_{\mu \nu} (\id \ot \id),\\
+	%%%
+	&c\theta_- \ot \theta_+
+	\mapsto c\theta_-(\id \ot \id).
+\end{align*}
+
+
+%\begin{align*}
+%	&\theta_+ \ot \theta_+
+%	\mapsto \theta_+ (\id \ot \id), \\
+%	%%%
+%	&\theta_+ \ot \theta_\mu
+%	\mapsto \theta_\mu (\id \ot \id) + c\theta_+( \partial_\mu \ot \id + \id \ot \partial_\mu), \\
+%	%%%
+%	&\theta_+ \ot \theta_-
+%	\mapsto -c\theta_\mu (\id \ot \partial^\mu), \\
+%	%%%
+%	&\theta_+ \ot c\theta_\mu
+%	\mapsto c\theta_\mu (\id \ot \id), \\
+%	%%%
+%	&\theta_+ \ot c\theta_-
+%	\mapsto c\theta_- (\id \ot \id), \\
+%	%%%
+%	&\theta_\mu \ot \theta_\nu
+%	\mapsto
+%	c\theta_\nu ( \partial_\mu \ot \id + 2\, \id \ot \partial_\mu ) \\
+%	&\phantom{(\theta_\mu, \theta_\nu) \mapsto}
+%	- c\theta_\mu ( \id \ot \partial_\nu + 2\, \partial_\nu \ot \id ) \\
+%	&\phantom{(\theta_\mu, \theta_\nu) \mapsto}
+%	+ c\theta_\rho \eta_{\mu\nu} ( \partial^\rho \ot \id - \id \ot \partial^\rho ), \\
+%	%%%
+%	&\theta_\mu \ot \theta_-
+%	\mapsto c\theta_- (\id \ot \partial_\mu), \\
+%	%%%
+%	&\theta_\mu \ot c\theta_\nu
+%	\mapsto -c\theta_- \eta_{\mu \nu} (\id \ot \id),
+%\end{align*}
+
+
+
+\newpage
+%\begin{align}
+%	&d(\theta_+ \ot \lambda)  =
+%	\theta_1 \ot \partial_0 \lambda \ -\
+%	\sum_{i = 1}^{d-1} \theta_i \ot \partial_i \lambda \ +\
+%	c\theta_+ \ot \square \lambda &
+%	\begin{pmatrix}
+	%		\partial^\mu \lambda \\ \square\lambda
+	%	\end{pmatrix} \\
+%	& d(\theta_\mu \ot A^\mu)  =
+%	c\theta_- \ot \partial_\mu A^\mu \ +\
+%	c\theta_\mu \ot \square  A^\mu &
+%	\begin{pmatrix}
+	%		\partial \cdot A \\ \square A
+	%	\end{pmatrix} \\
+%	& d(c\theta_+ \ot \varphi)  =
+%	c\theta_- \ot (-\varphi) \ +\
+%	c\theta_1 \ot \partial_0 \varphi \ -\
+%	\sum_{i = 1}^{d-1} \theta_i \ot \partial_i \varphi &
+%	\begin{pmatrix}
+	%		-\varphi \\ \partial^\mu \varphi
+	%	\end{pmatrix} \\
+%	& d(\theta_- \ot \phi)  =  c\theta_- \ot \square \phi &
+%	\begin{pmatrix}
+	%		\square \phi
+	%	\end{pmatrix} \\
+%	& d(c\theta_\mu \ot E^\mu)  =
+%	c\theta_- \ot (-\partial_\mu E^\mu) &
+%	\begin{pmatrix}
+	%		- \partial \cdot E
+	%	\end{pmatrix}
+%\end{align}
+
+
+jacobi
+
+
+%\begin{align}
+%	(\theta_+, \theta_+, \theta_-)
+%	&\mapsto \theta_+,  \\
+%	(\theta_+, \theta_+, c\theta_-)
+%	&\mapsto -c\theta_+ (\id \ot \id \ot \id),  \\
+%	(\theta_+, \theta_\mu, c\theta_\nu)
+%	&\mapsto c\theta_+ \eta_{\mu\nu} (\id \ot \id \ot \id),  \\
+%	(\theta_+, \theta_\mu, \theta_-)
+%	&\mapsto \theta_\mu (\id \ot \id \ot \id)
+%	+ c\theta_+ (\partial_\mu \ot \id \ot \id),  \\
+%	(\theta_+, c\theta_+, \theta_-)
+%	&\mapsto c\theta_+ (\id \ot \id \ot \id),  \\
+%	(\theta_+, \theta_-, \theta_-)
+%	&\mapsto \theta_- (\id \ot \id \ot \id),  \\
+%	(\theta_+, \theta_-, c\theta_\mu)
+%	&\mapsto c\theta_\mu (\id \ot \id \ot \id),  \\
+%	(\theta_+, \theta_-, c\theta_-)
+%	&\mapsto c\theta_- (\id \ot \id \ot \id),  \\
+%	(\theta_\mu, \theta_-, \theta_-)
+%	&\mapsto 2 c\theta_- ( \partial_\mu \ot \id \ot \id
+%	+ \id \ot \id \ot \partial_\mu ),  \\
+%	(\theta_\mu, c\theta_\nu, \theta_-)
+%	&\mapsto -c\theta_- \eta_{\mu\nu} (\id \ot \id \ot \id),  \\
+%	(c\theta_+, \theta_-, \theta_-)
+%	&\mapsto c\theta_- (\id \ot \id \ot \id). \tag{A10}
+%\end{align}

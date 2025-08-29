@@ -1,0 +1,47 @@
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{|@{}r@{\hspace{2pt}}X@{}|}
+	\hline
+	% associativity of product
+	\(\sM^0_{3}\) & \( = [m^0_1, m^0_3] - m^0_2 \circ_1 m^0_2 + m^0_2 \circ_2 m^0_2 \)
+	\( = [m^0_1, m^0_3] - \frac{1}{2}[m^0_2, m^0_2] \) \anibal{Is this right?} \\
+
+	\hline
+	% leibniz
+	\(\sM^0_{1,2}\) & \( = [m^0_1, m^0_{1,2}]
+	- m^0_{2} \circ_1 m^0_{1,1}
+	- (m^0_{2} \circ_2 m^0_{1,1}) \circ(12)
+	+ m^0_{1,1} \circ_2 m^0_2 \) \\
+	& \( = [m^0_1, m^0_{1,2}] - [m^0_2, m^0_{1,1}] \) \\
+
+	\hline
+	% jacobi
+	\(\sM^0_{1,1,1}\) & \( =
+	[m^0_1, m^0_{1,1,1}] - \big(m^0_{1,1} \circ_1 m^0_{1,1}\big) \circ \big(\id + (123) + (132)\big) \) \\
+
+	\hline
+	% bracket is a coderivation
+	\(\sM^1_{1,1}\) & \( =
+	[m^0_1, m^1_{1,1}]
+	- m^1_1 \circ m^0_{1,1}
+	+ m^0_{1,1} \circ_1 m^1_1
+	+ m^0_{1,1} \circ_2 m^1_1 \) \\
+	& \( = [m^0_1, m^1_{1,1}] - [m^1_1, m^0_{1,1}] \) \anibal{Why the fact that these are odd does not add a minus sign?}\\
+
+	\hline
+	% failure of product being a coderivation is the bracket
+	\(\sM^1_2\) & \( =
+	[m^0_1, m^1_2]
+	+ m^1_1 \circ_1 m^0_2
+	- m^0_2 \circ_1 m^1_1
+	- m^0_2 \circ_2 m^1_1
+	- m^0_{1,1} \) \\
+	& \( = [m^0_1, m^1_2] + [m^1_1, m^0_2] - m^0_{1,1} \) \\
+
+	\hline
+	% codifferential
+	\(\sM^2_1\) & \( =
+	[m^0_1, m^2_1]
+	+ m^1_1 \circ m^1_1 \) \\
+%	\( = -\frac{1}{2} [m^1_1, m^1_1] \)\\
+	\hline
+\end{tabularx}

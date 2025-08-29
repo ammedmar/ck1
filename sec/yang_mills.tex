@@ -1,0 +1,284 @@
+% !TEX root  =  ../ck_dual.tex
+
+\section{Yang--Mills Kinematic Algebra}
+
+We now review the kinematic algebra of Yang--Mills theory as presented in \cite{Bonezzi2024wcdft}.
+
+\begin{align*}
+	&m_1^2 = 0, \quad b^2 = 0, \quad [m_1, b] = \square, &&\text{differentials and central obstruction,} \\
+	&[m_1, m_2] = 0, \quad m_2 m_2 (1 - \pi) = [m_1, m_{3\mathrm{h}}], &&\text{$C_\infty$ structure,} \\
+	&b_2 = [b, m_2], \quad [m_1, b_2] = [\square, m_2], &&\text{two-bracket and deformed Leibniz,} \\
+	&b_2 m_2 + m_2 b_2 (1 - 3\pi) = [m_1, \theta_3] + m_{3\mathrm{h}} (d_\square - 3 d_s \pi), &&\text{deformed homotopy Poisson,} \\
+	&3 b_2 b_2 \pi + [m_1, b_3] + 3 \theta_3 d_s \pi = 0, &&\text{deformed homotopy Jacobi,} \\
+	&\theta_{3\mathrm{h}} + [b, m_{3\mathrm{h}}] = 0, \quad b_3 + [b, \theta_{3\mathrm{s}}] = 0, &&\text{compatibility of homotopies.}
+\end{align*}
+
+\newpage
+
+\subsection{Minkoski spacetime}
+
+Let \( \cO \) denote the vector space of smooth real-valued function on \( \R^d \) with the Minkowski metric \( \eta  =  \operatorname{diag}(+,-,\dots,-) \).
+We use the following short hand notation throughout:
+
+\medskip\noindent
+If \( \lambda \in \cO \) then
+\begin{align}
+	\partial_\mu \lambda
+	& =  \frac{\partial \lambda}{\partial t} + \sum_{i = 1}^{d-1} \frac{\partial \lambda}{\partial x^i} \,, \\
+	\partial^\mu \lambda
+	& =  \eta^{\mu \nu} \partial_\nu \lambda
+	 =  \frac{\partial \lambda}{\partial t} - \sum_{i = 1}^{d-1} \frac{\partial \lambda}{\partial x^i} \,.
+%	\square \lambda
+%	& =  \partial^\mu \partial_\mu \lambda
+%	 =  \eta^{\mu \nu} \partial_\mu \partial_\nu \lambda
+%	 =  \frac{\partial^2 \lambda}{\partial t^2} - \sum_{i = 1}^{d-1} \frac{\partial^2 \lambda}{\partial (x^i)^2} \,.
+\end{align}
+%If \( A \in \cO^{\ot d} \) then
+%\begin{align}
+%	\partial \cdot A
+%	& =  \partial_\mu A^\mu
+%	 =  \frac{\partial A^0}{\partial t} + \sum_{i = 1}^{d-1} \frac{\partial A^i}{\partial x^i} \,, \\
+%	(\square A)^\mu
+%	& =  \partial^\nu \partial_\nu A^\mu
+%	 =  \eta^{\rho \nu} \partial_\rho \partial_\nu A^\mu
+%	 =  \frac{\partial^2 A^\mu}{\partial t^2} - \sum_{i = 1}^{d-1} \frac{\partial^2 A^\mu}{\partial (x^i)^2} \,.
+%\end{align}
+
+\subsection{Linear structure}
+
+Let \( \cK  =  \cZ \ot \cO \) where \( \cZ \) be the following graded vector space with a given basis:
+\[
+\begin{tikzcd}[row sep = 0]
+	\cZ_0 & \cZ_1 & \cZ_2 & \cZ_3 \\
+	\R\set{\theta_+} & \R\set{\theta_0, \dots, \theta_{d-1}} & \R\set{\theta_-} \\
+	& \oplus & \oplus & \\
+	& \R\set{c\theta_+} & \R\set{c\theta_0, \dots, c\theta_{d-1}} & \R\set{c\theta_-}. \\
+\end{tikzcd}
+\]
+
+We will define operators on \( \cK \) using this basis, specifically, assigning to each basis element of \( \cZ^{\ot r} \) a sum of differential operator \( \cO^{\ot r} \to \cO \) parameterized by \( \cZ \).
+More precisely, we will use the natural inclusion
+\[
+\Hom(\cZ^{\ot r}, \cZ \ot \Hom(\cO^{\ot r}, \cO)) \to \Hom(\cK^{\ot r}, \cK).
+\]
+Additionally, we will omit maps that are identically \( 0 \) and leave implicit the map \( \id \ot \dotsb \ot \id\), which agrees with the product of functions.
+
+\subsection{Differential}
+
+\( m^0_1 \)
+
+\begin{align*}
+	&\theta_+ \mapsto \theta_\mu \partial^\mu + c\theta_+ \partial^\mu \partial_\mu,
+	&&c\theta_+ \mapsto - c\theta_\mu \partial^\mu - \theta_-, \\
+	&\theta_\mu \mapsto c\theta_\mu \partial^\mu \partial_\mu + \theta_- \partial_\mu,
+	&&c\theta_\mu \mapsto - c\theta_- \partial_\mu, \\
+	&\theta_- \mapsto c\theta_- \partial^\mu \partial_\mu,
+	&&c\theta_- \mapsto 0.
+\end{align*}
+We verify an instance of the relation \( m^0_1 \circ m^0_1  =  0 \).
+The others are checked similarly.
+\begin{align*}
+	\theta_+ \mapsto
+	\theta_\mu \partial^\mu + c\theta_+ \partial^\mu \partial_\mu \mapsto
+	c\theta_\mu \partial^\mu \partial_\mu \partial^\mu  + \theta_- \partial_\mu \partial^\mu
+	- c\theta_\mu \partial^\mu \partial^\mu \partial_\mu - \theta_-\partial^\mu \partial_\mu  =  0.
+\end{align*}
+
+\subsection{Product}
+
+Since \( m^0_2 \) is symmetric, it suffices to describe the image of \( \theta \ot \theta' \), as the image of \( \theta' \ot \theta \) follows by symmetry.
+
+\begin{minipage}{0.2\textwidth}
+	\begin{align*}
+		&\theta_+ \ot \theta_+
+		\mapsto \theta_+ , \\
+		%%%
+		&\theta_+ \ot \theta_\mu
+		\mapsto \theta_\mu + c\theta_+( \partial_\mu \ot \id + \id \ot \partial_\mu), \\
+		%%%
+		&\theta_+ \ot \theta_-
+		\mapsto -c\theta_\mu (\id \ot \partial^\mu), \\
+		%%%
+		&\theta_+ \ot c\theta_\mu
+		\mapsto c\theta_\mu , \\
+		%%%
+		&\theta_+ \ot c\theta_-
+		\mapsto c\theta_- ,
+	\end{align*}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+	\begin{align*}
+		&\theta_\mu \ot \theta_\nu
+		\mapsto
+		c\theta_\nu ( \partial_\mu \ot \id + 2\, \id \ot \partial_\mu ) \\
+		&\phantom{(\theta_\mu, \theta_\nu) \mapsto}
+		- c\theta_\mu ( \id \ot \partial_\nu + 2\, \partial_\nu \ot \id ) \\
+		&\phantom{(\theta_\mu, \theta_\nu) \mapsto}
+		+ c\theta_\rho \eta_{\mu\nu} ( \partial^\rho \ot \id - \id \ot \partial^\rho ), \\
+		%%%
+		&\theta_\mu \ot \theta_-
+		\mapsto c\theta_- (\id \ot \partial_\mu), \\
+		%%%
+		&\theta_\mu \ot c\theta_\nu
+		\mapsto -c\theta_- \eta_{\mu \nu} ,.
+	\end{align*}
+\end{minipage}
+
+\medskip\noindent
+The following instance of the \( \sR^0_2 \) (derivation) relation:
+\begin{align*}
+	m^0_1m^0_2(\theta_+ \ot \theta_+) -
+	m^0_2(m^0_1\theta_+ \ot \theta_+) -
+	m^0_2(\theta_+ \ot m^0_1\theta_+)  =  0
+\end{align*}
+follows from the straightforward expansion of terms:
+\begin{align*}
+	m^0_1m^0_2(\theta_+ \ot \theta_+) & =
+	m^0_1(\theta_+)  =
+	(\theta_\mu \partial^\mu + c\theta_+ \partial^\mu \partial_\mu)(\id \ot \id) \\ & =
+	\theta_\mu(\partial^\mu \ot \id + \id \ot \partial^\mu) +
+	c\theta_+(\partial^\mu \partial_\mu \ot \id + 2\, \partial^\mu \ot \partial_\mu + \id \ot \partial^\mu \partial_\mu).
+\end{align*}
+\begin{align*}
+	m^0_2(m^0_1\theta_+ \ot \theta_+) & =
+	m^0_2(\theta_\mu \partial^\mu \ot \theta_+) + m^0_2(c\theta_+ \partial^\mu \partial_\mu \ot \theta_+) \\ & =
+	\theta_\mu(\partial^\mu \ot \id) + c\theta_+(\partial_\mu \partial^\mu \ot \id + \partial_\mu \ot \partial^\mu).
+\end{align*}
+\begin{align*}
+	m^0_2(\theta_+ \ot m^0_1\theta_+) & =
+	\theta_\mu(\id \ot \partial^\mu) + c\theta_+(\partial_\mu \ot \partial^\mu + \partial^\mu \ot \partial_\mu).
+\end{align*}
+
+%\medskip\noindent
+%We verify the following instance of the \( \sR^0_{1,2} \) (Leibniz) relation:
+%\begin{align*}
+%	m^0_1m^0_2(\theta_\mu \ot \theta_\nu) -
+%	m^0_2(m^0_1\theta_\mu \ot \theta_\nu) +
+%	m^0_2(\theta_\mu \ot m^0_1\theta_\nu)  =  0.
+%\end{align*}
+%\begin{align*}
+%	m^0_1m^0_2(\theta_\mu \ot \theta_\nu) & =
+%	m^0_1\big(
+%	c\theta_\nu ( \partial_\mu \ot \id + 2\, \id \ot \partial_\mu ) \\ &\quad-
+%	c\theta_\mu ( \id \ot \partial_\nu + 2\, \partial_\nu \ot \id ) \\ &\quad+
+%	c\theta_\rho \eta_{\mu\nu} ( \partial^\rho \ot \id - \id \ot \partial^\rho )
+%	\big)\\ & =
+%	-c\theta_- \partial_\nu( \partial_\mu \ot \id + 2\, \id \ot \partial_\mu ) \\ &\quad+
+%	c\theta_- \partial_\mu( \id \ot \partial_\nu + 2\, \partial_\nu \ot \id ) \\ &\quad-
+%	c\theta_- \partial_\rho \eta_{\mu\nu} ( \partial^\rho \ot \id - \id \ot \partial^\rho )
+%	\big)
+%\end{align*}
+%
+%...
+
+\subsection{Associativity}
+
+Consider the definitions:
+
+\begin{align*}
+	m_{3h}(\psi_1, \psi_2, \psi_3)
+	&\coloneqq \tfrac{1}{3} \big( m_3(\psi_1, \psi_2, \psi_3)
+	+ (-1)^{\psi_1 \psi_2} m_3(\psi_2, \psi_1, \psi_3) \big), \\[1ex]
+	m_3(\psi_1, \psi_2, \psi_3)
+	& =  m_{3h}(\psi_1, \psi_2, \psi_3)
+	- (-1)^{\psi_1(\psi_2 + \psi_3)} m_{3h}(\psi_2, \psi_3, \psi_1).
+\end{align*}
+
+For \( m_{3h} \) we have
+
+\[
+\theta_\mu \ot \theta_\nu \ot \theta_\rho
+\mapsto
+c\theta_\mu \eta_{\nu\rho} - c\theta_\nu \eta_{\mu\rho}.
+\]
+
+so for \( m^0_3 \)
+
+\[
+\theta_\mu \ot \theta_\nu \ot \theta_\rho
+\mapsto
+c\theta_\mu \eta_{\nu\rho} - c\theta_\nu \eta_{\mu\rho} -
+c\theta_\nu \eta_{\rho\mu} + c\theta_\mu \eta_{\rho\nu}
+\]
+
+\subsection{Relation ?}
+
+\subsection{Co-differential}
+
+\begin{align*}
+	c\theta_+ \mapsto \theta_+, \quad
+	c\theta_\mu \mapsto \theta_\mu, \quad
+	c\theta_- \mapsto \theta_-, \quad
+\end{align*}
+
+\subsection{Relation ?}
+
+\subsection{Bracket}
+
+Defined by \( [m^0_1, m^0_2] \).
+
+\subsection{Relation ?}
+
+\subsection{Poisson}
+
+\begin{align*}
+	&\theta_+ \ot \theta_+ \ot \theta_-
+	\mapsto \theta_+,  \\
+	&\theta_+ \ot \theta_+ \ot c\theta_-
+	\mapsto -c\theta_+,  \\
+	&\theta_+ \ot \theta_\mu \ot c\theta_\nu
+	\mapsto c\theta_+ \eta_{\mu\nu},  \\
+	&\theta_+ \ot \theta_\mu \ot \theta_-
+	\mapsto \theta_\mu
+	+ c\theta_+ (\partial_\mu \ot \id \ot \id),  \\
+	&\theta_+ \ot \theta_- \ot \theta_-
+	\mapsto \theta_-,  \\
+	&\theta_+ \ot \theta_- \ot c\theta_\mu
+	\mapsto c\theta_\mu,  \\
+	&\theta_+ \ot \theta_- \ot c\theta_-
+	\mapsto c\theta_-,  \\
+	&\theta_+ \ot c\theta_+ \ot \theta_-
+	\mapsto c\theta_+,  \\
+	&\theta_\mu \ot \theta_- \ot \theta_-
+	\mapsto 2 c\theta_- ( \partial_\mu \ot \id \ot \id
+	+ \id \ot \id \ot \partial_\mu),  \\
+	&\theta_\mu \ot c\theta_\nu \ot \theta_-
+	\mapsto -c\theta_- \eta_{\mu\nu},  \\
+	&c\theta_+ \ot \theta_- \ot \theta_-
+	\mapsto c\theta_-.
+\end{align*}
+
+\begin{align*}
+	\theta_\mu \ot \theta_\nu \ot \theta_\rho
+	\mapsto&\ c\theta_+ \big[
+	\eta_{\mu\nu}(\partial_\rho \ot \id \ot \id)
+	- \eta_{\mu\nu}(\id \ot \partial_\rho \ot \id)
+	+ \eta_{\nu\rho}(\id \ot \partial_\mu \ot \id) \\ &
+	- \eta_{\nu\rho}(\id \ot \id \ot \partial_\mu)
+	+ \eta_{\mu\rho}(\id \ot \id \ot \partial_\nu)
+	- \eta_{\mu\rho}(\partial_\nu \ot \id \ot \id) \big] \\ & +
+	\theta_\nu \eta_{\mu\rho} - \theta_\mu \eta_{\nu\rho}.
+\end{align*}
+
+\begin{align*}
+	\theta_\mu \ot \theta_\nu \ot c \theta_\rho
+	\mapsto&\ c\theta_\nu \eta_{\mu\rho} - c\theta_\mu \eta_{\nu\rho}, \\
+	(\theta_\mu, \theta_\nu, \theta_-)
+	& =  c\theta_\nu (\mathbb{1} \otimes \mathbb{1} \otimes \partial_\mu)
+	- c\theta_\mu (\mathbb{1} \otimes \mathbb{1} \otimes \partial_\nu)
+	+ 2c\theta_\nu (\mathbb{1} \otimes \partial_\mu \otimes \mathbb{1})
+	- 2c\theta_\mu (\partial_\nu \otimes \mathbb{1} \otimes \mathbb{1}) \\
+	&\quad + c\theta_\rho \eta_{\mu\nu} ( \partial^\rho \otimes \mathbb{1} \otimes \mathbb{1} - \mathbb{1} \otimes \partial^\rho \otimes \mathbb{1} ), \\[1ex]
+	(\theta_\mu, c \theta_+, \theta_-)
+	& =  - (c \theta_+, \theta_\mu, \theta_-)
+	 =  -c\theta_\mu (\mathbb{1} \otimes \mathbb{1} \otimes \mathbb{1}), \\[1ex]
+	(\theta_\mu, \theta_\nu, c \theta_\rho)
+	& =  (c\theta_\nu \eta_{\mu\rho} - c\theta_\mu \eta_{\nu\rho}) (\mathbb{1} \otimes \mathbb{1} \otimes \mathbb{1}), \\[1ex]
+	(c \theta_\rho, \theta_\mu, \theta_\nu)
+	& =  (\theta_\mu, c \theta_\rho, \theta_\nu)
+	 =  (c\theta_\mu \eta_{\nu\rho} - c\theta_\rho \eta_{\mu\nu}) (\mathbb{1} \otimes \mathbb{1} \otimes \mathbb{1}).
+\end{align*}
+
+\subsection{Relation ?}
+
+\subsection{Jacobi}

@@ -1,0 +1,95 @@
+
+\section{Supergeometric sketches}
+
+A \( (\Z/2\Z) \)-graded vector space \( V = V_0 \oplus V_1 \) is referred to as a \defn{superspace} and the involution
+\[
+(\Pi V)_0 = V_1
+\qquad
+(\Pi V)_1 = V_0
+\]
+as \defn{parity change}.
+
+A \defn{supercommutative algebra} is a superspace together with an associative product such that for all homogeneous elements \( a, b \) one has
+\[
+a b = (-1)^{|a||b|} b a .
+\]
+For example, \( C^\infty_{\R^m} \ot \bigwedge \R^n \) is a supercommutative algebra for any pair of non-negative integers \( m | n \).
+
+%Similarly, for any superspace \( V \) its \defn{$n^\th$~symmetric power} is
+%\begin{equation}\label{eq:SymPower}
+%	\mathrm{Sym}^n V \defeq (V^{\otimes n})_{\sym_n} \cong
+%	\quad \mathclap{\bigoplus_{0 \leq k \leq n} } \quad \big( \mathrm{Sym}^k V_{\bar{0}} \otimes {\textstyle \bigwedge^{n-k}} V_{\bar{1}} \big)
+%\end{equation}
+%and the canonical product in \( \mathrm{Sym} V = \bigoplus_n  \mathrm{Sym}^n V\) defines a supercommutative algebra.
+
+\medskip
+A \defn{ringed space} \( (X, \cO_X) \) is a topological space \( X \) together with a sheaf of rings \( \cO_X \) on \( X \).
+It is a \defn{locally ringed space} if all stalks are local rings (that is, rings with a unique maximal ideal).
+
+A smooth \( m \)-manifold can be defined as a Hausdorff, second-countable locally ringed space \( (M, \cO) \) such that
+for every \( x \in M \) there exists an open neighborhood \( U \subset M \) and an open set \( U_0 \subset \R^m \)
+with an isomorphism of locally ringed spaces
+\[
+(U, \cO|_U) \cong (U_0, C^\infty_{U_0}),
+\]
+where \( C^\infty_V \) is the sheaf of smooth \( \R \)-valued functions on \( V \).
+
+\medskip
+An \defn{\( (m | n) \)-supermanifold} is a locally ringed space \( (M, \cO) \)
+where \( \cO \) is a sheaf of supercommutative \( \R \)-algebras such that every point \( x \in M \) has an open neighborhood \( U \subset X \) with an isomorphism of locally ringed spaces
+\[
+(U, \cO|_U ) \; \cong \; ( U_0, \; C^\infty_{U_0} \otimes_\R \textstyle\bigwedge \R\set{\theta^1,\dots,\theta^n} )
+\]
+where \( U_0 \subset \R^m \) is open and \( \bigwedge \R\set{\theta^1,\dots,\theta^n} \) is the Grassmann algebra on \( n \) generators, the \defn{odd coordinates}.
+The space \( M \) is a smooth manifold, referred to as the \defn{body} of the supermanifold \( \cM \).
+The sheaf \( \cO \) is called the \defn{sheaf of functions} of \( \cM \) and global sections are denoted \( C^\infty(\cM) \).
+
+%The supermanifold denoted by \( \R^{m|n} \) is the supermanifold with body \( \R^m \) and sheaf of functions \( C^\infty_{\R^m} \ot \bigwedge \R^n \).
+
+%The complex of differential forms on a smooth manifold \( M \) gives rise to a supermanifold with body \( M \) and sheaf of functions given on a small enough neighborhood \( U \) of \( x \) by \( C^\infty_U \ot \textstyle\bigwedge T_x^\ast M \).
+
+\medskip
+Given any vector bundle \( E \to M \), we can naturally construct a supermanifold \( \Pi E \) with functions \( C^\infty(\Pi E) \) isomorphic to \( \Gamma(\bigwedge E^\ast) \), the global sections of the Grassmann bundle of its linear dual.
+
+From this perspective, differential forms and polyvector fields on a smooth manifold \( M \) can be written respectively as:
+\[
+\Omega(M) \cong C^\infty(\Pi\rT M)
+\quad\text{and}\quad
+\fX(M) \cong C^\infty(\Pi\rT^*\!M).
+\]
+
+Under the first identification, the de Rham differential acts as a derivation of the ring of functions of \( \Pi\rT M \).
+That is to say, it corresponds to a \defn{supervector field} \( Q \).
+We can express the nipotency of the differential using the Lie bracket of supervector fields: \( [Q, Q] = 0 \).
+
+
+%\medskip
+%A \defn{supervector field} is a derivation of the sheaf of functions of a supermanifold.
+%More generally, the \defn{tangent sheaf} of a supermanifold \( \cM = (M, \cO) \) is
+%\[
+%\rT\cM \defeq \underline{\Der}_\R(\cO).
+%\]
+
+%In local coordinates \( (x^i, \theta^\mu) \), the tangent sheaf has a \( \cO \)-linear basis given by \( \set[\big]{\tfrac{\partial\ }{\partial x_i}, \tfrac{\partial\ }{\partial \theta_\mu}} \) with the expected action on coordinate functions.
+
+
+
+%Similarly,
+%\[
+%\Omega^1(\cM) \defeq \underline{\Hom}_{\cO}(\rT\cM, \cO)
+%\]
+%and
+%\[
+%\Omega^n(\cM) \defeq \textstyle\underline \bigwedge_{\cO} \Omega^1(\cM).
+%\]
+%In local coordinates \( (x^i, \theta^\mu) \), the tangent sheaf has a \( \cO \)-linear basis given by \( \set[\big]{\tfrac{\partial\ }{\partial x_i}, \tfrac{\partial\ }{\partial \theta_\mu}} \) with the expected action on coordinate functions.
+%Similarly, \( \Omega^1(\cM)  \) has a local \( \cO \)-linear basis given by
+%
+%a vector field is an expression of the form
+%\[
+%X = \sum_{i, \mu} X_i \frac{\partial}{\partial x_i} + Y_\mu \frac{\partial}{\partial \theta_\mu},
+%\]
+%whereas a differential form is one of the form
+%\[
+%\sum_{i,\mu}
+%\]

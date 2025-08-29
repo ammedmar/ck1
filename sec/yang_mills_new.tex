@@ -1,0 +1,128 @@
+
+\subsection{Yang--Mills version 2}
+
+We now review the kinematic algebra of Yang--Mills theory as developed in \cite{Bonezzi2022GaugeStructureDoubleField, Bonezzi2023GaugeInvariantDoubleCopyQuartic, Bonezzi2024WeaklyConstrainedDoubleField}.
+
+\anibal{Regarding the BD statement of Bruno, look at connection with the operadic result of Costello in his renormalization book section 2.8. Operadic interpretation of the quantum master equation. The main theorem relates quantizations with BD extensions. What in the book with Gwilliams is taken as definition, I think.}
+
+\anibal{There are two other papers at least to cite: the quartic theory, where the bvinfty structure was defined first, it seems.
+The other is earlier, by the same people, the gauge structure of double field theory follows from YM. There, this formulation of YM was deduced from some stringy thing, where it seems that there is an additional ``field'' that, when integrated out gives the ``usual'' YM theory. Important to say that this version of YM gives using the MC action the correponding YM action (2.21 in the earlier paper : the gauge structure ...) }
+
+\anibal{A cool thing to include is display equation 4.56 in the quartic theory, where they show how to get the Color-Kinematic numerators satisfying jacobi from the homotopy poisson relation.}
+
+\anibal{In the double copy via tensor product, they say that the Reitener bvbox extends Zeitlin's and references the usual paper. In that paper, the complex that looks more like it (first order), is credited to Costello. It seems to be 5.2 RENORMALISATION AND THE BATALIN-VILKOVISKY FORMALISM --- It is also in the book, page 209, read that one.}
+
+Let \( \cO \) denote the vector space of smooth real-valued function on \( \R^d \) with the Minkowski metric \( \eta  =  \operatorname{diag}(+,-,\dots,-) \).
+We use the following short hand notation throughout:
+\[
+\partial_\mu \lambda = \frac{\partial \lambda}{\partial t} + \sum_{i = 1}^{d-1} \frac{\partial \lambda}{\partial x^i} \,,
+\qquad
+\partial^\mu \lambda = \eta^{\mu \nu} \partial_\nu \lambda = \frac{\partial \lambda}{\partial t} - \sum_{i = 1}^{d-1} \frac{\partial \lambda}{\partial x^i} \,.
+\]
+Let \( \cK  =  \cZ \ot \cO \) where \( \cZ \) be the following graded vector space with a given basis:
+\[
+\begin{tikzcd}[row sep = 0]
+	\cZ_0 & \cZ_1 & \cZ_2 & \cZ_3 \\
+	\R\set{\theta_+} & \R\set{\theta_0, \dots, \theta_{d-1}} & \R\set{\theta_-} \\
+	& \oplus & \oplus & \\
+	& \R\set{c\theta_+} & \R\set{c\theta_0, \dots, c\theta_{d-1}} & \R\set{c\theta_-}. \\
+\end{tikzcd}
+\]
+We will define multilinear maps on \( \cK \) using this basis, specifically, assigning to each basis element of \( \cZ^{\ot r} \) a sum of differential operator \( \cO^{\ot r} \to \cO \) parameterized by \( \cZ \).
+More precisely, we will use the natural inclusion
+\[
+\Hom(\cZ^{\ot r}, \cZ \ot \Hom(\cO^{\ot r}, \cO)) \to \Hom(\cK^{\ot r}, \cK).
+\]
+Additionally, we will omit operators that are identically \( 0 \) and leave implicit the operator \( \id \ot \dotsb \ot \id\), which agrees with the product of functions.
+
+\medskip\noindent The map \( m^0_1 \) is defined by:
+\begin{align*}
+	&\theta_+ \mapsto \theta_\mu \partial^\mu + c\theta_+ \partial^\mu \partial_\mu,
+	&&c\theta_+ \mapsto - c\theta_\mu \partial^\mu - \theta_-, \\
+	&\theta_\mu \mapsto c\theta_\mu \partial^\mu \partial_\mu + \theta_- \partial_\mu,
+	&&c\theta_\mu \mapsto - c\theta_- \partial_\mu, \\
+	&\theta_- \mapsto c\theta_- \partial^\mu \partial_\mu,
+	&&c\theta_- \mapsto 0.
+\end{align*}
+The map \( m^0_2 \), which is assumed to satisfy \( m^0_2 \circ (12) = m^0_2 \), is defined by:
+
+\noindent\hspace*{5pt}
+\begin{minipage}{0.2\textwidth}
+	\begin{align*}
+		&\theta_+ \ot \theta_+
+		\mapsto \theta_+ , \\
+		%%%
+		&\theta_+ \ot \theta_\mu
+		\mapsto \theta_\mu + c\theta_+( \partial_\mu \ot \id + \id \ot \partial_\mu), \\
+		%%%
+		&\theta_+ \ot \theta_-
+		\mapsto -c\theta_\mu (\id \ot \partial^\mu), \\
+		%%%
+		&\theta_+ \ot c\theta_\mu
+		\mapsto c\theta_\mu , \\
+		%%%
+		&\theta_+ \ot c\theta_-
+		\mapsto c\theta_- ,
+	\end{align*}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+	\begin{align*}
+		&\theta_\mu \ot \theta_\nu
+		\mapsto
+		c\theta_\nu ( \partial_\mu \ot \id + 2\, \id \ot \partial_\mu ) \\
+		&\phantom{(\theta_\mu, \theta_\nu) \mapsto}
+		- c\theta_\mu ( \id \ot \partial_\nu + 2\, \partial_\nu \ot \id ) \\
+		&\phantom{(\theta_\mu, \theta_\nu) \mapsto}
+		+ c\theta_\rho \eta_{\mu\nu} ( \partial^\rho \ot \id - \id \ot \partial^\rho ), \\
+		%%%
+		&\theta_\mu \ot \theta_-
+		\mapsto c\theta_- (\id \ot \partial_\mu), \\
+		%%%
+		&\theta_\mu \ot c\theta_\nu
+		\mapsto -c\theta_- \eta_{\mu \nu}.
+	\end{align*}
+\end{minipage}
+
+\medskip\noindent The map \( m^0_3 \) is defined by
+\[
+\theta_\mu \ot \theta_\nu \ot \theta_\rho
+\mapsto
+c\theta_\mu \eta_{\nu\rho} - 2c\theta_\nu \eta_{\mu\rho} + c\theta_\rho \eta_{\nu\nu}.
+\]
+In \cite{Bonezzi2022GaugeStructureDoubleField}, the authors verify that this maps define a \( \rC_{(3)} \)-algebra structure on \( \cK \).
+
+\medskip By our main result, this structure can be extended to a \( \bvbox_\infty \)-algebra structure by choosing, for each \(	t \geqslant 0, \  k \geqslant 1, \  p_1, \dots, p_k \geqslant 1 \) with \( t+k \geq 2 \), a generating maps \( m^t_{p_1,\dots,p_k} \) of the appropriate degree and symmetry type (\cref{ss:generating_maps}).
+
+\medskip We now review the choices made by the authors in \cite{Bonezzi2023GaugeInvariantDoubleCopyQuartic, Bonezzi2024WeaklyConstrainedDoubleField}.
+The map \( m^1_1 \) is defined by
+\begin{align*}
+	c\theta_+ \mapsto \theta_+, \quad
+	c\theta_\mu \mapsto \theta_\mu, \quad
+	c\theta_- \mapsto \theta_-.
+\end{align*}
+This leads to the obstruction \( n^1_1 = [m_0, m^1_1]\) being equal to the d'Alambertian operator \( \Box \).
+
+The map \( m^0_{1,1} \) is defined as \( [b, m_2] \) and the obstruction \( n^0_{1,1} \) is therefore equal to \( [\Box, m^0_{1,1}] \).
+
+The following generating maps of weight 2 are chosen to be \( 0 \):
+\begin{align*}
+	m^1_2 &= 0,	& m^2_1 &= 0,	& m^1_{1,1} &= 0,
+\end{align*}
+with the resulting obstruction being also identically \( 0 \):
+\begin{align*}
+	n^1_2 &= 0,	& n^2_1 &= 0,	& n^1_{1,1} &= 0.
+\end{align*}
+
+Still in weight 2, the authors explicitly define maps \( b_3, \theta_3 \colon \cK^{\ot 3} \to \cK\) which we use to define
+\anibal{Maybe there is a sign, check both below. Also, better to get rid of the \( \pi \) and expand. The first obstruction has a single domain that is non-zero, since \( m_3 \) does. The other seems more difficult, but at least \( \pi \) can be removed}
+\begin{align*}
+	m^0_{1,2} &= \theta_3 \circ (13),    & m^0_{1,1,1} &= b_3, \\
+	n^0_{1,2} &= \tfrac{1}{3}m_3(1+(12)) (d_\square - 3 d_s \pi),    & n^0_{1,1,1} &= 3 \theta_3 d_s \pi.
+\end{align*}
+Using their computations, we describe the associated obstructions to be:
+\[
+TBW
+\]
+
+We set all generating maps of weight 3 or higher to be identically 0, effectively making the resulting extension of the \( \rC_{(2)} \)-algebra into a \( \bvbox_{(2)} \)-algebra.
+All the obstructions at level \( 3 \) can be computed using \cref{f:weight2}.

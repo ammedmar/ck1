@@ -1,0 +1,158 @@
+\subsection{Differential forms}
+
+Let us consider a smooth \( n \)-manifold \( M \).
+As is well-known, the de Rham differential and the wedge product define a (dg) commutative algebra structure on the graded vector space of differential forms \( \Omega^\bullet(M) = \Gamma(M, \bigwedge^\bullet T^\ast M)\).
+
+A choice of (non-degenerate) metric on \( M \) defines canonically a \( \bvbox \) extension of this structure as follows.
+First, let \( m^0_1 \) and \( m^0_2 \) be respectively the de Rham differential and wedge product, we define \( m^1_1 \) to be the Hodge codifferential \( d^\star \) associated to the metric, and \( m^0_{1,1} =  [m^1_1, m^0_2] \), its failure from being a derivation of the product.
+
+The obstruction \( n^1_1 \) is the operator \( d\circ d^\star + d^\star \circ d\), typically the Laplacian or D'Alambertian, and the obstruction \( n^0_{1,1} \) is its failure from being a derivation of the wedge product.\anibal{Anything else to say?}
+
+The metric can be also used to identify differential forms and polyvector fields \( \Gamma(M, \bigwedge^\bullet TM) \).
+The generating map \( m^0_{1,1} \) corresponds to the transfer, across this isomorphism, of the Schouten--Nijenhuis bracket of polyvector fields.\anibal{Clarify if using a volume form and orientation or this can be done locally using the metric only canonically. I am not sure one needs the volume form.}
+
+\subsection{Chern--Simons theory}
+
+Let us now focus on an oriented \( 3 \)-manifold \( M \).
+Consider a compact Lie group with a Lie algebra \( \fg \) equipped with an invariant pairing \( \angles{-,-}_\fg \).
+We will study Chern--Simons theory perturbatively around the trivial flat connection on the trivial $\fg$-bundle on $M$.
+Then, we can identify its space of fields with $\Omega^1(M) \otimes \fg$ and its Lie algebra of infinitesimal gauge symmetries with \(  C^{\infty}(M) \otimes \fg \)
+
+%acting by
+%\[
+%A \mapsto [X, A] + dX.
+%\anibal{Define bracket}
+%\]
+
+Furthermore, the Batalin--Vilkovisky space of fields associated to this theory---containing ghosts, fields, anti-fields, and anti-ghosts---is identified with the shifted \( \fg \)-valued de Rham complex
+\[
+\cL \defeq \Omega^\bullet(M, \fg)[1] \cong \Omega^\bullet(M) \ot \fg[1]
+\]
+with Lie bracket and pairing given respectively by
+\begin{align*}
+	[\omega_1 \ot g_1,\, \omega_2 \ot g_2]
+	&= (\omega_1 \wedge \omega_2) \ot  [g_1, g_2]\,, \\
+	\angles{\omega_1 \ot g_1,\, \omega_2 \ot g_2}
+	&= \int_M \omega_1 \wedge \omega_2\, \angles{g_1, g_2}_\fg\,.
+\end{align*}
+The Maurer--Cartan action associated to this metric Lie algebra,
+\[
+S(\cA) = \tfrac{1}{2}\angles{\cA, d\cA} + \tfrac{1}{3!}\angles{\cA, [\cA, \cA]},
+\]
+agrees with the  Batalin--Vilkovisky action of Chern--Simons theory (see \cite[p.160]{Costello2011RenormalizationEFT}).
+\anibal{I don't understand what Q is here?}
+%restricting to the usual Chern--Simons action \( \Omega^1 \ot \fg[1]\).
+
+There is a manifest color-splitting of this Lie algebra: \( \Omega^\bullet \ot \fg[1] \) where \( \fg[1] \) is the color Lie algebra and \( \Omega^\bullet \) the kinematic algebra, which, by the previous section is equipped with a \( \bvbox \)-algebra structure.
+
+To describe the kinematic Lie algebra, one imposes a gauge fixing condition; restriction to \( \ker d^\star = \ker m^1_1 \subset \Omega^1(M)\).
+Since contraction with the volume form identifies \( d^\star \) with the divergence operator on polyvector fields, the kinematic Lie algebra of Chern--Simons is isomorphic to the Lie algebra of volume preserving vector fields.\cite{manifest cs ck duality paper}
+
+
+
+%The Chern–Simons action on $\Omega^1(M) \otimes \fg$, which is preserved by infinitesimal gauge symmetries, is defined by
+%\[
+%S_{\mathrm{CS}}(A) = \frac{1}{2} \int_M \langle A, dA \rangle + \frac{1}{6} \langle A, [A, A] \rangle.
+%\]
+
+
+
+%Let $\angles{-,-}$ denote the pairing on $\Omega^\bullet(M) \otimes \fg$ defined by
+%\[
+%\langle \omega_1 \otimes E_1,\, \omega_2 \otimes E_2 \rangle
+%=
+%\int_M \omega_1 \wedge \omega_2\, \langle E_1, E_2 \rangle_{\fg}.
+%\]
+
+%COSTELLO
+%\subsection{The BV Space of Fields}
+%
+%The Batalin–Vilkovisky space of fields associated to Chern–Simons gauge theory is obtained by adding ghosts, corresponding to elements of the Lie algebra of gauge symmetries; anti-fields, dual to the space of fields; and anti-ghosts, dual to the space of ghosts.
+%The space we end up with is simply
+%\begin{align*}
+%	& \Omega^0(M) \otimes \fg \quad \text{ghosts; degree $-1$} \\
+%	& \Omega^1(M) \otimes \fg \quad \text{fields; degree $0$} \\
+%	& \Omega^2(M) \otimes \fg \quad \text{anti-fields; degree $1$} \\
+%	& \Omega^3(M) \otimes \fg \quad \text{anti-ghosts; degree $2$}
+%\end{align*}
+%In other words, the space of fields for Chern–Simons theory in the BV formalism is simply
+%\[
+%E = \Omega^\ast(M) \otimes \fg[1].
+%\]
+%The degree $-1$ symplectic pairing on $E$ arises from the degree $-3$ symmetric pairing on $\Omega^\ast(M) \otimes \fg$ described above.
+%
+%\subsection{The BV Action for Chern–Simons}
+%
+%The Batalin–Vilkovisky action on $E$ is simply
+%\[
+%S(e) = \frac{1}{2} \langle e, de \rangle + \frac{1}{6} \langle e, [e, e] \rangle
+%\]
+%as before.
+%
+%One can see this as follows. The BV action can be written
+%\[
+%S = S_{\mathrm{Gauge}} + S_{\mathrm{CS}}
+%\]
+%where
+%\[
+%S_{\mathrm{CS}} \colon \Omega^1(M) \otimes \fg \to \mathbb{R}
+%\]
+%is the Chern–Simons action as above, and $S_{\mathrm{Gauge}}$ arises from the gauge action.
+%
+%We will denote fields by $A$, ghosts by $X$, anti-fields by $A^\vee$ and anti-ghosts by $X^\vee$.
+%Then, the Lie bracket on ghosts gives the term
+%\[
+%\frac{1}{2} \langle [X, X], X^\vee \rangle.
+%\]
+%The action of ghosts on fields gives the term
+%\[
+%\langle dX + [X, A], A^\vee \rangle.
+%\]
+%
+%
+%
+%
+%
+%Tensoring this commutative algebra with a Lie algebra \( \fg \) defines a Lie bracket:
+%\[
+%[A, A'] = [\alpha \ot g, \alpha' \ot g'] = (\alpha \wedge \alpha') \ot [g, g']
+%\]
+%on the resulting complex.
+%
+%ISSUES WITH A FACTOR OF 2 IN MAURER CARTAN VS CHERN SIMONS
+%
+%The Maurer--Cartan elements of the resulting Lie algebra, i.e., degree \( 1 \) \( \fg \)-valued forms satisfying
+%\[
+%d A + \frac{1}{2} [A, A] = 0,
+%\]
+%
+%In 3-dimensions, these are precisely the solutions to the equations of motion associated to the Chern--Simons action
+%\[
+%S_{\mathrm{CS}}(A) = \int
+%\]
+%
+%
+%In the presence of a volume form, the contraction isomorphism
+%\[
+%\iota_{\vol} \colon \Gamma(\wedge^{n-k} TM) \to \Omega^k(M)
+%\]
+%sends the Schouten--Nijenhuis bracket to \( m^0_{1,1} \).\anibal{Try to prove that the kinematic Lie algebra of CS is volume preserving diffeomorphisms???}
+%
+%
+%Tensoring this commutative algebra with a cyclic Lie algebra \( (\fg, [-,-], \angles{-,-}) \) defines an
+%
+%3. In 3 D is the  kinematic algebra of CS. i.e, tensoring with \( \fg \) and considering MC defines
+%
+%Choosing a volume form extends to a \( \bvbox_(1) \) algebra.
+%
+%The complex of differential forms \( \Omega^\bullet(M) \) carry the structure of a \( \bvbox_{(1)} \)-algebra, with \( m^0_1 \) the de Rham differential \( d \), \( m^1_1 \) the Hodge codifferential \( d^\star \), \( m^0_2 \) the wedge product, and \( m^0_{1,1} \) the commutator \( [m^1_1, m^0_2] \).
+%The only non-zero obstruction map is \( n^1_1 = [m^0,m^1_1] \), which is the Laplace-Beltrami operator.
+%
+%Consider a Lie algebra \( (\fg, [-,-]) \) and the complex \( L =  \Omega^\bullet(M) \ot \fg \) with a Lie algebra structure defined by
+%\[
+%[\alpha_1 \ot g_1, \alpha_1 \ot g_2] = (\alpha_1 \wedge \alpha_2) \ot [g_1, g_2].
+%\]
+%Its Maurer--Cartan elements are exacly solutions to the Chern--Simons equations
+%\[
+%...
+%\]

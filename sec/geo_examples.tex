@@ -1,0 +1,88 @@
+%A \defn{star complex} is a bounded differential complex
+%\[
+%V_0 \xra{d} V_1 \xra{d} \dotsb \xra{d} V_{n-1} \xra{d} V_n
+%\]
+%together with a linear automorphism
+%\[
+%\star_m \colon V_m \to V_{n-m}
+%\]
+%for every \( m \in \set{0, \dots, n} \) satisfying \( \star_{n-m} \circ \star_m = \epsilon_m \cdot \id_{V_m} \) for some invertible scalar \( \epsilon_m \).
+%It defines canonically a bidifferential complex whose codifferential is \( d^\star \defeq \star \circ d \circ \star \).
+
+We will now review some examples of bidifferential complexes arising in geometry and combinatorial topology.
+
+\begin{example}
+	Let \( (M, g) \) be an oriented pseudo-Riemannian manifold of dimension~\( n \) and \( (\Omega(M), d) \) denote its complex of differential forms.
+	The \defn{Hodge star} operator
+	\[
+	\star \colon \Omega^m(M) \to \Omega^{n-m}(M)
+	\]
+	is the unique operator satisfying
+	\[
+	\alpha \wedge \star \beta = \langle \alpha, \beta \rangle_g \, \vol_g
+	\]
+	for all \( \alpha, \beta \in \Omega^m(M) \), where \( \vol_g \) is the oriented volume form on \( M \) associated to \( g \) and \( \langle -, - \rangle_g \) is the canonical extension of the metric to differential forms.
+
+	This operator satisfies
+	\[
+	\star \circ \star = (-1)^{m(n-m) + s} \cdot \id \quad \text{on } \Omega^m(M),
+	\]
+	where \( s \) is the signature index of the metric (e.g., \( s = 0 \) for Riemannian, \( s = 1 \) for Lorentzian).
+
+	The triple \( (\Omega(M), d, \star) \) is a star complex whose associated bidifferential complex has box operator \( \square = [d, d^\star] \) equal to the \defn{Laplace–Beltrami operator} if \( s = 0 \) or to the \defn{d'Alembertian} if \( s = 1 \).
+\end{example}
+
+\begin{example}
+	Discrete laplacian...
+\end{example}
+
+\begin{example}
+	Let \( (M, h) \) be a Hermitian manifold of complex dimension~\( n \), and \( (\Omega^{0,\bullet}(M), \bar\partial) \) its Dolbeault complex of antiholomorphic forms.
+
+	Similar to the previous example, the
+	%	Hermitian metric \( h \) induces a pointwise Hermitian inner product
+	%	\[
+	%	\langle \alpha, \beta \rangle_h \quad \text{on } \Omega^{0,m}(M),
+	%	\]
+	conjugate-linear \defn{Hodge star} operator
+	\[
+	\star \colon \Omega^{0,m}(M) \to \Omega^{0,n-m}(M)
+	\]
+	is defined via the identity
+	\[
+	\alpha \wedge \star \bar\beta = \langle \alpha, \beta \rangle_h \, \vol_h.
+	\]
+
+	This operator satisfies
+	\[
+	\star \circ \star = (-1)^m \cdot \id \quad \text{on } \Omega^{0,m}(M).
+	\]
+
+	The triple \( (\Omega^{0,\bullet}(M), \bar\partial, \star) \) is a star complex, and the induced bidifferential complex has codifferential \( \bar\partial^\star = \star \circ \bar\partial \circ \star \).
+	The associated box operator \( \square = [\bar\partial, \bar\partial^\star] \) is the \defn{Dolbeault Laplacian}.
+\end{example}
+
+\begin{example}
+	Let \( (M, \omega) \) be a symplectic manifold of dimension~\( 2n \), and \( (\Omega^\bullet(M), d) \) its complex of differential forms.
+
+	The symplectic form \( \omega \) induces a canonical \defn{symplectic star} operator
+	\[
+	\star_\omega \colon \Omega^m(M) \to \Omega^{2n - m}(M)
+	\]
+	satisfying
+	\[
+	\alpha \wedge \star_\omega \beta = \langle \alpha, \beta \rangle_\omega \, \frac{\omega^n}{n!},
+	\]
+	where \( \langle -, - \rangle_\omega \) is the inner product on forms induced by the symplectic volume and symplectic duality.
+
+	The operator satisfies
+	\[
+	\star_\omega \circ \star_\omega = \id \quad \text{on } \Omega^m(M),
+	\]
+	and defines a codifferential
+	\[
+	d^\star \defeq \star_\omega \circ d \circ \star_\omega.
+	\]
+
+	The triple \( (\Omega^\bullet(M), d, \star_\omega) \) is a star complex, and the associated bidifferential complex has box operator \( \square = [d, d^\star] \), which plays a central role in symplectic Hodge theory.
+\end{example}

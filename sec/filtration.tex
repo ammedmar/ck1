@@ -1,0 +1,107 @@
+\subsection{Weight filtration}
+
+We define the \defn{weight} of a generating map \( m_{p_1, \dots, p_k}^t \) to be \( t + p_1 + \dots + p_k - 1 \).
+
+A \( \bv_\infty \)-algebra (resp.\ \( \bvbox_\infty \)-algebra) structure on \( A \) in which all generating maps of weight greater than \( n \) vanish is called a \defn{\( \bv_{\!(n)} \)-algebra} (resp.\ \defn{\( \bvbox_{\!(n)} \)-algebra}).
+
+Defining similarly the weight of a relation map \( \sM_{p_1, \dots, p_k}^t \) to be \( t + p_1 + \dots + p_k - 1 \), we observe that in a \( \bv_{\!(n)} \)- or \( \bvbox_{\!(n)} \)-algebra, all relation maps of weight greater than \( w \) are linear combinations of identically zero maps.
+
+Therefore, in order to construct a \( \bv_{\!(n)} \)- or \( \bvbox_{\!(n)} \)-algebra structure on \( A \), one needs only to construct a finite number of generating maps and verify the vanishing of a finite number of relation maps.
+Below, we make these sets explicit for weights \( 1 \) and \( 2 \) and provide examples.
+%; the case of weight \( 1 \) recovers the (strict) algebras and the weight 2 case is used in the next section to connect with the algebraic structures present in Yang-Mills theory.
+
+\subsubsection{Weight 0}
+
+The only generating map of degree \( 0 \) is \( m^0_1 \) and the only relation of weight \( 0 \) is
+% differential
+\[
+\sM^0_{1} = \displaystyle m^0_1 \circ m^0_1 = \tfrac{1}{2}[m^0_1, m^0_1].
+\]
+Therefore, a \( \bv_{(0)} \)- or \( \bvbox_{(0)} \)-algebra is simply a differential graded vector space.
+
+\subsubsection{Weight 1}
+
+The set of generating maps of weight \( 1 \) is:
+%of a \( \bv_{(1)} \)-algebra structure or a \( \bvbox_{(1)} \)-algebra structure on \( A \) is the same; it consists linear maps:
+\[
+m^1_1 \colon A \to A, \qquad
+m^0_2 \colon A^{\ot 2} \to A, \qquad
+m^0_{1,1} \colon A \ot A \to A,
+\]
+of degrees:
+\[
+\bars{m^1_1} = -1, \quad
+\bars{m^0_2} = 0, \quad
+\bars{m^0_{1,1}} = -1.
+\]
+They are required to satisfy the following symmetric properties:
+\[
+m^1_{2} \circ \big(\id - (12)\big) = 0, \quad
+m^1_{1,1} \circ \big(\id - (12)\big) = 0.
+\]
+The relation maps of weight \( 0 \) are presented in \cref{f:weight0}.
+Therefore, \( \bv_{(1)} \)- and \( \bvbox_{(1)} \)-algebras are respectively \( \bv \)- and \( \bvbox \)-algebras respectively.
+
+%or, explicitly,
+%\begin{align*}
+%	m^0_2(a_1 \ot a_2) &= (-1)^{\bars{a_1} \bars{a_2}} \, m^0_2(a_2 \ot a_1), \\
+%	m^0_{1,1}(a_1 \ot a_2) &= (-1)^{\bars{a_1} \bars{a_2}} \, m^0_{1,1}(a_2 \ot a_1).
+%\end{align*}
+
+%\subsubsection{Relation maps}
+%
+%To describe the relations satisfied by these algebras, we use the following compositions of generating maps, referred to as \emph{relation maps}, which are presented with a segmentation that will play a role in the next subsection.
+\begin{figure}
+	\input{sec/weight0}
+	\caption{Relation maps of weight 2.}
+	\label{f:weight0}
+\end{figure}
+
+\begin{figure}
+	\input{sec/weight1}
+	\caption{Relation maps of weight 3.}
+	\label{f:weight1}
+\end{figure}
+
+%\subsubsection{ \( \bv_{(1)} \)-algebras}
+%
+%A \defn{\( \bv_{(1)} \)-algebra} structure on \( A \) consists of the generating maps above, subject to the condition that all relation maps are identically zero.
+%
+%\subsubsection{ \( \bvbox_{(1)} \)-algebras}
+%
+%Similarly, a \defn{\( \bvbox_{(1)} \)-algebra} structure on \( A \) consists of the same data, subject only to the requirement that the relation maps \( \sM^0_1 \), \( \sM^0_2 \), and \( \sM^0_3 \) are identically zero.
+
+\subsubsection{Level 2}
+
+The subset of generating maps of weight \( 2 \) is:
+
+\begin{align*}
+	&m^0_{3}      \colon A^{\ot 3} \to A,
+	&& m^0_{1,2}    \colon A \ot A^{\ot 2} \to A,
+	&& m^0_{1,1,1}  \colon A \ot A \ot A \to A, \\
+	&m^1_{1,1}    \colon A \ot A \to A,
+	&& m^1_{2}      \colon A^{\ot 2} \to A,
+	&& m^2_{1}      \colon A \to A,
+\end{align*}
+whose degrees are:
+\begin{align*}
+	&\bars{m^0_{3}} = -1,   && \bars{m^0_{1,2}} = -2,   && \bars{m^0_{1,1,1}} = -3, \\
+	&\bars{m^1_{1,1}} = -3, && \bars{m^1_{2}}   = -2,   && \bars{m^2_{1}}     = -3.
+\end{align*}
+They are required to satisfy the following symmetric properties:
+\begin{equation}\label{eq:symmetry_weight2}
+	\begin{split}
+		m^0_3 \circ \big(\id - (12) + (132)\big) &= 0, \qquad \Big(m^0_3 \circ \big(\id - (23) + (123)\big) = 0,\Big) \\
+		m^0_{1,2} \circ \big(\id - (23)\big) &= 0, \qquad \Big(m^0_{2,1} - m^0_{1,2} \circ (123) = 0,\Big) \\
+		m^0_{1,1,1} \circ \big(\id - (12)\big) &= 0, \qquad m^0_{1,1,1} \circ \big(\id - (23)\big) = 0, \\
+		m^1_{1,1} \circ \big(\id - (12)\big) &= 0, \qquad m^1_{2} \circ \big(\id - (12)\big) = 0.
+	\end{split}
+\end{equation}
+
+\noindent The relation maps of weight 2 are presented in \cref{f:weight2}.
+
+\begin{figure}
+	\include{sec/weight2}
+	\caption{Relation maps of weight 4 MISSING THE BOUNDARIES}
+	\label{f:weight2}
+\end{figure}

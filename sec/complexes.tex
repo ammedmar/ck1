@@ -1,6 +1,6 @@
 % !TEX root = ../ck_dual.tex
 
-\section{Bi-differential complexes}
+\section{Bidifferential complexes}
 
 \subsection{Conventions}
 
@@ -10,125 +10,37 @@ We say that a map \( f \colon V \to W \) is of \defn{degree} \( k \) if \( f(V_n
 
 A \defn{differential} \( d \colon V \to V \) is a nilpotent (i.e. \( d \circ d = 0 \)) map of degree \( 1 \).
 We refer to the pair \( (V, d) \) as a \defn{differential complex}.
-Similarly, a \defn{co-differential} \( d^\star \colon V \to V \) is a nilpotent map of degree \( -1 \) and the pair \( (V, d^\star) \) is referred to as  a \defn{co-differential complex}.
+Similarly, a \defn{codifferential} \( d^\star \colon V \to V \) is a nilpotent map of degree \( -1 \) and the pair \( (V, d^\star) \) is referred to as  a \defn{codifferential complex}.
 
 A \defn{morphism} of differential complexes is a degree 0 map \( f \colon V \to W \) commuting with the differentials (i.e., \( f \circ d_V = d_W \circ f\)).
-Morphisms of co-differential complexes are defined analogously.
+Morphisms of codifferential complexes are defined analogously.
 
-\subsection{Bi-differential complexes}
+\subsection{Bidifferential complexes}
 
-A \defn{bi-differential complex} is a triple \( (V, d, d^\star) \) where \( (V, d) \) is a differential complex and \( (V, d^\star) \) is a co-differential complex.
+A \defn{bidifferential complex} is a triple \( (V, d, d^\star) \) where \( (V, d) \) is a differential complex and \( (V, d^\star) \) is a codifferential complex.
 
-A \defn{morphism} of bi-differential complexes is a degree \( 0 \) linear map that commutes with both \( d \) and \( d^\star \).
+A \defn{morphism} of bidifferential complexes is a degree \( 0 \) linear map that commutes with both \( d \) and \( d^\star \).
 
-Every bi-differential complex admits a canonical endomorphism known as the \defn{box operator}:
+Every bidifferential complex is equipped with a canonical endomorphism known as the \defn{box operator}:
 \[
-\square \defeq [d, d^\star] = d \circ d^\star + d^\star \circ d.
+\square \defeq [d, d^\star] = [d^\star, d] = d \circ d^\star + d^\star \circ d.
 \]
 
-When \( \square = 0 \), the bi-differential complex \( (V, d, d^\star) \) is referred to in the literature as a \textit{mixed complex}.
+When \( \square = 0 \), the bidifferential complex \( (V, d, d^\star) \) is referred to in the literature as a \textit{mixed complex}.
 This note, however, focuses on the case where \( \square \neq 0 \).
 
-\subsection{Examples}\label{ss:geometric examples}
+\subsection{Examples}\label{ss:geometric_examples}
 
-%A \defn{star complex} is a bounded differential complex
-%\[
-%V_0 \xra{d} V_1 \xra{d} \dotsb \xra{d} V_{n-1} \xra{d} V_n
-%\]
-%together with a linear automorphism
-%\[
-%\star_m \colon V_m \to V_{n-m}
-%\]
-%for every \( m \in \set{0, \dots, n} \) satisfying \( \star_{n-m} \circ \star_m = \epsilon_m \cdot \id_{V_m} \) for some invertible scalar \( \epsilon_m \).
-%It defines canonically a bi-differential complex whose co-differential is \( d^\star \defeq \star \circ d \circ \star \).
-
-We will now review some examples of bi-differential complexes arising in geometry and combinatorial topology.
-
-\begin{example}
-	Let \( (M, g) \) be an oriented pseudo-Riemannian manifold of dimension~\( n \) and \( (\Omega(M), d) \) denote its complex of differential forms.
-	The \defn{Hodge star} operator
-	\[
-	\star \colon \Omega^m(M) \to \Omega^{n-m}(M)
-	\]
-	is the unique operator satisfying
-	\[
-	\alpha \wedge \star \beta = \langle \alpha, \beta \rangle_g \, \vol_g
-	\]
-	for all \( \alpha, \beta \in \Omega^m(M) \), where \( \vol_g \) is the oriented volume form on \( M \) associated to \( g \) and \( \langle -, - \rangle_g \) is the canonical extension of the metric to differential forms.
-
-	This operator satisfies
-	\[
-	\star \circ \star = (-1)^{m(n-m) + s} \cdot \id \quad \text{on } \Omega^m(M),
-	\]
-	where \( s \) is the signature index of the metric (e.g., \( s = 0 \) for Riemannian, \( s = 1 \) for Lorentzian).
-
-	The triple \( (\Omega(M), d, \star) \) is a star complex whose associated bi-differential complex has box operator \( \square = [d, d^\star] \) equal to the \defn{Laplace–Beltrami operator} if \( s = 0 \) or to the \defn{d'Alembertian} if \( s = 1 \).
-\end{example}
-
-\begin{example}
-	Discrete laplacian...
-\end{example}
-
-\begin{example}
-	Let \( (M, h) \) be a Hermitian manifold of complex dimension~\( n \), and \( (\Omega^{0,\bullet}(M), \bar\partial) \) its Dolbeault complex of antiholomorphic forms.
-
-	Similar to the previous example, the
-%	Hermitian metric \( h \) induces a pointwise Hermitian inner product
-%	\[
-%	\langle \alpha, \beta \rangle_h \quad \text{on } \Omega^{0,m}(M),
-%	\]
-	conjugate-linear \defn{Hodge star} operator
-	\[
-	\star \colon \Omega^{0,m}(M) \to \Omega^{0,n-m}(M)
-	\]
-	is defined via the identity
-	\[
-	\alpha \wedge \star \bar\beta = \langle \alpha, \beta \rangle_h \, \vol_h.
-	\]
-
-	This operator satisfies
-	\[
-	\star \circ \star = (-1)^m \cdot \id \quad \text{on } \Omega^{0,m}(M).
-	\]
-
-	The triple \( (\Omega^{0,\bullet}(M), \bar\partial, \star) \) is a star complex, and the induced bi-differential complex has co-differential \( \bar\partial^\star = \star \circ \bar\partial \circ \star \).
-	The associated box operator \( \square = [\bar\partial, \bar\partial^\star] \) is the \defn{Dolbeault Laplacian}.
-\end{example}
-
-\begin{example}
-	Let \( (M, \omega) \) be a symplectic manifold of dimension~\( 2n \), and \( (\Omega^\bullet(M), d) \) its complex of differential forms.
-
-	The symplectic form \( \omega \) induces a canonical \defn{symplectic star} operator
-	\[
-	\star_\omega \colon \Omega^m(M) \to \Omega^{2n - m}(M)
-	\]
-	satisfying
-	\[
-	\alpha \wedge \star_\omega \beta = \langle \alpha, \beta \rangle_\omega \, \frac{\omega^n}{n!},
-	\]
-	where \( \langle -, - \rangle_\omega \) is the inner product on forms induced by the symplectic volume and symplectic duality.
-
-	The operator satisfies
-	\[
-	\star_\omega \circ \star_\omega = \id \quad \text{on } \Omega^m(M),
-	\]
-	and defines a co-differential
-	\[
-	d^\star \defeq \star_\omega \circ d \circ \star_\omega.
-	\]
-
-	The triple \( (\Omega^\bullet(M), d, \star_\omega) \) is a star complex, and the associated bi-differential complex has box operator \( \square = [d, d^\star] \), which plays a central role in symplectic Hodge theory.
-\end{example}
+%\input{sec/geo_examples}
 
 \subsection{Contractions}
 
-In the previous subsection, we presented several examples of bi-differential complexes arising naturally in geometry.
-In this section, we describe how bi-differential complexes also emerge from deformation retractions.
+A LOT OF PAPERS TO CITE HERE. MOST PRESSING ARE THE WORK OF CHUANG-LAZAREV AND STASHEFF ET AL.
 
-Deformation retractions play a central role in Homological Perturbation Theory (HPT), where they provide a controlled setting for transferring algebraic structures between quasi-isomorphic complexes.
-We will explore this further in the next section.
+In the previous subsection, we presented several examples of bidifferential complexes arising naturally in geometry.
+In this section, we describe how bidifferential complexes also emerge from deformation retractions, which provide a controlled setting for transferring derived algebraic structures between quasi-isomorphic complexes.
 
-We now present deformation retractions and contractions in the context of differential complexes, while noting that an analogous treatment applies as well in the setting of co-differential complexes.
+We now present deformation retractions and contractions in the context of differential complexes, while noting that an analogous treatment applies as well in the setting of codifferential complexes.
 
 \medskip\noindent
 A (strong) \defn{deformation retraction} consists of a pair of morphisms
@@ -164,7 +76,7 @@ In this case, the complex \( (W, d_W) \) is isomorphic to the subcomplex \( (\im
 }
 This observation motivates the idea of ``internalizing'' the complex \( (W, d_W) \) into the data \( (V, d, h) \), leading to the notion of a \textit{contraction} introduced by Eilenberg--MacLane in \cite{??}.\anibal{change the notation for def retract to \( \pi, \iota \) reserving \( p \) as claimed}
 
-In the language of this paper, a \defn{contraction} is a bi-differential complex \( (V, d, h) \) satisfying the identity:
+In the language of this paper, a \defn{contraction} is a bidifferential complex \( (V, d, h) \) satisfying the identity:
 \[
 h \circ d \circ h = h.
 \]
@@ -189,7 +101,7 @@ Therefore, \( V \) admits the direct sum decomposition:
 V = \img p \oplus \ker p.
 \]
 
-The following statement is a well-known fact that we state with a complete proof to make this presentation self-contained.
+The following statement is a well-known fact that we write with a complete proof to make this presentation self-contained.
 
 \begin{proposition}
 	A contraction \( (V, d, h) \) determines a deformation retraction
@@ -273,22 +185,23 @@ We now identify the condition under which a contraction yields a deformation ret
 	which proves the claim.
 \end{proof}
 
-For a contraction \( (V, d, h) \), the condition \( d \circ h \circ d = d \), which characterizes \emph{minimal contractions}, complements the defining identity \( h \circ d \circ h = h \) and restores the symmetry inherent to bi-differential complexes.
+For a contraction \( (V, d, h) \), the condition \( d \circ h \circ d = d \), which characterizes \emph{minimal contractions}, complements the defining identity \( h \circ d \circ h = h \) and restores the symmetry inherent to bidifferential complexes.
 
-\subsection{Bi-contractions}
+\subsection{Bicontractions}
 
 %In the next subsection, we investigate the contractions introduced above emphasizing their symmetric structure.
 
 \begin{definition}
-	A bi-differential complex \( (V, d, d^\star) \) is said to be a \defn{bi-contraction} if it satisfies:
+	A bidifferential complex \( (V, d, d^\star) \) is said to be a \defn{bicontraction} if it satisfies:
 	\[
-	d^\star \circ d \circ d^\star = d^\star, \qquad
+	d^\star \circ d \circ d^\star = d^\star
+	\qquad\text{and}\qquad
 	d \circ d^\star \circ d = d.
 	\]
 \end{definition}
 
-\begin{lemma}\label{thm:bi-contraction}
-	Let \( (V, d, d^\star) \) be a bi-contraction.
+\begin{lemma}\label{thm:bicontraction}
+	Let \( (V, d, d^\star) \) be a bicontraction.
 	Then:
 	\begin{gather*}
 		\ker\square = \ker d \cap \ker d^\star, \\
@@ -333,8 +246,7 @@ For a contraction \( (V, d, h) \), the condition \( d \circ h \circ d = d \), wh
 	\textbf{Claim 3:} \( \ker p = \img d \oplus \img d^\star \).
 
 	\medskip\noindent (\( \subseteq \))
-	Consider \( v \in \ker p \).
-	Then \( 0 = v - (d \circ d^\star)(v) - (d^\star \circ d)(v) \) or, equivalently, \( v =  d(d^\star v) + d^\star(dv)\) showing that \( v \in  \img d + \img d^\star\).
+	Consider \( v \in \ker p \), i.e., \( 0 = v - (d \circ d^\star)(v) - (d^\star \circ d)(v) \) or, equivalently, \( v =  d(d^\star v) + d^\star(dv)\), showing that \( v \in  \img d + \img d^\star\).
 
 	\medskip\noindent (\( \supseteq \))
 	For \( v \in \img d \), write \( v = d u \). Then
@@ -363,44 +275,58 @@ For a contraction \( (V, d, h) \), the condition \( d \circ h \circ d = d \), wh
 
 \subsection{Green operators}
 
-The conditions defining a bi-contraction are quite restrictive, as none of the geometric examples discussed so far satisfy them.
+%A right inverse for \( \square \) is referred to as a \emph{Green operator}.
 
-\begin{comment}
-	Revisiting these conditions using the box operator, we observe that a bi-differential complex \( (V, d, d^\star) \) is a bi-contraction if and only if \( \square = \id \) on \( (\img d + \img d^\star) \).\footnote{
-	Explicitly, \( d = d \circ d^\star \circ d \) if and only if \( d = \square \circ d \), which holds if and only if \( \square|_{\img d} = \id \).
-	A similar argument applies to the condition \( d^\star = d^\star \circ d \circ d^\star \), which is equivalent to \( \square|_{\img d^\star} = \id \).
-}
+Suppose \( V \) admits a direct sum decomposition
+\[
+V = \img(\square) \oplus \ker(\square),
+\]
+a condition satisfied, for example, when \( \square \) is an elliptic operator.
+Let \( \pi \) denote the projection onto \( \ker(\square) \).
+The operator \( \square + \pi \) is invertible, as its kernel is trivial and its image is all of \( V \).
+In this case we have a canonical right inverse for \( \square \), given by
+\begin{equation}\label{eq:Green_operator}
+	G \defeq (\square + \pi)^{-1} \circ (\id_V - \pi).
+\end{equation}
 
-Since \( \img\square \subseteq \img d + \img d^\star \) the bi-contraction property implies \( \img\square =  \img d + \img d^\star\).
-As we will see, this weaker condition suffices to construct a \textit{Hodge-type decomposition} as the one constructed in \cref{thm:bi-contraction}.
+More generally, one may consider the existence of a projection \( \pi \colon V \to V \) onto a complement of \( \img(\square) \) such that the operator \( \square + \pi \) is invertible.
+If this holds, the above construction \eqref{eq:Green_operator} applies verbatim and we say that the bidifferential complex \defn{admits a Green operator}, which we somewhat abusively denote \( G \) for any choice of such \( \pi \).
+
+\begin{lemma}
+	If \( (V, d, d^\star) \) admits a Green operator, then \( G \) restricts to a bidifferential automorphism of \( \img \square \).
+\end{lemma}
+
+\begin{proof}
+	Consider a projection as provided by the assumption: \( \pi \colon V \to \img \pi \), with \( V = \img \square \oplus \img \pi \) and \( \square + \pi \) invertible.
+
+	Since \( G = (\square + \pi)^{-1} \) on \( \img \square \), to prove that it is an automorphism of \( \img \square \), it suffices to show that its image is equal to \( \img \square \).
+	Consider \( G(\square c) = \square c' + \pi c'' \) for some \( c, c', c'' \) and apply \( \square + \pi \) to this identity:
+	\[
+	\square c = \square(c' + \pi c'') + \pi c''.
+	\]
+	Since \( \square \) and \( \pi \) have complementary images, we conclude that \( \pi c'' = 0 \), as required.
+
+	Let us now prove that \( G \) commutes with \( d \) and \( d^\star \) when restricted to \( \img \square \).
+	For any \( c \in \img \square \), the element \( c' = (G \circ d)(c) \) is characterized by \( \square c' = d c \).
+	The same identity is satisfied by \( c'' = (d \circ G)(c) \) since \( d \circ \square = \square \circ d \), so \( c' = c'' \), i.e., \( (G \circ d)(c) = (d \circ G)(c) \).
+	The same argument applies to \( d^\star \).
+\end{proof}
+
+\subsection{\( dd^\star \)-complexes}
 
 \begin{definition}
-	A \defn{\( dd^\star\! \)-complex} as a bi-differential complex \( (V, d, d^\star) \) satisfying the \defn{\( dd^\star\! \)-condition}:
+	A \defn{\( dd^\star\! \)-complex} is a bidifferential complex \( (V, d, d^\star) \) satisfying the \defn{\( dd^\star\! \)-condition}:
 	\[
 	\img \square = \img d + \img d^\star.
 	\]
 \end{definition}
 
-\begin{lemma}\label{thm:d dstar lemma}
-	Let \( (V, d, d^\star) \) be a Green bi-differential complex which is either bounded below or above.
-	Then, there exists a bi-differential morphism \( G \colon \img\square \to V \) with \( \square \circ G = \id_{\img\square} \) such that \( (V, d, G \circ d^\star) \) and \( (V, G \circ d, d^\star) \) are bi-contractions.
-\end{lemma}
-\end{comment}
+\begin{theorem}\label{thm:d dstar lemma}
+	If \( (V, d, d^\star) \) is a \( dd^\star \)-complex admitting a Green operator \( G \) then both \( (V, d, G \circ d^\star) \) and \( (V, G \circ d, d^\star) \) are bicontractions.
+\end{theorem}
 
-A condition that these do satisfy and which is sufficient to obtain the Hodge decomposition, is the existence of a section to the box operator in the category of bi-differential complexes.
-
-\begin{definition}
-	Given a bi-differential complex, a \defn{Green operator} is a bi-differential morphism \( G \colon \img\square \to V \) with \( \square \circ G = \id_{\img\square} \).
-%	Such a tuple \( (V, d, d^\star, G) \) will be referred to as a \defn{Green bi-differential complex}.
-\end{definition}
-
-\begin{lemma}\label{thm:d dstar lemma}
-	If \( (V, d, d^\star) \) is bi-differential complex admitting a Green operator \( G \) then both \( (V, d, G \circ d^\star) \) and \( (V, G \circ d, d^\star) \) are bi-contractions.
-\end{lemma}
-
-\anibal{Issue with \( \square \circ G \) below, since we are not in the image of \( \square \).}
 \begin{proof}
-	We verify that \( (V, d, G \circ d^\star) \) satisfies the bi-contraction identities:
+	We verify that \( (V, d, G \circ d^\star) \) satisfies the bicontraction identities:
 	\begin{align*}
 		(G \circ d^\star) \circ d \circ (G \circ d^\star)
 		&= G \circ (d^\star \circ d) \circ (G \circ d^\star) \\
@@ -413,20 +339,23 @@ A condition that these do satisfy and which is sufficient to obtain the Hodge de
 		&= G \circ (d \circ d^\star) \circ d \\
 		&= G \circ (\square - d^\star \circ d) \circ d \\
 		&= G \circ \square \circ d - G \circ d^\star \circ d \circ d \\
+		&= (\square + \pi)^{-1} \circ \square \circ d \\
+		&= (\square + \pi)^{-1} \circ (\square + \pi) \circ d \\
 		&= d.
 	\end{align*}
 	The statement for \( (V, G \circ d, d^\star) \) follows by symmetry.
 \end{proof}
 
-\begin{lemma}\label{thm:d dstar hodge decomposition}
-	Let \( (V, d, d^\star) \) be a bi-differential complex admitting a Green operator.
+
+\begin{corollary}\label{thm:d dstar hodge decomposition}
+	Let \( (V, d, d^\star) \) be a \( dd^\star \)-complex admitting a Green operator.
 	Then:
 	\begin{gather*}
 		\ker \square = \ker d \cap \ker d^\star, \\
 		V = \ker \square \oplus \img d \oplus \img d^\star,
 	\end{gather*}
 	and \( \ker \square \) is canonically isomorphic to both \( \rH(V, d) \) and \( \rH(V, d^\star) \).
-\end{lemma}
+\end{corollary}
 
 \begin{proof}
 	Let \( G \colon \img\square \to V \) be a Green operator, i.e., a right inverse to the box operator \( \square = d d^\star + d^\star d \).
@@ -434,8 +363,8 @@ A condition that these do satisfy and which is sufficient to obtain the Hodge de
 	\[
 	\ker(G \circ d) = \ker d, \qquad \ker(G \circ d^\star) = \ker d^\star.
 	\]
-	By \cref{thm:d dstar lemma}, the triples \( (V, d, G \circ d^\star) \) and \( (V, G \circ d, d^\star) \) are bi-contractions.
-	Then, by \cref{thm:bi-contraction}, we obtain both, the identities:
+	By \cref{thm:d dstar lemma}, the triples \( (V, d, G \circ d^\star) \) and \( (V, G \circ d, d^\star) \) are bicontractions.
+	Then, by \cref{thm:bicontraction}, we obtain both, the identities:
 	\begin{equation}\label{eq:d dstar hodge splitting}
 		V = \ker \square \oplus \img d \oplus \img(G \circ d^\star) = \ker \square \oplus \img(G \circ d) \oplus \img d^\star,
 	\end{equation}
@@ -468,7 +397,7 @@ A condition that these do satisfy and which is sufficient to obtain the Hodge de
 
 	\medskip\noindent
 	\( (\supseteq) \) Let \( du \in \img d \).
-	Since \( (V, d, G \circ d^\star) \) is a bi-contraction, we have:
+	Since \( (V, d, G \circ d^\star) \) is a bicontraction, we have:
 	\[
 	du = (d \circ G \circ d^\star \circ d)(u) = (G \circ d \circ d^\star \circ d)(u) = (G \circ d)\big(d^\star(du)\big),
 	\]

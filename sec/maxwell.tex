@@ -1,0 +1,110 @@
+\subsection{Yang--Mills (Second order)}
+
+\anibal{Notice the notion of Gauge fixing in CostelloGwilliams 2. It is an operator \( Q^{gf} \) whose commutatro with \( Q \) is a generalized laplacian. Pretty good for framing the BV box condition.}
+
+\anibal{Another important point made in Costello-Gwilliams is that the degree -3 pairing in the L-infinity algerbra associated to a formal moduli problem correpsonds to a shifted symplectic structure on the moduli problem itself. They credit Kontsevich 93 for noticing this connection (at least in the noncommutative context.)}
+
+\anibal{Formulas for the L-infty structure on the product of a Lie alg and a C-infty algebra are given in (6.7b) of Double copy from homotopy algebras}
+
+\anibal{The symmetry of m3 is not stated or proven in the original Zeitlin paper, make sure to mention it and maybe prove it (works when start is even degree)}
+
+\anibal{Careful that the Poisson relation is not a commutator as stated. It might have been used below, check.}
+
+\anibal{Called second order Yang–Mills complex in L-infty of classical field theory and the BV formalism (5.62a)}
+
+\anibal{Another important point: To get the YM equations in Zeitlin's Maurer-Cartan claim, we need to interpret [A,A] as 2AA, so the symmetry idea is already there, i.e. better suited for A infinity not C infinity}
+
+In \cite{Zeitlin}, the \defn{Maxwell complex}
+\[
+\begin{tikzcd}
+	0
+	\rar &[-10pt] \Omega^0(M) \arrow[r, "d"] & \Omega^1(M) \arrow[r, "d \star d"] & \Omega^{D-1}(M) \arrow[r, "d"] & \Omega^D(M)
+	\rar &[-10pt] 0
+\end{tikzcd}
+\]
+of a Riemannian \( D \)-manifold \( M \) is consider, where \( d \) denotes the de Rham differential and \( \star \) the Hodge star.
+Let us denote the above differential by \( m^1_1 \).
+Zeitlin extends this complex to a \( \rC_{(2)} \)-algebra as follows:
+\[
+m^0_2(\alpha \ot \beta) =
+\begin{cases}
+	d\star(\alpha \wedge \beta) + \alpha \wedge (\star d\beta) - \beta \wedge  (\star d\alpha), &
+	\bars{\alpha} = \bars{\beta} = 1, \\
+	\hfil \alpha \wedge \beta, & \text{ otherwise}.
+\end{cases}
+\]
+\[
+m^0_3(\alpha \ot \beta \ot \gamma) =
+\begin{cases}
+	\alpha \wedge \star(\beta \wedge \gamma) + \star(\alpha \wedge \beta) \wedge \gamma, &
+	\bars{\alpha} = \bars{\beta} = \bars{\gamma} = 1, \\
+	\hfil 0 & \text{ otherwise}.\\
+\end{cases}
+\]
+\anibal{I don't know if he checked \( \sM^0_4 \).}
+
+\medskip We now extend non-trivially this structure to a \( \bvbox_\infty \)-algebra structure.
+If \( d^\star \) is the Hodge codifferential, let \( m^1_1 \) be defined by
+\[
+\begin{tikzcd}[column sep=18pt]
+	0
+	&[-5pt] \Omega^0(M) \arrow[l] & \Omega^1(M) \arrow[l, "\ d^\star"'] & \Omega^{D-1}(M) \arrow[l, "\; \star"'] & \Omega^D(M)
+	\arrow[l, "\ d^\star"'] &[-5pt] 0. \arrow[l]
+\end{tikzcd}
+\]
+The obstruction \( n^1_1 = [m^0_1, m^1_1]\) is the Laplace--Beltrami operator.\anibal{Chech sign}.
+
+The generating map \( m^1_1 \) does not square to zero.
+In fact, since
+%with Riemannina signature,
+\[
+\star \star \alpha = (-1)^{\bars{\alpha}(D-\bars{\alpha})} \, \alpha,
+\]
+one has
+\[
+(m^1_1 \circ m^1_1)(\alpha) =
+\begin{cases}
+	d\mathord{\star} \alpha& \bars{\alpha} = D, \\
+	\star d \alpha & \bars{\alpha} = D-1, \\
+	\hfil 0 & \text{ Otherwise}.
+\end{cases}
+\]
+Defining
+\[
+m^2_1(\alpha) =
+\begin{cases}
+	- \star \alpha & \bars{\alpha} = D-1, D, \\
+	\hfil 0 & \text{Otherwise},
+\end{cases}
+\]
+we have \( n^2_1 = [m^0_1, m^2_1] + m^1_1 \circ m^1_1 = 0\).\anibal{Careful that \( d^\star \) is \( \pm \star d \star \)}
+
+\medskip
+Let us define \( m^0_{1,1} = [m^1_1, m^0_2]\) and \( m^1_2 = 0 \) so the obstruction \( n^1_2 \) vanishes.
+
+Let us now compute the obstruction
+\[
+n^0_{1,1} = [m^0_1, m^0_{1,1}] = \big[m^0_1, [m^1_1, m^0_2]\big] = [n^1_1, m^0_2],
+\]
+to be the failure of the Laplace--Beltrami operator to be of second order with respect to the product.
+
+Let us consider
+\[
+[m^0_2, m^0_{1,1}]
+= \big[m^0_2, [m^1_1, m^0_2]\big]
+= -\tfrac{1}{2}\big[m^1_1, [m^0_2, m^0_2]\big]
+= -\big[m^1_1, [m^0_1, m^0_3]\big].
+\]
+Setting \( m^0_{1,2} = 0\) the obstruction \( n^0_{1,2} \) is \( \big[m^1_1, [m^0_1, m^0_3]\big] \).
+
+Let us consider
+\begin{align*}
+	[m^1_1, m^0_{1,1}]
+	&= \big[m^1_1, [m^1_1, m^0_2]\big]
+	= -\tfrac{1}{2} \big[m^0_2, [m^1_1, m^1_1]\big] = - [m^0_2, (m^1_1 \circ m^1_1)] \\
+	&= \big[m^0_2, [m^0_1, m^2_1]\big]
+	= \big[m^0_1, [m^2_1, m^0_2]\big]
+\end{align*}
+Setting \( m^1_{1,1} = [m^2_1, m^0_2] \) we can let the obstruction \( n^1_{1,1} \) vanish.
+
+Jacobi is not clearly split into boundary and obstruction yet...
