@@ -1,6 +1,45 @@
 
 \section{Amplitudes}
 
+We work in Minkowski space \(\R^{1+d}\) with metric \(\eta_{\mu\nu} = \mathrm{diag}(-,+,\dots,+)\).
+The d'Alembertian is \(\Box \defeq \eta^{\mu\nu}\partial_\mu \partial_\nu\).
+
+\subsection{Plane waves}
+
+Any tempered distribution admits a Fourier representation
+\[
+f(x) = \int_{\R^{1,d}} \hat f(p)\, e^{ip\cdot x}\,\mathrm{d}p,
+\qquad p\cdot x = \eta_{\mu\nu} p^\mu x^\nu,
+\]
+up to normalization constants.
+For scattering purposes we restrict to the subspace of finite sums:
+\[
+W \defeq \Big\{ \phi(x) = \sum_j \phi_j\, e^{i p_j\cdot x}\Big\}.
+\]
+
+A \defn{plane wave} \(e^{i p\cdot x}\) has \defn{momentum} \(p\) and satisfies
+\[
+\Box(e^{i p\cdot x}) = -p^2 e^{i p\cdot x}, \qquad p^2 \defeq p\cdot p.
+\]
+It is called \defn{on-shell} if \(p^2=0\), and \defn{off-shell} otherwise.
+Let
+\[
+W_0 \defeq \ker \Box \cap W
+\]
+be the span of on-shell plane waves,
+and let \(\rP_0\colon W\to W_0\) denote the projection onto them.
+
+The \defn{propagator} \(G\) is defined as the inverse of \(\Box\) on the off-shell subspace:
+\[
+\big(G\circ (\id-\rP_0)\big)(\phi)
+= \sum_{p_j^2\neq 0} \frac{1}{p_j^2} \phi_j\, e^{i p_j\cdot x}.
+\]
+
+
+
+
+\newpage
+\subsection{old}
 Let us consider a \( \bvbox \) algebra \( (A, d, d^\star, \mu) \) and a cyclic Lie algebra \( (\fg, [-,-], \angles{-,-}) \).
 We are interested in transfering the dg Lie algebra \( A \ot \fg \) to \( \ker \square \ot \id_{\fg} \).
 If \( d \)

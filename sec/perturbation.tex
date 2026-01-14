@@ -1,0 +1,105 @@
+% !TEX root = ../ck1.tex
+
+%\section{Homological perturbation}
+
+\subsection{Classical elimination of an auxiliary field}
+
+We consider a classical field theory with two \textit{fields} \(x\) and \(y\) and an \textit{action} of the form
+\[
+S(x,y) = S_0(x) + \tfrac12 \langle y, K y \rangle + S_{\mathrm{int}}(x,y).
+\]
+Here \(K\) is a linear operator, assumed invertible, and \(\langle \cdot, \cdot \rangle\) denotes a non-degenerate pairing.
+We call \(G = K^{-1}\) the \textit{propagator} for \(y\).
+
+We seek a description of the theory depending only on \(x\), obtained by eliminating \(y\) through its \textit{equation of motion}
+\[
+\frac{\delta S}{\delta y}(x,y) = K y + \frac{\delta S_{\mathrm{int}}}{\delta y}(x,y) = 0.
+\]
+This may be rewritten as the fixed-point equation
+\[
+y = -G \frac{\delta S_{\mathrm{int}}}{\delta y}(x,y).
+\]
+A formal solution \(y = y(x)\) can be constructed perturbatively by Picard iteration:
+\[
+y^{(0)} = 0, \qquad y^{(n+1)} = -G \frac{\delta S_{\mathrm{int}}}{\delta y}\bigl(x, y^{(n)}\bigr).
+\]
+The \textit{effective action} is defined by substitution:
+\[
+S_{\mathrm{eff}}(x) \coloneqq S\bigl(x, y(x)\bigr).
+\]
+By the chain rule, together with the fact that \(y(x)\) satisfies the equation of motion,
+\[
+\frac{\delta S_{\mathrm{eff}}}{\delta x}(x) = \left. \frac{\delta S}{\delta x}(x,y) \right|_{y = y(x)}.
+\]
+Thus the effective action reproduces the classical equations of motion for \(x\) once the auxiliary field \(y\) has been placed \textit{on shell}.
+
+\subsection{Classical elimination in Maurer--Cartan theories}
+
+We now consider a theory whose fields form a cyclic dg Lie algebra
+\[
+\big(\mathcal L, d, [-,-], \langle -,- \rangle \big),
+\]
+with action given by the Maurer--Cartan functional
+\[
+S_L(\phi) = \tfrac12 \langle \phi, d\phi \rangle + \tfrac16 \langle \phi, [\phi,\phi] \rangle.
+\]
+The Euler--Lagrange equation of this action is
+\[
+d\phi + \tfrac12 [\phi,\phi] = 0.
+\]
+Assume that \(\mathcal L\) is equipped with a contraction \((i,p,h)\) compatible with the pairing in the sense that the splitting
+\[
+L \cong i(\img  p) \oplus \ker p
+\]
+is orthogonal.
+We will regard fields in \(i(\img  p)\) as retained degrees of freedom and fields in \(\ker p\) as auxiliary.
+Writing a general field as
+\[
+\phi = i(x) + y, \qquad x \in \img  p,\ y \in \ker p,
+\]
+the Euler--Lagrange equation in the auxiliary directions is obtained by restricting variations to \(\ker p\), equivalently by projecting the Euler--Lagrange equation with
+\[
+q \coloneqq \mathrm{id}_L - ip.
+\]
+This yields
+\[
+q \Bigl( d(i(x)+y) + \tfrac12 [i(x)+y, i(x)+y] \Bigr) = 0
+\]
+or, equivalently,
+\[
+dy + q \Bigl( \tfrac12 [i(x)+y, i(x)+y] \Bigr) = 0.
+\]
+Imposing the \textit{gauge-fixing condition} \(y \in \ker (h)\) and applying \(h\) yields
+\[
+y = -h \, q \Bigl( \tfrac12 [i(x)+y, i(x)+y] \Bigr) = -h \Bigl( \tfrac12 [i(x)+y, i(x)+y] \Bigr)
+\]
+since \(\mathrm{id}_L = dh + hd + ip\) and \(hi = 0\).
+This equation admits a formal solution \(y = y(x)\) obtained by Picard iteration:
+\[
+y^{(0)} = 0, \qquad
+y^{(n+1)} = -h \big(\tfrac12 [i(x)+y^{(n)}, i(x)+y^{(n)}]\big).
+\]
+Explicitly, the formal solution \(y(x)\) is the sum over all planar binary trees, where each tree contributes the operation obtained by labeling leaves with \(i(x)\), internal vertices with \([-,-]\), and internal edges and root with \(h\).
+Note that this formula treats \([-,-]\) as an ordered binary operation and does not invoke its antisymmetry.\anibal{Bring symmetries in and draw some examples.}
+Explicitly,
+\[
+y(x) = \phi_2(i(x)) + \phi_3(i(x)) + \dotsb\,, \qquad \phi_n(i(x)) = ???
+\]
+Substituting \(y(x)\) into the original action defines the effective action on \(\img  p\),
+\[
+S_{\mathrm{eff}}(x) \coloneqq S_L\bigl( i(x) + y(x) \bigr).
+\]
+Using that \(\langle i(x), - \rangle = \langle x, p(-) \rangle\):
+\begin{align*}
+	S_{\mathrm{eff}}(x)
+	&\,= \tfrac12 \langle x, l_1(x) \rangle + \tfrac16 \langle x, l_2(x) \rangle + \dotsb \\
+	&\defeq \tfrac12 \langle x, p\,d\,i(x) \rangle + \tfrac16 \langle x, p[i(x), i(x)] \rangle + \dotsb
+\end{align*}
+We can polarize these expressions to get maps \(\ell_n \colon (\img p)^{\ot n} \to \ker p\),
+\begin{align*}
+	2! \, \ell_2(x_1, x_2) &= l_1(x_1 + x_2) - l_2(x_1) - l_2(x_2), \\
+	3! \, \ell_3(x_1, x_2, x_3) &=  l_3(x_1 + x_2 + x_3) - l_3(x_1 + x_2) - l_3(x_1 + x_3) - l_3(x_2 + x_3) \\
+	&\ + l_3(x_1) + l_3(x_2) + l_3(x_3), \\
+	&\hspace*{6pt} \vdots
+\end{align*}
+which we recognize as the \(L_\infty\)-algebra structure on \(\ker p\) transfered via the contraction \((h,p,i)\).

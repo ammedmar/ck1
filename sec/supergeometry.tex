@@ -58,38 +58,107 @@ From this perspective, differential forms and polyvector fields on a smooth mani
 \fX(M) \cong C^\infty(\Pi\rT^*\!M).
 \]
 
+\noindent\hrule
+
 Under the first identification, the de Rham differential acts as a derivation of the ring of functions of \( \Pi\rT M \).
 That is to say, it corresponds to a \defn{supervector field} \( Q \).
 We can express the nipotency of the differential using the Lie bracket of supervector fields: \( [Q, Q] = 0 \).
 
+\subsection{Derived brackets}
 
-%\medskip
-%A \defn{supervector field} is a derivation of the sheaf of functions of a supermanifold.
-%More generally, the \defn{tangent sheaf} of a supermanifold \( \cM = (M, \cO) \) is
-%\[
-%\rT\cM \defeq \underline{\Der}_\R(\cO).
-%\]
+\begin{itemize}
+	\item We have the graded manifold \(T^{*}[1]M\).
+	\item Functions on it: \(C^{\infty}\!\big(T^{*}[1]M\big) \cong \Gamma\!\big(\Lambda^{\bullet} TM\big)\).
+	\item Canonical bracket: \(\{-,-\}\) corresponds to the Schouten--Nijenhuis bracket \([-,-]\) on multivectors.
+	\item A bivector \(\pi \in \Lambda^{2} \big(TM\big)\) corresponds to a quadratic function \(S_{\pi}\).
+	\item The condition \(\{S_{\pi},S_{\pi}\} = 0\) is equivalent to \([\pi,\pi] = 0\), i.e. \(\pi\) is Poisson.
+	\item The homological vector field \(Q \defeq \{S_{\pi},-\}\) satisfies \(Q^{2} = 0\) and is a derivation of the product.
+	\item The derived bracket \(\{-,-\}_Q \defeq \{\{Q,-\},-\}\) recovers the Poisson bracket on superfunctions of degree 0.
+\end{itemize}
+\subsection{Supergeometric tangent vs.\ cotangent derived brackets}
 
-%In local coordinates \( (x^i, \theta^\mu) \), the tangent sheaf has a \( \cO \)-linear basis given by \( \set[\big]{\tfrac{\partial\ }{\partial x_i}, \tfrac{\partial\ }{\partial \theta_\mu}} \) with the expected action on coordinate functions.
+\paragraph{Cotangent side: \(T^{*}[1]M\) (degree-1 symplectic NQ-manifold).}
+Choose local coordinates \(x^{i}\) on \(M\) and fiber coordinates \(\xi_{i}\) of degree \(1\) on \(T^{*}[1]M\).
+The canonical symplectic form of degree \(1\) is \(\omega = dx^{i}\wedge d\xi_{i}\).
+It induces the graded Poisson bracket of degree \(-1\) with generators \(\{x^{i},\xi_{j}\}=\delta^{i}_{j}\), \(\{x^{i},x^{j}\}=0\), \(\{\xi_{i},\xi_{j}\}=0\).
+Via the identification \(C^{\infty}(T^{*}[1]M)\cong\Gamma(\Lambda^{\bullet}TM)\), this bracket is the Schouten–Nijenhuis bracket.
+A bivector \(\pi=\tfrac12\,\pi^{ij}(x)\,\partial_{i}\wedge\partial_{j}\) corresponds to the quadratic Hamiltonian \(S_{\pi}=\tfrac12\,\pi^{ij}(x)\,\xi_{i}\xi_{j}\).
+The Poisson condition \([\pi,\pi]_{SN}=0\) is equivalent to the classical master equation \(\{S_{\pi},S_{\pi}\}=0\).
+The homological vector field is \(Q_{\pi}\coloneqq\{S_{\pi},-\}\) and satisfies \(Q_{\pi}^{2}=0\).
+For \(f,g\in C^{\infty}(M)\) (degree \(0\)), the \emph{derived bracket}
+\[
+\{f,g\}_{\pi}\;\coloneqq\;\big\{\{S_{\pi},f\},\,g\big\}
+\]
+agrees with the usual Poisson bracket \(\pi(df,dg)\).
 
+\paragraph{Tangent side: \(T[1]M\) (Q-manifold and operator calculus).}
+Coordinates \((x^{i},\theta^{i})\) have degrees \(|x^{i}|=0\), \(|\theta^{i}|=1\), and \(C^{\infty}(T[1]M)\cong\Omega^{\bullet}(M)\).
+The canonical homological vector field is
+\[
+Q_{d}\;=\;\theta^{i}\,\frac{\partial}{\partial x^{i}},
+\qquad
+Q_{d}^{2}=0,
+\]
+which acts as the de Rham differential on forms.
+For a vector field \(X=X^{i}(x)\partial_{i}\), the contraction operator is the vertical differential operator
+\[
+\hat\iota_{X}\;\coloneqq\;X^{i}(x)\,\frac{\partial}{\partial\theta^{i}},
+\qquad
+|\hat\iota_{X}|=-1,
+\]
+and for a homogeneous form \(\alpha\in\Omega^{k}(M)\), left wedge is \(m_{\alpha}(\beta)\coloneqq\alpha\wedge\beta\) with \(|m_{\alpha}|=k\).
+Write the graded commutator on \(\End(\Omega^{\bullet}(M))\) as \([A,B]\coloneqq A\!\circ\!B-(-1)^{|A||B|}B\!\circ\!A\).
+Cartan identities become
+\[
+[Q_{d},\hat\iota_{X}]=\widehat{\mathcal L_{X}},
+\qquad
+[\widehat{\mathcal L_{X}},\hat\iota_{Y}]=\hat\iota_{[X,Y]},
+\qquad
+[\hat\iota_{X},\hat\iota_{Y}]=0\ \text{(graded)}.
+\]
 
+\paragraph{Derived brackets on \(T[1]M\).}
+\emph{Vector fields.}
+Since the subalgebra \(\{\hat\iota_{X}\}\) is abelian for the graded commutator, the Lie bracket is a derived bracket:
+\[
+\big[\,[Q_{d},\hat\iota_{X}],\,\hat\iota_{Y}\,\big]\;=\;\hat\iota_{[X,Y]}.
+\]
+\emph{Poisson data on the tangent side.}
+Let \(\pi=\tfrac12\,\pi^{ij}(x)\,\partial_{i}\wedge\partial_{j}\).
+Contraction by \(\pi\) is the degree \(-2\) operator
+\[
+\hat\iota_{\pi}\;=\;\tfrac12\,\pi^{ij}(x)\,\frac{\partial}{\partial\theta^{j}}\frac{\partial}{\partial\theta^{i}}.
+\]
+Define the Koszul–Brylinski operator
+\[
+D_{\pi}\;\coloneqq\;[Q_{d},\hat\iota_{\pi}]\;=\;d\,\iota_{\pi}+\iota_{\pi}\,d,
+\qquad
+|D_{\pi}|=-1.
+\]
+If \(\pi\) is Poisson, then \(D_{\pi}^{2}=0\).
+For homogeneous \(\alpha,\beta\in\Omega^{\bullet}(M)\), define the \emph{derived bracket on forms} by
+\[
+\{\alpha,\beta\}_{\pi} \defeq ...
+\]
+Then \(\deg\{\alpha,\beta\}_{\pi}=\deg\alpha+\deg\beta\), the operation is a graded Leibniz bracket, it vanishes on \(\Omega^{0}\), and on \(1\)-forms it is the Koszul bracket:
+\[
+[\alpha,\beta]_{\pi}
+\;=\;
+\mathcal L_{\pi^{\sharp}\alpha}\beta
+-
+\mathcal L_{\pi^{\sharp}\beta}\alpha
+-
+d\big(\pi(\alpha,\beta)\big)
+\;=\;
+\iota_{\pi^{\sharp}\alpha}d\beta
+-
+\iota_{\pi^{\sharp}\beta}d\alpha
++
+d\big(\pi(\alpha,\beta)\big),
+\]
+with \(\pi^{\sharp}\colon T^{*}M\to TM\) given in coordinates by \((\pi^{\sharp}\alpha)^{i}=\pi^{ij}\alpha_{j}\).
 
-%Similarly,
-%\[
-%\Omega^1(\cM) \defeq \underline{\Hom}_{\cO}(\rT\cM, \cO)
-%\]
-%and
-%\[
-%\Omega^n(\cM) \defeq \textstyle\underline \bigwedge_{\cO} \Omega^1(\cM).
-%\]
-%In local coordinates \( (x^i, \theta^\mu) \), the tangent sheaf has a \( \cO \)-linear basis given by \( \set[\big]{\tfrac{\partial\ }{\partial x_i}, \tfrac{\partial\ }{\partial \theta_\mu}} \) with the expected action on coordinate functions.
-%Similarly, \( \Omega^1(\cM)  \) has a local \( \cO \)-linear basis given by
-%
-%a vector field is an expression of the form
-%\[
-%X = \sum_{i, \mu} X_i \frac{\partial}{\partial x_i} + Y_\mu \frac{\partial}{\partial \theta_\mu},
-%\]
-%whereas a differential form is one of the form
-%\[
-%\sum_{i,\mu}
-%\]
+\paragraph{Bridge between the two pictures.}
+The map \(\phi_{\pi}\colon T^{*}[1]M\to T[1]M\), \((x,\xi)\mapsto(x,\theta=\pi^{\sharp}\xi)\), intertwines the \(Q\)-structures precisely when \(\pi\) is Poisson.
+This encapsulates the compatibility of the cotangent \(Q_{\pi}=\{S_{\pi},-\}\) and the tangent \(Q_{d}\), and explains the agreement of the corresponding derived-bracket constructions.
+
