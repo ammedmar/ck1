@@ -1,6 +1,35 @@
 % !TEX root = ../ck1.tex
 
-%\section{Homological perturbation}
+\section{Cyclic differential graded Lie algebras and classical field theory}
+
+\subsection{Maurer--Cartan field theories}
+
+....
+
+\subsection{Scalar field theory}
+
+We review the massless scalar \(\phi^3\) theory on flat Minkowski spacetime \(M\) as a concrete example of a Maurer--Cartan theory.
+Let \(\cL\) be concentrated in degree \(0\) and \(1\) with \(\cL_0 \defeq \cO(M)\) and \(\cL_1 \coloneqq \mathrm{s}\cL_0\).
+We define a differential and a degree \(1\) bracket by
+\[
+d(\phi) \coloneqq \Box \phi,
+\qquad
+[\phi_1,\phi_2] \coloneqq -g\,\phi_1\phi_2,
+\]
+where \(\Box\) is the wave operator and \(g\) is a (\textit{coupling}) constant.
+The dg shifted Lie algebra \(\cL\) is naturally equipped with the pairing
+\[
+\langle \phi, E\rangle \coloneqq \int_M \phi(x)\,E(x)\,dx.
+\]
+With respect to this pairing, the Maurer--Cartan functional
+\[
+S[\phi] \coloneqq \tfrac12 \langle \phi, d\phi\rangle + \tfrac16 \langle \phi, [\phi,\phi]\rangle
+\]
+takes the explicit form
+\[
+S[\phi] = \int_M \Bigl( \tfrac12\,\phi(x)\,\Box\phi(x) - \tfrac{g}{3!}\,\phi(x)^3 \Bigr)\,dx,
+\]
+which is the classical action functional of the massless scalar \(\phi^3\) theory on \(M\).
 
 \subsection{Classical elimination of an auxiliary field}
 
@@ -102,4 +131,155 @@ We can polarize these expressions to get maps \(\ell_n \colon (\img p)^{\ot n} \
 	&\ + l_3(x_1) + l_3(x_2) + l_3(x_3), \\
 	&\hspace*{6pt} \vdots
 \end{align*}
-which we recognize as the \(L_\infty\)-algebra structure on \(\ker p\) transfered via the contraction \((h,p,i)\).
+which we recognize as the \(L_\infty\)-algebra structure on \(\ker p\) transfered via the contraction \((h, p, i)\).
+
+\subsection{Scattering amplitudes}
+
+%\subsubsection{Plane waves}
+%
+%To avoid analytic issues and to connect with scattering amplitudes, we restrict attention to
+%finite linear combinations of \textit{plane waves}:
+%\[
+%\phi(x) = \sum_i \phi_i(k_i)\,e^{ik_i\cdot x},
+%\qquad
+%E(x) = \sum_i E_i(k_i)\,e^{ik_i\cdot x}.
+%\]
+%This corresponds to working in momentum space and restricting the Fourier transforms
+%\(\hat\phi\) and \(\hat E\) to finite support.
+%On such configurations the pairing evaluates to
+%\[
+%\langle \phi, E\rangle =
+%(2\pi)^D \sum_{i,j}\delta^D(k_i+k_j)\,\phi_i(k_i)\,E_j(k_j).
+%\]
+%In this representation the kinetic operator acts diagonally,
+%\[
+%\Box e^{ik\cdot x} = -k^2\,e^{ik\cdot x},
+%\]
+%and the bracket is given by pointwise multiplication,
+%\[
+%[\phi_1,\phi_2](x) = -g\,\phi_1(x)\phi_2(x)
+%= -g \sum_{i,j}\phi_{1,i}(k_i)\phi_{2,j}(q_j)\,e^{i(k_i+q_j)\cdot x}.
+%\]
+%In particular, the space of finite sums of plane waves is closed under the differential,
+%the bracket, and the pairing, and therefore forms a cyclic dg Lie subalgebra.
+%
+%\anibal{check cyclicity}
+%
+%\subsubsection{On-shell projection}
+
+%We consider the projections
+%\[
+%P_h\Big( \sum_i \psi_i\,e^{ik_i\cdot x}\Big) \coloneqq \sum_{k_i^2 = 0}\psi_i\,e^{ik_i\cdot x},
+%\qquad
+%(1-P_h)\Big(\psi(x)\Big) \coloneqq \sum_{k_i^2 \neq 0}\psi_i\,e^{ik_i\cdot x},
+%\]
+%for both fields and equations.
+%
+%
+%the Green operator \(G\) is defined on plane waves with \(k^2 \neq 0\) by
+%\[
+%G\bigl(e^{ik\cdot x}\bigr) \coloneqq -\frac{1}{k^2}\,e^{ik\cdot x},
+%\]
+%and extends linearly to finite sums of such modes.
+%The operator \(G\) is undefined on the kernel of \(\Box\), which consists of plane waves with \(k^2 = 0\) (on-shell modes).
+%
+%
+%\[
+%h \coloneqq G(1-P_h).
+%\]
+%It satisfies the contraction relations
+%\[
+%P_h^2 = P_h,
+%\qquad
+%P_h h = h P_h = 0,
+%\qquad
+%B_1 h + h B_1 = P_h - \mathrm{id}.
+%\]
+%
+%\paragraph{Perturbative on-shell field.}
+%We seek a formal solution \(\phi_\ast(\phi_0)\) with prescribed on-shell part \(\phi_0 \coloneqq P_h\phi_0\), \(\Box \phi_0 = 0\), of the form
+%\[
+%\phi_\ast(\phi_0) = \sum_{n\ge 0} g^n \phi_n(\phi_0) = \phi_0 + \phi_{\mathrm{n.l.}}(\phi_0),
+%\qquad
+%\phi_{\mathrm{n.l.}} \coloneqq \sum_{n\ge 1} g^n \phi_n.
+%\]
+%Using \(B_1 h + h B_1 = P_h - \mathrm{id}\), the field equation is equivalent to the fixed-point equation
+%\[
+%\phi_\ast
+%=
+%\phi_0 - \tfrac{g}{2}\,h(\phi_\ast^2),
+%\]
+%hence the recursion
+%\[
+%\phi_n = -\tfrac12 \sum_{k+\ell = n-1} h(\phi_k\phi_\ell),
+%\qquad
+%n\ge 1.
+%\]
+%The first few terms are
+%\[
+%\phi_1 = -\tfrac12 h(\phi_0^2),
+%\qquad
+%\phi_2 = \tfrac12 h\bigl(\phi_0\,h(\phi_0^2)\bigr),
+%\]
+%\[
+%\phi_3
+%=
+%-\tfrac12 h\Bigl(\phi_0\,h\bigl(\phi_0\,h(\phi_0^2)\bigr)\Bigr)
+%-\tfrac18 h\bigl(h(\phi_0^2)\,h(\phi_0^2)\bigr).
+%\]
+%Equivalently, \(\phi_{\mathrm{n.l.}}(\phi_0)\) is the sum over (planar) cubic tree diagrams with leaves labeled by \(\phi_0\), internal vertices labeled by multiplication, and internal edges labeled by \(h\), with the usual symmetry factors coming from expanding \((\phi_0+\phi_{\mathrm{n.l.}})^2\).
+%
+%\paragraph{Obstruction to solving the field equation.}
+%Because \(h\) vanishes on on-shell momenta, \(\phi_\ast(\phi_0)\) does not solve the equation exactly in general.
+%Indeed,
+%\[
+%\Box \phi_\ast - \tfrac{g}{2}\phi_\ast^2 = -\tfrac{g}{2}\,P_h(\phi_\ast^2),
+%\qquad
+%P_h\phi_\ast = \phi_0.
+%\]
+%
+%\paragraph{On-shell action.}
+%We define the on-shell functional by evaluation on the perturbative field,
+%\[
+%\bar S[\phi_0] \coloneqq S[\phi_\ast(\phi_0)].
+%\]
+%Using \(P_h\phi_0=\phi_0\) and \(P_h\phi_{\mathrm{n.l.}}=0\), one obtains the implicit form
+%\[
+%\bar S[\phi_0]
+%=
+%\tfrac12 \bigl\langle \phi_{\mathrm{n.l.}}(\phi_0),\,\phi_{\mathrm{n.l.}}(\phi_0)\bigr\rangle
+%-
+%\tfrac{g}{3!}\Bigl\langle \phi_0 + \phi_{\mathrm{n.l.}}(\phi_0),\,\bigl(\phi_0+\phi_{\mathrm{n.l.}}(\phi_0)\bigr)^2\Bigr\rangle.
+%\]
+%
+%\paragraph{Transferred brackets on on-shell fields.}
+%The functional \(\bar S[\phi_0]\) determines higher brackets \(\bar B_n\) by polarization of its variation,
+%\[
+%\frac{\delta \bar S}{\delta \phi_0}
+%\coloneqq
+%\tfrac12 \bar B_2(\phi_0,\phi_0)
+%+
+%\tfrac{1}{3!}\bar B_3(\phi_0,\phi_0,\phi_0)
+%+
+%\dotsb
+%+
+%\tfrac{1}{n!}\bar B_n(\phi_0,\dotsc,\phi_0)
+%+
+%\dotsb\, .
+%\]
+%The first ones read
+%\[
+%\bar B_2(\phi_0,\phi_0) = -g\,P_h(\phi_0^2),
+%\qquad
+%\bar B_3(\phi_0,\phi_0,\phi_0) = 3g^2\,P_h\bigl(\phi_0\,h(\phi_0^2)\bigr),
+%\]
+%\[
+%\bar B_4(\phi_0,\phi_0,\phi_0,\phi_0)
+%=
+%-g^3\,P_h\Bigl(\tfrac12 \phi_0\,h\bigl(\phi_0\,h(\phi_0^2)\bigr) + 3\,h(\phi_0^2)\,h(\phi_0^2)\Bigr).
+%\]
+%Diagrammatically, the brackets \(\bar B_n\) are given by the sum of all inequivalent cubic trees with \(n\) labeled external legs and one output, each counted once.
+%Equivalently, they are obtained by homotopy transfer along the contraction with projection \(p = P_h\), inclusion \(\iota\) the tautological inclusion of on-shell plane waves, and homotopy \(h = G(1-P_h)\).
+
+
+
